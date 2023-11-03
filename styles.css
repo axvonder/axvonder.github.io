@@ -1,0 +1,113 @@
+/* Reset some basic elements */
+body, h1, h2, ul, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a universal box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Simple styling for the body */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+header p {
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background: #555;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 7px 15px;
+    margin: 0 5px;
+}
+
+nav a:hover {
+    background-color: #777;
+}
+
+/* Main content area */
+main {
+    padding: 20px;
+    background: white;
+    margin-top: 20px;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* Unordered list styles */
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    background: #eee;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Styling for the contact section specifically */
+#contact {
+    background-color: #ddd;
+    padding: 10px;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin-bottom: 5px;
+    }
+}
