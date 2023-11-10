@@ -15,18 +15,22 @@ body {
 .bubble {
     display: inline-block;
     margin: 5px;
-    padding: 12px 24px; /* Slightly larger padding for bigger bubbles */
+    padding: 12px; /* Adjusted padding */
+    width: 200px; /* Fixed width for all bubbles */
     border-radius: 25px; /* Oval shape */
     background-color: white; /* White background */
     border: 1px solid #d3d3d3; /* Light grey border */
     text-decoration: none;
     color: black;
+    text-align: center; /* Center the text */
+    box-sizing: border-box; /* Include padding and border in the width */
 }
 
 .bubble.active {
     background-color: #d0e4d6; /* Soft green for active page */
     border-color: #d0e4d6; /* Optional: change border color for active bubble */
 }
+
 
 
 /* Profile Section */
