@@ -1,113 +1,51 @@
-/* Reset some basic elements */
-body, h1, h2, ul, p {
-    margin: 0;
-    padding: 0;
-}
+/* Existing CSS Reset and Styling */
 
-/* Apply a universal box-sizing */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Simple styling for the body */
+/* New Styles for Body Margin */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    padding: 20px;
-    margin: 0;
+    margin: 1in; /* Adds 1-inch margin */
 }
 
-/* Header styles */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+/* Navigation Bubbles */
+.nav-bubbles {
     text-align: center;
-}
-
-header h1 {
-    margin-bottom: 5px;
-}
-
-header p {
-    font-style: italic;
-    font-weight: 300;
-}
-
-/* Navigation styles */
-nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    background: #555;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 7px 15px;
-    margin: 0 5px;
-}
-
-nav a:hover {
-    background-color: #777;
-}
-
-/* Main content area */
-main {
-    padding: 20px;
-    background: white;
-    margin-top: 20px;
-}
-
-/* Section styles */
-section {
     margin-bottom: 20px;
 }
 
-section h2 {
-    background-color: #333;
-    color: white;
-    padding: 5px;
-    margin-bottom: 10px;
+.bubble {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 25px; /* Oval shape */
+    background-color: #f0f0f0;
+    text-decoration: none;
+    color: black;
 }
 
-/* Unordered list styles */
-ul {
-    list-style-type: none;
+.bubble.active {
+    background-color: #90ee90; /* Soft green for active page */
 }
 
-ul li {
-    background: #eee;
-    margin-bottom: 5px;
-    padding: 10px;
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
 
-/* Footer styles */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.profile-photo {
+    border-radius: 50%; /* Circular photo */
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
 }
 
-/* Styling for the contact section specifically */
-#contact {
-    background-color: #ddd;
-    padding: 10px;
+.about-text {
+    flex: 1;
 }
 
+/* Existing Styles (Header, Navigation, Main, etc.) */
+
+/* Responsive Design Adjustments */
 @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
-
-    nav a {
-        margin-bottom: 5px;
-    }
+    /* Existing Responsive Styles */
 }
