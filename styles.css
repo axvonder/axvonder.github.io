@@ -33,13 +33,16 @@ body {
 }
 
 .profile-photo {
-    border-radius: 50%; /* Circular photo */
+    border-radius: 50%; /* Circular shape */
     width: 150px; /* Set a fixed width */
     height: 150px; /* Set a fixed height */
     margin-right: 20px;
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-    overflow: hidden; /* Hides any parts of the image that exceed the container */
+    background-image: url('IMG_1018.jpg'); /* Set your image here */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    overflow: hidden; /* Hide overflow */
 }
+
 
 
 .about-text {
