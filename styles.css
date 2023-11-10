@@ -34,10 +34,13 @@ body {
 
 .profile-photo {
     border-radius: 50%; /* Circular photo */
-    width: 150px;
-    height: 150px;
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height */
     margin-right: 20px;
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+    overflow: hidden; /* Hides any parts of the image that exceed the container */
 }
+
 
 .about-text {
     flex: 1;
