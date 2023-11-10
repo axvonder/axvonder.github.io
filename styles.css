@@ -16,7 +16,7 @@ body {
     display: inline-block;
     margin: 5px;
     padding: 12px; /* Adjusted padding */
-    width: 200px; /* Fixed width for all bubbles */
+    width: 120px; /* Fixed width for all bubbles */
     border-radius: 25px; /* Oval shape */
     background-color: white; /* White background */
     border: 1px solid #d3d3d3; /* Light grey border */
