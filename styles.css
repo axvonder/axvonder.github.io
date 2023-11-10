@@ -6,6 +6,12 @@ body {
     margin: 1in; /* Adds 1-inch margin */
 }
 
+.content-container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* Navigation Bubbles */
 .nav-bubbles {
     text-align: center;
