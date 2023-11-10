@@ -2,6 +2,7 @@
 
 /* New Styles for Body Margin */
 body {
+    font-family: 'Avenir Light', sans-serif; /* Sets Avenir Light as the primary font */
     margin: 1in; /* Adds 1-inch margin */
 }
 
@@ -50,7 +51,10 @@ body {
 
 .about-text {
     flex: 1;
+    font-size: 1.1em; /* Adjusts the font size */
+    line-height: 1.5; /* Sets line spacing to 1.5 */
 }
+
 
 /* Existing Styles (Header, Navigation, Main, etc.) */
 
