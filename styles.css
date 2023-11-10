@@ -2,7 +2,7 @@
 
 /* New Styles for Body Margin */
 body {
-    font-family: 'Avenir Light', sans-serif; /* Sets Avenir Light as the primary font */
+    font-family: 'Avenir', 'Arial', sans-serif; /* Sets Avenir Light as the primary font */
     margin: 1in; /* Adds 1-inch margin */
 }
 
@@ -41,6 +41,8 @@ body {
     width: 200px; /* Set a fixed width */
     height: 200px; /* Set a fixed height */
     margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background-image: url('vondy.jpg'); /* Set your image here */
     background-size: cover; /* Cover the entire area */
     background-position: center; /* Center the image */
@@ -52,7 +54,7 @@ body {
 .about-text {
     flex: 1;
     font-size: 1.1em; /* Adjusts the font size */
-    line-height: 1.5; /* Sets line spacing to 1.5 */
+    line-height: 1.5 !important; /* Sets line spacing to 1.5 */
 }
 
 
