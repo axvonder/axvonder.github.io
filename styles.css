@@ -6,6 +6,10 @@ body {
     margin: 1in; /* Adds 1-inch margin */
 }
 
+.surname {
+    font-weight: bold;
+}
+
 .content-container {
     width: 800px;
     margin: 0 auto;
