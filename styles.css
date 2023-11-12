@@ -2,13 +2,20 @@
 
 /* New Styles for Body Margin */
 body {
-    font-family: 'Avenir', 'Arial', sans-serif; /* Sets Avenir Light as the primary font */
-    margin: 1in; /* Adds 1-inch margin */
+    font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
+    margin: 1in;
 }
 
-.surname {
-    font-weight: bold;
+h1 {
+    font-weight: normal; /* Remove the default bold styling from h1 */
+    font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
 }
+  
+  .surname {
+    font-weight: bold; /* Apply bold styling to elements with the "surname" class */
+}
+  
+
 
 .content-container {
     width: 800px;
