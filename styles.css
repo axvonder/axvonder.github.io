@@ -4,16 +4,19 @@
 body {
     font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
     margin: 1in;
+    color: #414141;
 }
 
 h1 {
     font-weight: normal; /* Remove the default bold styling from h1 */
     font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
+    color: black;
 }
   
 .surname {
     font-family: 'Avenir Next Demi Bold', 'Avenir Medium', 'Avenir Next', 'Avenir', 'Arial', sans-serif;
     font-weight: normal;
+    color: black;
 }
 
 
@@ -35,7 +38,7 @@ h1 {
     display: inline-block;
     margin: 5px;
     padding: 12px; /* Adjusted padding */
-    width: 120px; /* Fixed width for all bubbles */
+    width: 140px; /* Fixed width for all bubbles */
     border-radius: 25px; /* Oval shape */
     background-color: white; /* White background */
     border: 1px solid #d3d3d3; /* Light grey border */
@@ -78,6 +81,25 @@ h1 {
     flex: 1;
     font-size: 1.1em; /* Adjusts the font size; 'em' is a relative sizing (so it proportions on different screen sizes, e.g., mobile*/
     line-height: 2 !important;
+}
+
+
+/* Green Bar Styling */
+.green-bar {
+    width: 100%; /* Full width of the container */
+    height: 4px; /* Height of the bar */
+    background-color: #d0e4d6; /* Same green as active bubble */
+    margin-bottom: 20px; /* Spacing below the bar */
+    margin-top: 20px;
+}
+
+
+/* Footer Style */
+.footer {
+    position: absolute; /* Absolute positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    /* Other styles... */
 }
 
 
