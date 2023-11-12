@@ -76,8 +76,8 @@ h1 {
 
 .about-text {
     flex: 1;
-    font-size: 1.1em; /* Adjusts the font size */
-    line-height: 1.5 !important; /* Sets line spacing to 1.5 */
+    font-size: 1.1em; /* Adjusts the font size; 'em' is a relative sizing (so it proportions on different screen sizes, e.g., mobile*/
+    line-height: 2 !important;
 }
 
 
