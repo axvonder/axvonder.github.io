@@ -11,10 +11,12 @@ h1 {
     font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
 }
   
-  .surname {
-    font-weight: bold; /* Apply bold styling to elements with the "surname" class */
+.surname {
+    font-family: 'Avenir Next Heavy', 'Avenir Next', 'Avenir', 'Arial', sans-serif;
+    font-weight: normal;
 }
-  
+
+
 
 
 .content-container {
