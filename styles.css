@@ -2,6 +2,7 @@
 body {
     font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
     color: #414141;
+    margin: 0.5in;
     background-color: #bbc6cd; /* Setting the background color of the whole page */
 }
 
@@ -9,6 +10,8 @@ h1 {
     font-weight: normal; /* Remove the default bold styling from h1 */
     font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
     color: black;
+    margin-bottom: 0;
+    line-height: 1.2;
 }
   
 .surname {
@@ -59,7 +62,7 @@ h1 {
     background-color: transparent;
     border: 1px solid #d3d3d3; /* Light grey border */
     text-decoration: none;
-    color: black;
+    color: #414141;
     text-align: center; /* Center the text */
     box-sizing: border-box; /* Include padding and border in the width */
     line-height: 70px; /* Adjust line-height for vertical alignment */
@@ -72,12 +75,33 @@ h1 {
 }
 
 
-.footer {
-    text-align: right; /* Aligns content to the right */
-    /* Add other styling as needed, like padding or background */
-}
-
 .p2 {
     margin: 0; /* Removes default paragraph margin, if needed */
+    /* Add other styling as needed */
+}
+
+
+.footer {
+    clear: both; /* Clears any floating elements */
+    position: relative; /* Keeps the footer in the normal flow of the document */
+    text-align: left;
+    /* Add other styling as needed */
+}
+
+body, html {
+    height: 100%; /* Ensure the body takes the full height of the viewport */
+    margin: 0; /* Reset default margin */
+}
+
+.main-container {
+    min-height: 100%; /* Ensure main container takes at least the viewport height */
+    /* Rest of your styles */
+}
+
+.footer {
+    position: fixed; /* Fix the footer to the bottom */
+    bottom: 0; /* Align it to the bottom */
+    width: 100%; /* Make it span the whole width */
+    text-align: left;
     /* Add other styling as needed */
 }
