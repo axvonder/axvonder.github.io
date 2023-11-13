@@ -74,6 +74,21 @@ h1 {
     border-color: #d3d3d3; /* Optional: matching border color for active bubble */
 }
 
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Grey Bar Styling */
+.grey-bar {
+    width: 100%; /* Full width of the container */
+    height: 3px; /* Height of the bar */
+    background-color: #d3d3d3; /* Same green as active bubble */
+    margin-bottom: 0px; /* Spacing below the bar */
+    margin-top: 20px;
+}
 
 .p2 {
     margin: 0; /* Removes default paragraph margin, if needed */
@@ -86,11 +101,6 @@ h1 {
     position: relative; /* Keeps the footer in the normal flow of the document */
     text-align: left;
     /* Add other styling as needed */
-}
-
-body, html {
-    height: 100%; /* Ensure the body takes the full height of the viewport */
-    margin: 0; /* Reset default margin */
 }
 
 .main-container {
