@@ -24,6 +24,7 @@ h1 {
 .main-container {
     display: flex; /* This will place image and content side by side */
     align-items: flex-start; /* Aligns items to the start of the container */
+    min-height: 100%;
 }
 
 
@@ -94,19 +95,6 @@ h1 {
 .p2 {
     margin: 0; /* Removes default paragraph margin, if needed */
     /* Add other styling as needed */
-}
-
-
-.footer {
-    clear: both; /* Clears any floating elements */
-    position: relative; /* Keeps the footer in the normal flow of the document */
-    text-align: left;
-    /* Add other styling as needed */
-}
-
-.main-container {
-    min-height: 100%; /* Ensure main container takes at least the viewport height */
-    /* Rest of your styles */
 }
 
 .footer {
