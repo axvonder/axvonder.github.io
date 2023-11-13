@@ -1,0 +1,111 @@
+/* Existing CSS Reset and Styling */
+
+/* New Styles for Body Margin */
+body {
+    font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
+    margin: 1in;
+    color: #414141;
+}
+
+h1 {
+    font-weight: normal; /* Remove the default bold styling from h1 */
+    font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
+    color: black;
+}
+  
+.surname {
+    font-family: 'Avenir Next Demi Bold', 'Avenir Medium', 'Avenir Next', 'Avenir', 'Arial', sans-serif;
+    font-weight: normal;
+    color: black;
+}
+
+
+
+
+.content-container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Bubbles */
+.nav-bubbles {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bubble {
+    display: inline-block;
+    margin: 5px;
+    padding: 12px; /* Adjusted padding */
+    width: 140px; /* Fixed width for all bubbles */
+    border-radius: 25px; /* Oval shape */
+    background-color: white; /* White background */
+    border: 1px solid #d3d3d3; /* Light grey border */
+    text-decoration: none;
+    color: black;
+    text-align: center; /* Center the text */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.bubble.active {
+    background-color: #d0e4d6; /* Soft green for active page */
+    border-color: #d0e4d6; /* Optional: change border color for active bubble */
+}
+
+
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.profile-photo {
+    border-radius: 50%; /* Circular shape */
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-image: url('vondy.jpg'); /* Set your image here */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    overflow: hidden; /* Hide overflow */
+}
+
+
+
+.about-text {
+    flex: 1;
+    font-size: 1.1em; /* Adjusts the font size; 'em' is a relative sizing (so it proportions on different screen sizes, e.g., mobile*/
+    line-height: 2 !important;
+}
+
+
+/* Green Bar Styling */
+.green-bar {
+    width: 100%; /* Full width of the container */
+    height: 4px; /* Height of the bar */
+    background-color: #d0e4d6; /* Same green as active bubble */
+    margin-bottom: 20px; /* Spacing below the bar */
+    margin-top: 20px;
+}
+
+
+/* Footer Style */
+.footer {
+    position: absolute; /* Absolute positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    /* Other styles... */
+}
+
+
+/* Existing Styles (Header, Navigation, Main, etc.) */
+
+/* Responsive Design Adjustments */
+@media (max-width: 600px) {
+    /* Existing Responsive Styles */
+}
