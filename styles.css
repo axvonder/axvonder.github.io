@@ -7,6 +7,12 @@ body {
     color: #414141;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will push the nav-bubbles to the right */
+  }
+
 h1 {
     font-weight: normal; /* Remove the default bold styling from h1 */
     font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
@@ -17,8 +23,13 @@ h1 {
     font-family: 'Avenir Next Demi Bold', 'Avenir Medium', 'Avenir Next', 'Avenir', 'Arial', sans-serif;
     font-weight: normal;
     color: black;
+    margin-right: 10px;
 }
 
+.surname, .nav-bubbles {
+    display: inline-block;
+    vertical-align: middle;
+}
 
 .content-container {
     width: 1000px;
@@ -35,15 +46,15 @@ h1 {
 .bubble {
     display: inline-block;
     margin: 5px;
-    padding: 12px; /* Adjusted padding */
-    width: 140px; /* Fixed width for all bubbles */
+    padding: 8px; /* Adjusted padding */
+    width: 80px; /* Fixed width for all bubbles */
     border-radius: 25px; /* Oval shape */
-    background-color: white; /* White background */
-    border: 1px solid #d3d3d3; /* Light grey border */
+    background-color: transparent; /* White background */
     text-decoration: none;
     color: black;
     text-align: center; /* Center the text */
     box-sizing: border-box; /* Include padding and border in the width */
+    font-size: 0.75em;
 }
 
 .bubble.active {
@@ -102,7 +113,13 @@ h1 {
 
 /* Existing Styles (Header, Navigation, Main, etc.) */
 
-/* Responsive Design Adjustments */
+/* Responsive Design Adjustments for header-container */
 @media (max-width: 600px) {
-    /* Existing Responsive Styles */
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-bubbles {
+        margin-top: 10px; /* Add space between name and bubbles on small screens */
+    }
 }
