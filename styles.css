@@ -28,17 +28,13 @@ h1 {
     flex-direction: column; /* This stacks your name and subtitle vertically */
 }
 
-.subtitle {
-    margin-top: -5px; /* Adjust this value as needed to move the subtitle closer or further from the title */
-}
-
 .surname, .nav-bubbles, .p2 {
     display: inline-block;
     vertical-align: top; /* This aligns your name, subtitle, and bubbles to the top */
 }
 
 .p2 {
-    margin-top: 0; /* Adjust as necessary for spacing */
+    margin-top: -10px; /* Adjust as necessary for spacing */
     margin-bottom: 0; /* Adjust as necessary for spacing */
     /* Add more styles as needed */
 }
@@ -53,6 +49,7 @@ h1 {
 .nav-bubbles {
     text-align: center;
     margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .bubble {
