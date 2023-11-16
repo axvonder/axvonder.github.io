@@ -7,7 +7,7 @@ body {
 
 .header-container {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between; /* This will push the nav-bubbles to the right */
   }
 
@@ -23,9 +23,20 @@ h1 {
     color: black;
 }
 
-.surname, .nav-bubbles {
+.title-and-subtitle {
+    display: flex;
+    flex-direction: column; /* This stacks your name and subtitle vertically */
+}
+
+.surname, .nav-bubbles, .p2 {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top; /* This aligns your name, subtitle, and bubbles to the top */
+}
+
+.p2 {
+    margin-top: 0; /* Adjust as necessary for spacing */
+    margin-bottom: 0; /* Adjust as necessary for spacing */
+    /* Add more styles as needed */
 }
 
 .content-container {
