@@ -3,7 +3,7 @@
 /* New Styles for Body Margin */
 body {
     font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
-    margin: 1in;
+    margin: 0.5in;
     color: #414141;
 }
 
@@ -20,11 +20,9 @@ h1 {
 }
 
 
-
-
 .content-container {
-    width: 800px;
-    margin: 0 auto;
+    width: 1000px;
+    margin: 0;
     padding: 0 20px;
 }
 
