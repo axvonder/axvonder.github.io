@@ -82,6 +82,15 @@ h1 {
     margin-top: 20px;
 }
 
+/* Rule for choir page */
+.choir-page .profile-section {
+    align-items: flex-start;
+}
+.choir-page .about-text h2 {
+    margin-top: 35px; /* Eliminate any top margin on the h2 */
+}
+
+
 .profile-photo {
     width: 300px; /* Set a fixed width */
     height: 414px; /* Set a fixed height */
@@ -94,7 +103,11 @@ h1 {
     overflow: hidden; /* Hide overflow */
 }
 
-
+/* Rule for Choir Page */
+.choir-page .profile-photo {
+    background-image: url('vondychoir.jpg');
+    background-size: 100%;
+}
 
 .about-text {
     flex: 1;
@@ -138,6 +151,51 @@ h1 {
 }
 
 
+/* CHOIR PAGE */
+
+.choir-page {
+    background-color: black; /* Sets background to black */
+    color: white; /* Sets text color to white */
+}
+
+/* To ensure links are also white */
+.choir-page a {
+    color: white;
+}
+
+/* Adjust the color of the active bubble on the choir page */
+.choir-page .bubble.active {
+    background-color: white;
+    color: black;
+}
+
+.choir-page,
+.choir-page .header-container h1,
+.choir-page .header-container .p2,
+.choir-page .surname,
+.choir-page .nav-bubbles a {
+    color: white; /* This should ensure text within these elements is white */
+}
+
+.choir-page .bubble.active {
+    background-color: white;
+    color: black; /* Ensures active bubble has black text for contrast */
+}
+
+/* Style for the title */
+.choir-page .about-text h2 {
+    color: white; /* White color for the title text */
+    margin-bottom: 10px; /* Spacing below the title */
+    /* Add other styles like font-size, font-weight as needed */
+}
+
+/* Style for the choir list */
+.choir-page .about-text .choir-list {
+    color: white; /* White color for the list */
+    list-style-type: none; /* Removes bullet points */
+    padding-left: 0; /* Aligns text with the rest of the content */
+    /* Add other styles like line-height, font-size as needed */
+}
 
 
 
