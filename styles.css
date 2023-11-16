@@ -49,13 +49,14 @@ h1 {
 .nav-bubbles {
     text-align: center;
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-right: 40px;
+    margin-top: 10px;
 }
 
 .bubble {
     display: inline-block;
-    margin: 5px;
-    padding: 8px; /* Adjusted padding */
+    margin: 7px;
+    padding: 10px; /* Adjusted padding */
     width: 80px; /* Fixed width for all bubbles */
     border-radius: 25px; /* Oval shape */
     background-color: transparent; /* White background */
