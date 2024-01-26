@@ -109,6 +109,12 @@ h1 {
     background-size: 100%;
 }
 
+/* Rule for research Page */
+.research-page .profile-photo {
+    background-image: url('vondysuit.jpg');
+    background-size: 100%;
+}
+
 .about-text {
     flex: 1;
     font-size: 1.1em; /* Adjusts the font size; 'em' is a relative sizing (so it proportions on different screen sizes, e.g., mobile*/
