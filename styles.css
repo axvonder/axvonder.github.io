@@ -124,7 +124,7 @@ h1 {
 /* Green Bar Styling */
 .green-bar {
     width: 100%; /* Full width of the container */
-    height: 4px; /* Height of the bar */
+    height: 2px; /* Height of the bar */
     background-color: #d0e4d6; /* Same green as active bubble */
     margin-bottom: 20px; /* Spacing below the bar */
     margin-top: 20px;
