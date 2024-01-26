@@ -112,7 +112,6 @@ h1 {
 /* Rule for research Page */
 .research-page .profile-photo {
     background-image: url('vondysuit.jpg');
-    background-size: 100%;
 }
 
 .about-text {
@@ -131,6 +130,25 @@ h1 {
     margin-top: 20px;
 }
 
+/* RESEARCH PAGE */
+
+.research-page .profile-section {
+    align-items: flex-start; /* Align items at the top */
+}
+
+.research-page .about-text p:first-child {
+    margin-top: 35px; /* Adjust the value for moving the first line down */
+}
+
+.research-page .about-text p {
+    padding-top: 5px;
+}
+
+.research-page .indented-points {
+    line-height: 1.5;
+    margin-left: 40px;
+    text-indent: -1.1em;
+}
 
 
 /* CV PAGE */
