@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food is Medicine Program Selection Clinical Decision Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        p.disclaimer {
+            font-style: italic;
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+        }
+        .tool-box {
+            border: 2px solid #007bff;
+            padding: 30px;
+            border-radius: 12px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .tool-box h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            transition: font-size 0.3s, text-align 0.3s;
+            text-align: center;
+        }
+        .tool-box h2.assessing {
+            font-size: 1.4em;
+            text-align: left;
+        }
+        div.question {
+            margin-bottom: 30px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        div.question.visible {
+            opacity: 1;
+        }
+        div.question p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        div.question .examples {
+            font-size: 0.95em;
+            color: #777;
+            font-style: italic;
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto 15px;
+        }
+        div.question .examples p {
+            color: #777;
+            margin-bottom: 5px;
+        }
+        div.question .examples ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        #result {
+            padding: 25px;
+            background-color: #e9ecef;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #result.visible {
+            opacity: 1;
+        }
+        #rec {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #28a745;
+        }
+        #note {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        #see-how {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #example {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: #444;
+        }
+        #download-btn {
+            background-color: #28a745;
+        }
+        #download-btn:hover {
+            background-color: #218838;
+        }
+        #reset-btn {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+        #reset-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Graphics/Food-Is-Medicine-Logo.png" alt="Tufts Food is Medicine Logo" class="logo">
+        </div>
+        <h1>Food is Medicine Program Selection<br>Clinical Decision Tool</h1>
+        <p class="disclaimer">These recommendations are intended as a guide and may not be appropriate for all patients in all situations. Shared decision-making should always be used to determine the FIM intervention that will be most useful to each patient.</p>
+        
+        <div class="tool-box">
+            <h2 id="tool-title">Which program is right for my patient?</h2>
+            
+            <div id="intro" class="question">
+                <p>You are treating a patient with T2D. Click below to begin the assessment.</p>
+                <button onclick="startTool()">Start Assessment</button>
+            </div>
+
+            <div id="q1" class="question" style="display: none;">
+                <h3>Question 1</h3>
+                <p>How well controlled is your patient's blood sugar?</p>
+                <button onclick="answerQ1(true)">Controlled (HbA1c ≤ 6.5%)</button>
+                <button onclick="answerQ1(false)">Uncontrolled (HbA1c > 6.5%)</button>
+            </div>
+
+            <div id="q2" class="question" style="display: none;">
+                <h3>Question 2</h3>
+                <p>Is your patient medically complex or otherwise at high risk for an adverse health event?</p>
+                <div class="examples">
+                    <p>For example, high-risk comorbidities such as:</p>
+                    <ul>
+                        <li>microvascular complications like neuropathy</li>
+                        <li>heart failure with recent hospitalization</li>
+                        <li>chronic kidney disease</li>
+                    </ul>
+                </div>
+                <button onclick="answerQ2(true)">Yes</button>
+                <button onclick="answerQ2(false)">No</button>
+            </div>
+
+            <div id="q3" class="question" style="display: none;">
+                <h3>Question 3</h3>
+                <p>Does your patient and/or the household they live in find it difficult to access food?</p>
+                <div class="examples">
+                    <p>For example:</p>
+                    <ul>
+                        <li>food/nutrition insecurity</li>
+                        <li>financial strain</li>
+                        <li>housing instability</li>
+                        <li>lack of social support</li>
+                    </ul>
+                </div>
+                <button onclick="answerQ3(true)">Yes</button>
+                <button onclick="answerQ3(false)">No</button>
+            </div>
+
+            <div id="result" style="display: none;">
+                <h3>Recommended FIM Program</h3>
+                <p id="rec"></p>
+                <p id="note"></p>
+                <button id="download-btn" onclick="downloadOnePager()">Download One-Pager</button>
+                <button id="reset-btn" onclick="resetTool()">Assess Another Patient</button>
+                <p id="see-how">See how this works...</p>
+                <p id="example"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let bloodWell, medComplex, accessDiff;
+        let pdfMap = {
+            'Education Only': 'Education.pdf',
+            'Education + PRx': 'PRx.pdf',
+            'Education + MTG': 'MTG.pdf',
+            'Education + MTM': 'MTM.pdf'
+        };
+        let exampleFileMap = {
+            'Education Only': 'examples/education.txt',
+            'Education + PRx': 'examples/prx.txt',
+            'Education + MTG': 'examples/mtg.txt',
+            'Education + MTM': 'examples/mtm.txt'
+        };
+
+        window.onload = function() {
+            document.getElementById('intro').classList.add('visible');
+        };
+
+        function startTool() {
+            document.getElementById('intro').style.display = 'none';
+            showElement('q1');
+            document.getElementById('tool-title').classList.add('assessing');
+        }
+
+        function answerQ1(ans) {
+            bloodWell = ans;
+            document.getElementById('q1').style.display = 'none';
+            showElement('q2');
+        }
+
+        function answerQ2(ans) {
+            medComplex = ans;
+            document.getElementById('q2').style.display = 'none';
+            showElement('q3');
+        }
+
+        function answerQ3(ans) {
+            accessDiff = ans;
+            document.getElementById('q3').style.display = 'none';
+            showResult();
+        }
+
+        function showResult() {
+            let rec = '';
+            let note = '';
+
+            if (bloodWell) {
+                rec = 'Education Only';
+            } else if (!medComplex && !accessDiff) {
+                rec = 'Education Only';
+            } else if (!medComplex && accessDiff) {
+                rec = 'Education + PRx';
+                note = 'If not available, consider SNAP/WIC with education.';
+            } else if (medComplex && !accessDiff) {
+                rec = 'Education + MTG';
+                note = 'If not available, consider alternative options such as Produce Prescription or SNAP/WIC.';
+            } else {
+                rec = 'Education + MTM';
+                note = 'If not available, consider alternative options such as Medically Tailored Groceries or SNAP/WIC.';
+            }
+
+            document.getElementById('rec').innerHTML = rec;
+            document.getElementById('note').innerHTML = note;
+            loadExample(rec);
+            showElement('result');
+        }
+
+        function loadExample(rec) {
+            let file = exampleFileMap[rec];
+            if (file) {
+                fetch(file)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('File not found');
+                        }
+                        return response.text();
+                    })
+                    .then(text => {
+                        document.getElementById('example').innerHTML = text;
+                    })
+                    .catch(err => {
+                        document.getElementById('example').innerHTML = 'Example not available.';
+                    });
+            } else {
+                document.getElementById('example').innerHTML = 'No example available.';
+            }
+        }
+
+        function downloadOnePager() {
+            let rec = document.getElementById('rec').innerHTML;
+            let pdfFile = pdfMap[rec] || 'default.pdf';
+            window.open('pdfs/' + pdfFile, '_blank');
+        }
+
+        function resetTool() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('intro').style.display = 'block';
+            document.getElementById('intro').classList.add('visible');
+            document.getElementById('tool-title').classList.remove('assessing');
+            bloodWell = medComplex = accessDiff = undefined;
+        }
+
+        function showElement(id) {
+            let elem = document.getElementById(id);
+            elem.style.display = 'block';
+            setTimeout(() => {
+                elem.classList.add('visible');
+            }, 10);
+        }
+    </script>
+</body>
+</html>
