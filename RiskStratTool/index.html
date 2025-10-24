@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food is Medicine Program Selection – Clinical Decision Guide</title>
+  <title>Food is Medicine Program Selection – Program Design Decision Support Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -11,7 +11,7 @@
       --brand-600:#2c6ce6;
       --brand-700:#1b56c7;
       --ink:#111827;
-      --ink-2:#374151;
+      --ink-2:#475569;
       --muted:#6b7280;
       --bg:#eef3fb;
       --panel:#ffffff;
@@ -42,10 +42,27 @@
       border:1px solid var(--stroke); border-radius:20px;
       padding:6px 10px; font-size:13px;
     }
-    .hero-title{margin:10px 0 6px;text-align:center;color:var(--brand);font-size:30px;line-height:1.2}
-    .hero-sub{display:block;text-align:center;margin-top:4px;color:var(--muted);font-size:15px;font-weight:700;letter-spacing:.02em}
+    .hero-title{margin:10px 0 4px;text-align:center;color:var(--brand);font-size:30px;line-height:1.2}
+    .hero-sub{display:block;text-align:center;margin-top:2px;margin-bottom:10px;color:var(--muted);font-size:15px;font-weight:700;letter-spacing:.02em}
+
+    /* Professional, balanced hero description */
+    .hero-desc-wrap{
+      max-width:740px;
+      margin:26px auto 34px; /* extra breathing room */
+      padding:0 16px;
+    }
+    .hero-desc{
+      margin:0 0 18px;
+      text-align:left;
+      font-size:16px;
+      line-height:1.7;
+      color:var(--ink-2);
+      font-weight:400;
+    }
+    .hero-desc:last-child{ margin-bottom:0; }
+
     .tool-box{
-      margin-top:26px;
+      margin-top:22px;
       border:1.5px solid var(--stroke);
       border-radius:14px;
       padding:18px;
@@ -60,7 +77,7 @@
     .question{ display:none; opacity:0; transition:opacity .2s ease; }
     .question.visible{ display:block; opacity:1; }
     .question h3{ margin:4px 0 2px; font-size:16px; text-align:center; color:#0f2957; }
-    .question p.prompt{ margin:6px 0 16px; font-size:18px; color:var(--ink-2); text-align:center; }
+    .question p.prompt{ margin:6px 0 16px; font-size:18px; color:#374151; text-align:center; }
     .choices{ display:grid; gap:12px; max-width:820px; margin:0 auto; }
     @media (min-width: 880px){ .choices{ grid-template-columns:1fr 1fr; } }
     .choice-card{
@@ -72,7 +89,7 @@
     .choice-card:hover{ border-color:var(--stroke-strong); background:#fcfeff; box-shadow:0 8px 20px rgba(31,111,235,.08); }
     .choice-card:focus-visible{ outline:3px solid var(--stroke-strong); outline-offset:2px; }
     .choice-title{ font-weight:700; font-size:16px; color:#0f2957; }
-    .choice-sub{ font-size:14px; color:var(--muted); line-height:1.45; }
+    .choice-sub{ font-size:14px; color:#6b7280; line-height:1.45; }
     .choice-chevron{ margin-left:auto; font-size:18px; color:#9aa7c0 }
 
     #tool-title{ margin:2px 0 8px; color:#0f2957; font-size:22px; }
@@ -134,7 +151,17 @@
     </div>
 
     <h1 class="hero-title">Food is Medicine Program Selection</h1>
-    <div class="hero-sub">Clinical Decision Guide</div>
+    <div class="hero-sub">Program Design Decision Support Tool</div>
+
+    <!-- Professional hero description block (plain centered text) -->
+    <div class="hero-desc-wrap">
+      <p class="hero-desc">
+        These recommendations are intended as a guide to help identify the Food is Medicine program model that best fits your population’s clinical and social risk profile.
+      </p>
+      <p class="hero-desc">
+        They are not prescriptive. Every organization will have unique operational, budgetary, and community considerations. Further, shared decision-making within your care teams and with community partners should inform how programs are implemented, adapted, and scaled over time.
+      </p>
+    </div>
 
     <div class="tool-box">
       <div class="progress-wrap" id="progress-wrap" aria-hidden="true">
@@ -148,7 +175,7 @@
 
       <div class="qbox">
         <div id="intro" class="question visible" style="display:block;">
-          <p style="text-align:center;color:var(--ink-2)">Explore this interactive tool to identify the best-fit intervention to match program intensity to population need and optimize impact.</p>
+          <p style="text-align:center;color:#374151">Explore this interactive tool to identify the best-fit intervention to match program intensity to population need and optimize impact.</p>
           <div style="text-align:center"><button class="cta" onclick="startTool()">Start Assessment</button></div>
         </div>
 
@@ -296,7 +323,6 @@
       }
       document.getElementById('rec').textContent = rec;
       document.getElementById('note').textContent = note;
-      // Hide the "Which program..." header on results
       const toolTitle = document.getElementById('tool-title');
       toolTitle.dataset.prevDisplay = toolTitle.style.display || '';
       toolTitle.style.display = 'none';

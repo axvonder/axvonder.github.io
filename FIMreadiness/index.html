@@ -17,7 +17,12 @@
       --bad:#b91c1c;
       --focus:#93c5fd;            /* accessible focus ring */
       --border:#d1d5db;
-      --chip:#eef2f7;
+      --pill-bg:#ffffff;
+      --pill-bg-selected:#0B6BCB;
+      --pill-text:#111827;
+      --pill-text-selected:#ffffff;
+      --pill-border:#cbd5e1;
+      --pill-border-selected:#0B6BCB;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -28,6 +33,8 @@
       background:var(--bg);
       line-height:1.45;
     }
+
+    /* Header */
     header{
       border-bottom:1px solid var(--border);
       background:#fff;
@@ -43,6 +50,7 @@
     }
     header h1{font-size:1.25rem; margin:0}
     header p{margin:0; color:var(--muted); font-size:.95rem}
+    .hide-subtitle header p{display:none}
 
     main{max-width:1000px; margin:0 auto; padding:20px}
     .card{
@@ -52,13 +60,14 @@
     .grid{display:grid; gap:14px}
     .grid-2{grid-template-columns:1fr 1fr}
     @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
+
     input[type="text"]{
       width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; font-size:1rem;
     }
     .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
     .btn{
       appearance:none; border:1px solid var(--primary); background:var(--primary); color:#fff;
-      border-radius:8px; padding:10px 14px; font-size:1rem; cursor:pointer; line-height:1.2;
+      border-radius:8px; padding:9px 14px; font-size:1rem; cursor:pointer; line-height:1.2;
     }
     .btn.secondary{background:#fff; color:var(--primary)}
     .btn.ghost{background:#fff; color:#111827; border-color:var(--border)}
@@ -67,15 +76,7 @@
 
     /* Start */
     .start{display:none}
-    .start.active{display:block}
-    .features{
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:10px; margin-top:8px;
-    }
-    .feat{
-      display:flex; gap:8px; align-items:flex-start; background:var(--surface);
-      border:1px solid var(--border); border-radius:10px; padding:10px;
-    }
-    .feat svg{width:20px; height:20px; flex:0 0 auto}
+    .start.active{display:block; max-width:720px; margin:0 auto}
 
     /* Domain */
     .domain{display:none}
@@ -83,27 +84,46 @@
     .progress{display:flex; align-items:center; gap:12px; margin-bottom:12px; color:var(--muted); font-size:.95rem}
     .progressbar{flex:1; height:8px; background:var(--surface); border-radius:999px; overflow:hidden; border:1px solid var(--border)}
     .progressbar .fill{height:100%; width:0; background:var(--primary); transition:width .2s ease}
-    #domainCard h2{margin:0 0 8px 0}
+    #domainCard h2{margin:0 0 10px 0}
     fieldset{border:0; padding:0; margin:0}
     legend{font-weight:600; padding:0; margin:0 0 8px 0}
 
     .item{padding:12px 0}
-    .item + .item{border-top:1px solid var(--border); margin-top:8px}
+    /* remove all dividing lines */
+    .item + .item{margin-top:6px}
+
     .scale{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(132px, 1fr));
       gap:8px; margin-top:8px;
     }
+    /* Pill radio: hide native control, use filled pill for selected */
     .option{
-      display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:flex-start;
-      padding:10px 12px; border:1px solid var(--border); border-radius:999px; background:#fff;
-      line-height:1.3; white-space:normal; word-break:normal;
+      position:relative;
+      display:flex; align-items:center; justify-content:center;
+      padding:7px 12px;
+      border:1.5px solid var(--pill-border);
+      border-radius:999px;
+      background:var(--pill-bg);
+      color:var(--pill-text);
+      font-size:.94rem;
+      min-height:34px;
+      cursor:pointer;
+      user-select:none;
+      text-align:center;
+      white-space:normal;
     }
-    .option input{accent-color:var(--primary); margin-top:2px}
-    /* selected state for modern browsers; JS also adds .selected */
-    label.option:has(input:checked){border-color:var(--primary); box-shadow:0 0 0 2px rgba(11,107,203,.12) inset}
-    label.option.selected{border-color:var(--primary); box-shadow:0 0 0 2px rgba(11,107,203,.12) inset}
-    label.option input:checked + span{font-weight:600}
+    .option input{
+      position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer;
+    }
+    .option.selected{
+      background:var(--pill-bg-selected);
+      color:var(--pill-text-selected);
+      border-color:var(--pill-border-selected);
+      box-shadow:0 0 0 2px rgba(11,107,203,.16) inset;
+      font-weight:600;
+    }
+    .option:focus-within{outline:3px solid var(--focus); outline-offset:2px}
 
     /* Sticky controls */
     .sticky-controls{
@@ -118,16 +138,13 @@
     /* Results */
     .results{display:none}
     .results.active{display:block}
-    .hero{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+    .hero{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap; margin:8px 0 6px 0}
     .score-badge{font-weight:700; font-size:2rem; padding:8px 12px; border-radius:8px; background:var(--surface); border:1px solid var(--border)}
     .tier{font-weight:700; padding:6px 10px; border-radius:999px; font-size:.95rem}
     .tier.low{background:#fee2e2; color:var(--bad); border:1px solid #fecaca}
     .tier.mod{background:#fff7ed; color:var(--warn); border:1px solid #ffedd5}
     .tier.high{background:#dcfce7; color:var(--ok); border:1px solid #bbf7d0}
     .chart-wrap{background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px}
-    .legend-list{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0 0}
-    .chip{background:var(--chip); border:1px solid var(--border); border-radius:999px; padding:4px 10px; font-size:.85rem}
-    .chip .na{margin-left:6px; background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:2px 6px; border-radius:999px; font-weight:600; font-size:.75rem}
     .gap-list li{margin-bottom:6px}
     .recommend{font-weight:700; margin:8px 0 0 0}
     .muted{color:var(--muted)}
@@ -150,10 +167,11 @@
 </head>
 <body>
   <a href="#app-main" class="visually-hidden">Skip to content</a>
+
   <header role="banner" aria-label="Header">
     <div class="wrap">
       <h1 id="app-title">FIM Organizational Readiness Assessment</h1>
-      <p>Rate each domain, then review your score, tier, and a recommended starting model.</p>
+      <p id="subtitle">Rate each domain, then review your score, tier, and a recommended starting model.</p>
     </div>
   </header>
 
@@ -161,25 +179,9 @@
     <!-- Start -->
     <section id="start" class="start card active" aria-labelledby="start-h">
       <h2 id="start-h" style="margin-top:0">Get started</h2>
-      <div class="grid grid-2">
-        <div>
-          <label for="orgName">Organization name</label>
-          <input id="orgName" name="orgName" type="text" autocomplete="organization" />
-        </div>
-        <div class="features" aria-label="What you will get">
-          <div class="feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M9 16.2 4.8 12l1.4-1.4L9 13.4l8.8-8.8L19.2 6z"/></svg>
-            <div>Score and tier in minutes</div>
-          </div>
-          <div class="feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M3 3h18v2H3V3zm0 6h12v2H3V9zm0 6h18v2H3v-2z"/></svg>
-            <div>One horizontal bar chart by domain</div>
-          </div>
-          <div class="feat">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5l4 2-1 1-5-3V7h2z"/></svg>
-            <div>Model suggestion: in‑house, vendor‑first, or hybrid</div>
-          </div>
-        </div>
+      <div>
+        <label for="orgName">Organization name</label>
+        <input id="orgName" name="orgName" type="text" autocomplete="organization" />
       </div>
       <div class="actions" style="margin-top:12px">
         <button id="beginBtn" class="btn" type="button">Begin</button>
@@ -218,17 +220,21 @@
     <section id="results" class="results" aria-labelledby="results-h">
       <div class="card">
         <h2 id="results-h" style="margin-top:0">Results</h2>
+
         <div class="hero">
           <div class="score-badge" id="overallScore" aria-live="polite">0%</div>
           <div id="tierBadge" class="tier low" aria-live="polite">Tier: Low</div>
         </div>
+
         <div class="muted" id="orgLine"></div>
 
         <div class="chart-wrap" aria-label="Domain scores chart">
           <canvas id="barChart" aria-label="Horizontal bar chart of domain scores" role="img"></canvas>
           <div id="chartFallback" class="muted" style="display:none">Chart unavailable. Scores listed below.</div>
         </div>
-        <div id="legendDomains" class="legend-list" aria-live="polite" aria-label="Domain list with status"></div>
+
+        <!-- Minimal note for excluded domains (shown only if any) -->
+        <div id="excludedNote" class="muted" style="margin-top:8px;display:none"></div>
 
         <div class="grid grid-2" style="margin-top:16px">
           <div>
@@ -339,13 +345,15 @@
     function loadLocal(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; const saved=JSON.parse(raw)||{}; state.orgName=saved.orgName||""; state.responses=saved.responses||state.responses; state.currentIndex=Number.isInteger(saved.currentIndex)?saved.currentIndex:0; }catch(e){} }
     function clearLocal(){ localStorage.removeItem(STORAGE_KEY); }
     function toast(t){ const el=$("#saveToast"); el.textContent=t; setTimeout(()=>el.textContent="", 1500); }
-    function includedDomains(){ return Object.keys(CONFIG.domains); } // Domain F can be ignored via all N/A
+    function includedDomains(){ return Object.keys(CONFIG.domains); } // Domain F can be skipped via N/A
 
     /* ---------- Screens ---------- */
     const screens={start:$("#start"), domain:$("#domain"), results:$("#results"), controls:$("#controls")};
     function showScreen(name){
       ["start","domain","results"].forEach(k=>screens[k].classList.toggle("active", k===name));
       screens.controls.hidden = name!=="domain";
+      // Show subtitle only on start
+      document.body.classList.toggle("hide-subtitle", name!=="start");
       if (name==="start") $("#start-h").focus();
       if (name==="domain") $("#domainTitle")?.focus();
       if (name==="results") $("#results-h").focus();
@@ -503,7 +511,7 @@
 
     function decideModel(domainPercents){
       const get = c => domainPercents[c];
-      const inHouseApplicable = get("F") !== null; // scored at all
+      const inHouseApplicable = get("F") !== null; // F scored at all
       const Aok = (get("A") ?? -1) >= 70;
       const Cok = (get("C") ?? -1) >= 70;
       const Gok = (get("G") ?? -1) >= 70;
@@ -511,12 +519,24 @@
       const Fok = inHouseApplicable ? ((get("F") ?? -1) >= 70) : true;
 
       if (Aok && Cok && Gok && Hok && Fok){
-        return {label:"In-house pilot", why:"Strong scores in core domains suggest capacity to run services internally."};
+        return {
+          label:"In-house pilot",
+          why:"Run distribution internally. Your core domains are strong and can support an internal pilot."
+        };
       }
-      if ((get("C") !== null && get("C") < 50) || (get("H") !== null && get("H") < 50)){
-        return {label:"Vendor-first", why:"Lower clinical integration or data capacity indicates starting with an experienced vendor."};
+      const reasons=[];
+      if (get("C") !== null && get("C") < 50) reasons.push("clinical integration");
+      if (get("H") !== null && get("H") < 50) reasons.push("data and evaluation");
+      if (reasons.length){
+        return {
+          label:"Vendor-first",
+          why:`Start with a contracted food provision partner while you build ${reasons.join(" and ")} capacity.`
+        };
       }
-      return {label:"Hybrid", why:"Blend internal strengths with vendor provision while you build capacity."};
+      return {
+        label:"Hybrid",
+        why:"Outsource food provision and keep screening, referral, and coaching in-house while you build capacity."
+      };
     }
 
     /* ---------- Results ---------- */
@@ -527,27 +547,29 @@
       $("#overallScore").textContent = overallPercent===null ? "N/A" : `${(Math.round(overallPercent*10)/10).toFixed(1)}%`;
       const {tier, className} = decideTier(overallPercent, gatingHit);
       const badge = $("#tierBadge"); badge.className = `tier ${className}`;
-      badge.textContent = `Tier: ${tier}${(tier==="Moderate" && gatingHit) ? " (critical domain below 50%)" : ""}`;
+      badge.textContent = `Tier: ${tier}`;
 
-      $("#orgLine").textContent = `${state.orgName ? state.orgName + " • " : ""}${CONFIG.meta.title} ${CONFIG.meta.version}`;
+      // Line above chart without version, with middle dot
+      const orgTitle = CONFIG.meta.title;
+      const org = state.orgName ? `${state.orgName} • ${orgTitle}` : orgTitle;
+      $("#orgLine").textContent = org;
 
-      // Prepare chart data (exclude fully N/A domains)
-      const labels=[], data=[];
+      // Chart (exclude fully N/A domains)
+      const labels=[], data=[], excluded=[];
       for (const code of codes){
         if (domainPercents[code] !== null){
           labels.push(`Domain ${code}: ${CONFIG.domains[code].name}`);
           data.push(Number((Math.round(domainPercents[code]*10)/10).toFixed(1)));
+        } else if (allNA[code]) {
+          excluded.push(`Domain ${code}: ${CONFIG.domains[code].name}`);
         }
       }
-
       try {
         if (chart){ chart.destroy(); }
         if (typeof Chart === "undefined") throw new Error("ChartJS not loaded");
         const canvas = document.getElementById("barChart");
-        // dynamic height based on bar count to prevent overlap
         const chartHeight = Math.max(220, labels.length * 36 + 60);
         canvas.style.height = chartHeight + "px";
-
         chart = new Chart(canvas, {
           type:'bar',
           data:{ labels, datasets:[{label:'Percent', data, borderWidth:1, backgroundColor:'rgba(11,107,203,0.85)', borderColor:'#084f98'}] },
@@ -564,14 +586,14 @@
         $("#chartFallback").style.display = "block";
       }
 
-      // Legend chips with N/A badges
-      const legend = $("#legendDomains"); legend.innerHTML = "";
-      for (const code of codes){
-        const chip = document.createElement("div");
-        chip.className = "chip";
-        chip.textContent = `Domain ${code}: ${CONFIG.domains[code].name}`;
-        if (allNA[code]){ const na=document.createElement("span"); na.className="na"; na.textContent="N/A"; chip.appendChild(na); }
-        legend.appendChild(chip);
+      // Minimal excluded note (only if any)
+      const exNote = $("#excludedNote");
+      if (excluded.length){
+        exNote.style.display = "block";
+        exNote.textContent = `Excluded (all N/A): ${excluded.join("; ")}`;
+      } else {
+        exNote.style.display = "none";
+        exNote.textContent = "";
       }
 
       // Top gaps
