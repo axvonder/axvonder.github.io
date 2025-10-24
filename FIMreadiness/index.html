@@ -87,7 +87,6 @@
     legend{font-weight:600; padding:0; margin:0 0 8px 0}
 
     .item{padding:12px 0}
-    /* No divider lines */
     .item + .item{margin-top:6px}
 
     .scale{
@@ -120,7 +119,7 @@
       color:var(--pill-text-selected);
       border-color:var(--pill-border-selected);
       box-shadow:0 0 0 2px rgba(11,107,203,.16) inset;
-      font-weight:500; /* keep steady to avoid reflow */
+      font-weight:500; /* steady to limit reflow */
     }
     .option span{display:block; line-height:1.2}
     .option:focus-within{outline:3px solid var(--focus); outline-offset:2px}
@@ -150,7 +149,6 @@
     .tier.mod{background:#fff7ed; color:var(--warn); border:1px solid #ffedd5}
     .tier.high{background:#dcfce7; color:var(--ok); border:1px solid #bbf7d0}
     .chart-wrap{background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px}
-
     .grid{display:grid; gap:14px}
     .grid-2{grid-template-columns:1fr 1fr}
     @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
@@ -245,7 +243,6 @@
 
         <div id="excludedNote" class="muted" style="margin-top:8px;display:none"></div>
 
-        <!-- Back to a true two-column layout -->
         <div class="grid grid-2" style="margin-top:16px">
           <div>
             <h3 style="margin-top:0">Top gaps</h3>
@@ -270,7 +267,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-    /* ---------- Config (per your latest content) ---------- */
+    /* ---------- Config (your Section 3 language) ---------- */
     const CONFIG = {
       "meta": {
         "title": "FIM Organizational Readiness Assessment",
@@ -447,12 +444,13 @@
         scale.setAttribute("role","radiogroup");
         scale.setAttribute("aria-label","Agreement scale");
 
+        /* Force two-line labels for the four longer options via <br> */
         const options = [
-          {v:0, label:"Strongly disagree", aria:"0 Strongly disagree"},
-          {v:1, label:"Somewhat disagree", aria:"1 Somewhat disagree"},
+          {v:0, label:"Strongly disagree", labelHtml:"Strongly<br>disagree", aria:"0 Strongly disagree"},
+          {v:1, label:"Somewhat disagree", labelHtml:"Somewhat<br>disagree", aria:"1 Somewhat disagree"},
           {v:2, label:"Neither", aria:"2 Neither"},
-          {v:3, label:"Somewhat agree", aria:"3 Somewhat agree"},
-          {v:4, label:"Strongly agree", aria:"4 Strongly agree"},
+          {v:3, label:"Somewhat agree", labelHtml:"Somewhat<br>agree", aria:"3 Somewhat agree"},
+          {v:4, label:"Strongly agree", labelHtml:"Strongly<br>agree", aria:"4 Strongly agree"},
           {v:"na", label:"N/A", aria:"Not applicable"}
         ];
 
@@ -463,14 +461,14 @@
           input.type = "radio";
           input.name = `item-${code}-${i}`;
           input.value = String(opt.v);
-          input.setAttribute("aria-label", opt.aria);
+          input.setAttribute("aria-label", opt.aria || opt.label);
           if (values[i] === opt.v) input.checked = true;
           input.addEventListener("change", ()=>{
             state.responses[code][i] = (input.value === "na") ? "na" : Number(input.value);
             saveLocal(false);
           });
           const span = document.createElement("span");
-          span.textContent = opt.label;
+          if (opt.labelHtml){ span.innerHTML = opt.labelHtml; } else { span.textContent = opt.label; }
           wrap.appendChild(input);
           wrap.appendChild(span);
           scale.appendChild(wrap);
@@ -624,7 +622,6 @@
         exNote.textContent = "";
       }
 
-      // Top gaps (percent on its own line; light spacing)
       const scorable = codes.filter(c => domainPercents[c] !== null).sort((a,b)=> domainPercents[a]-domainPercents[b]);
       const gapList = $("#gapList"); gapList.innerHTML = "";
       if (!scorable.length){
