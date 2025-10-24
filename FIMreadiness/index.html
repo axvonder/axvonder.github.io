@@ -15,7 +15,7 @@
       --ok:#166534;
       --warn:#b45309;
       --bad:#b91c1c;
-      --focus:#93c5fd;            /* accessible focus ring */
+      --focus:#93c5fd;
       --border:#d1d5db;
       --pill-bg:#ffffff;
       --pill-bg-selected:#0B6BCB;
@@ -56,11 +56,8 @@
     .card{
       background:#fff; border:1px solid var(--border); border-radius:10px; padding:18px;
       box-shadow:0 1px 2px rgba(0,0,0,.03);
+      overflow:hidden;
     }
-    .grid{display:grid; gap:14px}
-    .grid-2{grid-template-columns:1fr 1fr}
-    @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
-
     input[type="text"]{
       width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; font-size:1rem;
     }
@@ -71,6 +68,7 @@
     }
     .btn.secondary{background:#fff; color:var(--primary)}
     .btn.ghost{background:#fff; color:#111827; border-color:var(--border)}
+    .btn.small{padding:6px 10px; font-size:.9rem}
     .btn[disabled]{opacity:.5; cursor:not-allowed}
     .btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
 
@@ -89,7 +87,7 @@
     legend{font-weight:600; padding:0; margin:0 0 8px 0}
 
     .item{padding:12px 0}
-    /* remove all dividing lines */
+    /* No divider lines */
     .item + .item{margin-top:6px}
 
     .scale{
@@ -97,7 +95,7 @@
       grid-template-columns:repeat(auto-fit, minmax(132px, 1fr));
       gap:8px; margin-top:8px;
     }
-    /* Pill radio: hide native control, use filled pill for selected */
+    /* Pill radio */
     .option{
       position:relative;
       display:flex; align-items:center; justify-content:center;
@@ -107,11 +105,12 @@
       background:var(--pill-bg);
       color:var(--pill-text);
       font-size:.94rem;
-      min-height:34px;
+      min-height:36px;
       cursor:pointer;
       user-select:none;
       text-align:center;
       white-space:normal;
+      transition:background .12s ease, color .12s ease, border-color .12s ease;
     }
     .option input{
       position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer;
@@ -121,9 +120,15 @@
       color:var(--pill-text-selected);
       border-color:var(--pill-border-selected);
       box-shadow:0 0 0 2px rgba(11,107,203,.16) inset;
-      font-weight:600;
+      font-weight:500; /* keep steady to avoid reflow */
     }
+    .option span{display:block; line-height:1.2}
     .option:focus-within{outline:3px solid var(--focus); outline-offset:2px}
+
+    /* Domain F helper bar */
+    .fbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0 10px 0}
+    .muted{color:var(--muted)}
+    .disabled .option{pointer-events:none; opacity:.55}
 
     /* Sticky controls */
     .sticky-controls{
@@ -145,12 +150,17 @@
     .tier.mod{background:#fff7ed; color:var(--warn); border:1px solid #ffedd5}
     .tier.high{background:#dcfce7; color:var(--ok); border:1px solid #bbf7d0}
     .chart-wrap{background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px}
-    .gap-list li{margin-bottom:6px}
-    .recommend{font-weight:700; margin:8px 0 0 0}
-    .muted{color:var(--muted)}
+
+    .grid{display:grid; gap:14px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
+
+    .gap-list li{margin-bottom:10px}
+    .gap-list .pct{display:block; margin-top:2px; margin-bottom:2px}
+    .gap-list .tip{display:block; margin-top:2px}
+
     .visually-hidden{position:absolute !important;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap;border:0;padding:0;margin:-1px}
 
-    /* Focus handling */
     :focus{outline:none}
     :focus-visible{outline:3px solid var(--focus); outline-offset:2px}
 
@@ -201,7 +211,7 @@
       <div id="domainCard" class="card" tabindex="-1"><!-- injected --></div>
     </section>
 
-    <!-- Sticky nav for domain screens -->
+    <!-- Sticky controls -->
     <div id="controls" class="sticky-controls" role="region" aria-label="Navigation controls" hidden>
       <div class="wrap">
         <div class="left">
@@ -233,9 +243,9 @@
           <div id="chartFallback" class="muted" style="display:none">Chart unavailable. Scores listed below.</div>
         </div>
 
-        <!-- Minimal note for excluded domains (shown only if any) -->
         <div id="excludedNote" class="muted" style="margin-top:8px;display:none"></div>
 
+        <!-- Back to a true two-column layout -->
         <div class="grid grid-2" style="margin-top:16px">
           <div>
             <h3 style="margin-top:0">Top gaps</h3>
@@ -257,11 +267,10 @@
     </section>
   </main>
 
-  <!-- Chart.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-    /* ---------- Exact configuration JSON ---------- */
+    /* ---------- Config (per your latest content) ---------- */
     const CONFIG = {
       "meta": {
         "title": "FIM Organizational Readiness Assessment",
@@ -271,49 +280,49 @@
       },
       "domains": {
         "A": { "name": "Strategic Alignment", "items": [
-          "A board-approved strategy names food or nutrition security as a priority with a measurable goal and a named executive sponsor (current fiscal year).",
-          "The current fiscal plan includes a FIM objective with a budget line and target enrollment for adults with diabetes.",
-          "Our organization has at least one active program addressing diet-related conditions with documented protocols."
+          "Our organization recognizes food and/or nutrition security as a health-related social need.",
+          "Nutrition-based intervention is part of our organization’s strategic plan or population health goals.",
+          "Our organization has existing programs addressing diet-related chronic conditions."
         ]},
-        "B": { "name": "Leadership and Administrative Support", "items": [
-          "A C-suite sponsor meets at least quarterly on FIM with minutes and action items.",
-          "A clinic medical lead and an operations lead are appointed for FIM with role descriptions on file.",
-          "A governance structure to oversee FIM implementation meets on a defined cadence."
+        "B": { "name": "Leadership & Administrative Support", "items": [
+          "There is executive-level support for integrating FIM into clinical workflows.",
+          "There are identified FIM champions within leadership and clinical teams.",
+          "There is a governance structure to oversee FIM implementation."
         ]},
         "C": { "name": "Clinical Integration Capacity", "items": [
-          "Hunger Vital Sign is documented in the EHR for at least 80 percent of adult primary care visits in the last 90 days.",
-          "A FIM referral order set is live in the EHR and routes automatically to a coordinator; at least one test referral was completed in the last 30 days.",
-          "A written SOP covers screening, referral, and follow-up and has been updated within the last 12 months."
+          "Food insecurity screening tools (e.g., Hunger Vital Sign) are used routinely.",
+          "Screening is integrated into the EHR and clinical workflows.",
+          "There are existing protocols for referral to nutrition services or community food resources."
         ]},
-        "D": { "name": "Staffing and Training", "items": [
-          "At least 80 percent of front-line staff completed FIM training within the last 12 months (roster and dates available).",
-          "At least 0.5 FTE per 1,000 adult patients is allocated for FIM coordination in the staffing plan.",
-          "At least one CHW or care coordinator is assigned to FIM activities."
+        "D": { "name": "Staffing & Training", "items": [
+          "Staff have been trained in nutrition-sensitive care and FIM principles.",
+          "There is capacity (time, roles) for staff to support FIM activities.",
+          "There are community health workers or care coordinators involved in patient care or navigation."
         ]},
         "E": { "name": "Community Partnerships", "items": [
-          "At least one executed MOU or contract exists with a food vendor able to deliver MTM, MTG, or PRx in our service area.",
-          "Closed-loop referral status from at least one partner is returned to our EHR or care platform within 7 days for at least 80 percent of referrals.",
-          "Service levels for timeliness and delivery are defined and measured monthly."
+          "There are existing partnerships with food banks, farms, pantries, or FIM vendors.",
+          "There are existing MOUs, contracts, or agreements in place with FIM vendors.",
+          "There is a mechanism for closed-loop FIM referrals and follow-up."
         ]},
-        "F": { "name": "Infrastructure and Logistics (in-house food only)", "items": [
-          "Secured storage, refrigerator, and freezer capacity are on site and meet code; temperature logs are available for the last 30 days.",
-          "Written SOPs for safe storage, temperature checks, and product recall are in use with monthly staff sign-offs.",
-          "A plan exists to source culturally appropriate and medically tailored foods."
+        "F": { "name": "Infrastructure & Logistics", "items": [
+          "There is a physical space for food distribution (e.g., office, pantry, fridge, freezer, etc.).",
+          "There are systems in place for storing and handling food safely.",
+          "There is a plan for sourcing culturally appropriate and medically tailored foods."
         ], "conditional": true },
-        "G": { "name": "Funding and Program Sustainability", "items": [
-          "Funding covers direct program costs for at least 12 months at the planned volume.",
-          "A billing pathway has been tested with at least 10 paid claims or there is a Medicaid waiver approval.",
-          "A multi-year sustainability plan is drafted with triggers and risk mitigation."
+        "G": { "name": "Funding & Program Sustainability", "items": [
+          "There is dedicated funding for FIM activities (e.g., grants, Medicaid waivers, philanthropic funding).",
+          "There are billing pathways or reimbursement models in place.",
+          "There is a plan in place to sustain FIM programming beyond initial funding."
         ]},
-        "H": { "name": "Data and Evaluation", "items": [
-          "A dashboard reports A1c, blood pressure, ED visits, and enrollment by race, ethnicity, and language within 30 days of month end.",
-          "Data use or business associate agreements are executed with at least one FIM vendor; a secure data exchange runs at least weekly.",
-          "An evaluation plan lists metrics aligned to a named framework, with owners and refresh cadence."
+        "H": { "name": "Data & Evaluation", "items": [
+          "There are systems for tracking FIM outcomes (clinical, utilization, satisfaction).",
+          "There is capacity for data sharing with FIM vendors and/or community partners.",
+          "There are evaluation metrics aligned with an existing analytic framework (e.g., HHS Food is Medicine Analytic Framework, AHA Healthcare by Food Common Measures)."
         ]},
-        "I": { "name": "Patient Experience and Equity", "items": [
-          "Eligibility prioritizes food-insecure, Medicaid, or uninsured patients based on screening and a written policy.",
-          "Translated materials and interpretation are available for the top languages served.",
-          "A patient or community advisory group meets at least quarterly and at least two changes were implemented in the last year from their feedback."
+        "I": { "name": "Equity & Access", "items": [
+          "Under-resourced populations are prioritized in our organization’s FIM program design.",
+          "There are strategies in place to ensure uninsured or underinsured patients can receive FIM programs.",
+          "There is patient and community input in FIM programming and evaluation."
         ]}
       }
     };
@@ -321,18 +330,18 @@
     const TIPS = {
       "A": "Add a funded FIM objective with sponsor and KPI to the FY plan.",
       "B": "Stand up governance with named clinical and ops leads and a quarterly cadence.",
-      "C": "Embed screening in EHR to at least 80 percent, publish the order set, and finalize the SOP.",
-      "D": "Allocate FTE for coordination and complete staff training.",
+      "C": "Embed screening in EHR, publish the order set, and finalize protocols.",
+      "D": "Allocate capacity for coordination and complete staff training.",
       "E": "Execute an MOU and enable closed-loop referral updates.",
       "F": "Stand up cold chain, SOPs, and a culturally appropriate sourcing plan.",
       "G": "Secure 12-month runway, validate billing, and document the multi-year plan.",
       "H": "Launch an outcomes dashboard, execute DUAs, and automate weekly data feeds.",
-      "I": "Add language access and a patient advisory that drives at least two changes a year."
+      "I": "Ensure access strategies for uninsured patients and add patient/community voice."
     };
 
     /* ---------- State ---------- */
     const STORAGE_KEY = "fim_readiness_v1";
-    const state = { orgName:"", responses:{}, currentIndex:0 };
+    const state = { orgName:"", responses:{}, currentIndex:0, fNoInHouse:false };
     for (const code of Object.keys(CONFIG.domains)) {
       const len = CONFIG.domains[code].items.length;
       state.responses[code] = Array.from({length: len}, () => null);
@@ -340,19 +349,17 @@
 
     /* ---------- Helpers ---------- */
     const $  = s => document.querySelector(s);
-    const $$ = s => Array.from(document.querySelectorAll(s));
     function saveLocal(msg=true){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); if(msg) toast("Saved"); }catch(e){ toast("Could not save"); } }
-    function loadLocal(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; const saved=JSON.parse(raw)||{}; state.orgName=saved.orgName||""; state.responses=saved.responses||state.responses; state.currentIndex=Number.isInteger(saved.currentIndex)?saved.currentIndex:0; }catch(e){} }
+    function loadLocal(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; const saved=JSON.parse(raw)||{}; state.orgName=saved.orgName||""; state.responses=saved.responses||state.responses; state.currentIndex=Number.isInteger(saved.currentIndex)?saved.currentIndex:0; state.fNoInHouse=!!saved.fNoInHouse; }catch(e){} }
     function clearLocal(){ localStorage.removeItem(STORAGE_KEY); }
     function toast(t){ const el=$("#saveToast"); el.textContent=t; setTimeout(()=>el.textContent="", 1500); }
-    function includedDomains(){ return Object.keys(CONFIG.domains); } // Domain F can be skipped via N/A
+    function includedDomains(){ return Object.keys(CONFIG.domains); }
 
     /* ---------- Screens ---------- */
     const screens={start:$("#start"), domain:$("#domain"), results:$("#results"), controls:$("#controls")};
     function showScreen(name){
       ["start","domain","results"].forEach(k=>screens[k].classList.toggle("active", k===name));
       screens.controls.hidden = name!=="domain";
-      // Show subtitle only on start
       document.body.classList.toggle("hide-subtitle", name!=="start");
       if (name==="start") $("#start-h").focus();
       if (name==="domain") $("#domainTitle")?.focus();
@@ -383,6 +390,10 @@
       const code = codes[idx];
       const domain = CONFIG.domains[code];
 
+      if (code==="F" && state.fNoInHouse) {
+        state.responses["F"] = state.responses["F"].map(()=> "na");
+      }
+
       const card = $("#domainCard");
       card.innerHTML = "";
 
@@ -392,7 +403,36 @@
       h.tabIndex = -1;
       card.appendChild(h);
 
+      if (code === "F"){
+        const bar = document.createElement("div");
+        bar.className = "fbar";
+        const btn = document.createElement("button");
+        btn.type="button";
+        btn.id="fToggleBtn";
+        btn.className="btn secondary small";
+        btn.setAttribute("aria-pressed", state.fNoInHouse ? "true" : "false");
+        btn.textContent = state.fNoInHouse ? "Undo" : "No in-house food distribution";
+        const help = document.createElement("span");
+        help.className="muted";
+        help.textContent = "Sets all items to N/A and excludes this domain.";
+        bar.appendChild(btn);
+        bar.appendChild(help);
+        card.appendChild(bar);
+
+        btn.addEventListener("click", ()=>{
+          state.fNoInHouse = !state.fNoInHouse;
+          if (state.fNoInHouse){
+            state.responses["F"] = state.responses["F"].map(()=> "na");
+          } else {
+            state.responses["F"] = state.responses["F"].map(()=> null);
+          }
+          saveLocal(false);
+          renderDomain();
+        });
+      }
+
       const fs = document.createElement("fieldset");
+      if (code==="F" && state.fNoInHouse) fs.classList.add("disabled");
       const values = state.responses[code] || [];
 
       domain.items.forEach((text, i) => {
@@ -454,7 +494,7 @@
       $("#progressText").textContent = `Domain ${idx} of ${total}`;
       const pct = Math.round((idx-1) / total * 100);
       $("#progressFill").style.width = `${pct}%`;
-      $(".progressbar").setAttribute("aria-valuenow", String(pct));
+      document.querySelector(".progressbar").setAttribute("aria-valuenow", String(pct));
     }
 
     function goNext(){
@@ -511,7 +551,7 @@
 
     function decideModel(domainPercents){
       const get = c => domainPercents[c];
-      const inHouseApplicable = get("F") !== null; // F scored at all
+      const inHouseApplicable = get("F") !== null;
       const Aok = (get("A") ?? -1) >= 70;
       const Cok = (get("C") ?? -1) >= 70;
       const Gok = (get("G") ?? -1) >= 70;
@@ -519,42 +559,31 @@
       const Fok = inHouseApplicable ? ((get("F") ?? -1) >= 70) : true;
 
       if (Aok && Cok && Gok && Hok && Fok){
-        return {
-          label:"In-house pilot",
-          why:"Run distribution internally. Your core domains are strong and can support an internal pilot."
-        };
+        return {label:"In-house pilot", why:"Run distribution internally. Core domains are strong enough to start in-house."};
       }
       const reasons=[];
       if (get("C") !== null && get("C") < 50) reasons.push("clinical integration");
       if (get("H") !== null && get("H") < 50) reasons.push("data and evaluation");
       if (reasons.length){
-        return {
-          label:"Vendor-first",
-          why:`Start with a contracted food provision partner while you build ${reasons.join(" and ")} capacity.`
-        };
+        return {label:"Vendor-first", why:`Begin with a contracted food provision partner while you build ${reasons.join(" and ")} capacity.`};
       }
-      return {
-        label:"Hybrid",
-        why:"Outsource food provision and keep screening, referral, and coaching in-house while you build capacity."
-      };
+      return {label:"Hybrid", why:"Outsource food provision; keep screening, referral, and coaching in-house while you build capacity."};
     }
 
     /* ---------- Results ---------- */
     let chart;
     function computeAndShowResults(){
-      const {codes, domainMeans, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
+      const {codes, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
 
       $("#overallScore").textContent = overallPercent===null ? "N/A" : `${(Math.round(overallPercent*10)/10).toFixed(1)}%`;
       const {tier, className} = decideTier(overallPercent, gatingHit);
       const badge = $("#tierBadge"); badge.className = `tier ${className}`;
       badge.textContent = `Tier: ${tier}`;
 
-      // Line above chart without version, with middle dot
       const orgTitle = CONFIG.meta.title;
       const org = state.orgName ? `${state.orgName} • ${orgTitle}` : orgTitle;
       $("#orgLine").textContent = org;
 
-      // Chart (exclude fully N/A domains)
       const labels=[], data=[], excluded=[];
       for (const code of codes){
         if (domainPercents[code] !== null){
@@ -586,7 +615,6 @@
         $("#chartFallback").style.display = "block";
       }
 
-      // Minimal excluded note (only if any)
       const exNote = $("#excludedNote");
       if (excluded.length){
         exNote.style.display = "block";
@@ -596,7 +624,7 @@
         exNote.textContent = "";
       }
 
-      // Top gaps
+      // Top gaps (percent on its own line; light spacing)
       const scorable = codes.filter(c => domainPercents[c] !== null).sort((a,b)=> domainPercents[a]-domainPercents[b]);
       const gapList = $("#gapList"); gapList.innerHTML = "";
       if (!scorable.length){
@@ -604,13 +632,15 @@
       } else {
         scorable.slice(0,3).forEach(code=>{
           const li=document.createElement("li");
-          const pct=`${(Math.round(domainPercents[code]*10)/10).toFixed(1)}%`;
-          li.innerHTML = `<strong>Domain ${code}</strong> - ${CONFIG.domains[code].name} • ${pct}<br><span class="muted">${TIPS[code]}</span>`;
+          const pct = `${(Math.round(domainPercents[code]*10)/10).toFixed(1)}%`;
+          li.innerHTML = `
+            <strong>Domain ${code}: ${CONFIG.domains[code].name}</strong>
+            <span class="pct muted">${pct}</span>
+            <span class="tip muted">${TIPS[code]}</span>`;
           gapList.appendChild(li);
         });
       }
 
-      // Recommendation
       const rec = decideModel(domainPercents);
       $("#recommendText").textContent = rec.label;
       $("#recommendWhy").textContent = rec.why;
@@ -620,7 +650,7 @@
 
     /* ---------- CSV ---------- */
     function downloadCSV(){
-      const {codes, domainMeans, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
+      const {domainMeans, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
 
       const allCodes = Object.keys(CONFIG.domains);
       const head = ["org_name","date_time","in_house_food","version"];
@@ -665,13 +695,14 @@
       $("#beginBtn").addEventListener("click", begin);
       $("#clearBtn").addEventListener("click", ()=>{
         if (confirm("Clear all saved entries?")){
-          clearLocal(); $("#orgName").value=""; state.orgName=""; for (const c of Object.keys(CONFIG.domains)){ const n=CONFIG.domains[c].items.length; state.responses[c]=Array.from({length:n},()=>null); }
-          state.currentIndex=0; toast("Cleared");
+          clearLocal(); $("#orgName").value="";
+          state.orgName=""; for (const c of Object.keys(CONFIG.domains)){ const n=CONFIG.domains[c].items.length; state.responses[c]=Array.from({length:n},()=>null); }
+          state.currentIndex=0; state.fNoInHouse=false; toast("Cleared");
         }
       });
       $("#backBtn").addEventListener("click", goBack);
       $("#nextBtn").addEventListener("click", goNext);
-      $("#saveBtn").addEventListener("click", ()=> saveLocal(true));
+      $("#saveBtn").addEventListener("click", ()=> { saveLocal(true); });
       $("#printBtn").addEventListener("click", ()=> window.print());
       $("#csvBtn").addEventListener("click", downloadCSV);
       $("#restartBtn").addEventListener("click", ()=>{ if (confirm("Start over and clear all saved entries?")){ clearLocal(); window.location.reload(); }});
