@@ -1,249 +1,125 @@
-/* New Styles for Body Margin */
-body {
-    font-family: 'Avenir Light', 'Avenir', 'Arial', sans-serif;
-    margin: 0.5in;
-    color: #414141;
+/* v3 — Light theme site; Choir page is the only dark page */
+
+:root {
+  --accent: #d0e4d6;
+  --ink: #414141;
 }
 
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* This will push the nav-bubbles to the right */
-  }
+/* Base */
+body {
+  font-family: 'Avenir Light','Avenir','Arial',sans-serif;
+  margin: 0.5in;
+  color: var(--ink);
+}
+
+.content-container { width: 1000px; margin: 0; padding: 0 20px; }
+.header-container { display:flex; align-items:center; justify-content:space-between; }
 
 h1 {
-    font-weight: normal; /* Remove the default bold styling from h1 */
-    font-family: 'Avenir Next Ultra Light', 'Avenir Light', 'Avenir', 'Arial', sans-serif;
-    color: black;
+  font-weight: normal;
+  font-family: 'Avenir Next Ultra Light','Avenir Light','Avenir','Arial',sans-serif;
+  color: #000;
 }
-  
 .surname {
-    font-family: 'Avenir Next Demi Bold', 'Avenir Medium', 'Avenir Next', 'Avenir', 'Arial', sans-serif;
-    font-weight: normal;
-    color: black;
+  font-family: 'Avenir Next Demi Bold','Avenir Medium','Avenir Next','Avenir','Arial',sans-serif;
+  font-weight: normal;
+  color: #000;
 }
+.title-and-subtitle { display:flex; flex-direction: column; }
+.p2 { margin-top: -10px; margin-bottom: 0; }
 
-.title-and-subtitle {
-    display: flex;
-    flex-direction: column; /* This stacks your name and subtitle vertically */
-}
-
-.surname, .nav-bubbles, .p2 {
-    display: inline-block;
-    vertical-align: top; /* This aligns your name, subtitle, and bubbles to the top */
-}
-
-.p2 {
-    margin-top: -10px; /* Adjust as necessary for spacing */
-    margin-bottom: 0; /* Adjust as necessary for spacing */
-    /* Add more styles as needed */
-}
-
-.content-container {
-    width: 1000px;
-    margin: 0;
-    padding: 0 20px;
-}
-
-/* Navigation Bubbles */
-.nav-bubbles {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-right: 40px;
-    margin-top: 10px;
-}
-
+/* Bubbles */
+.nav-bubbles { text-align:center; margin:10px 40px 20px 0; }
 .bubble {
-    display: inline-block;
-    margin: 7px;
-    padding: 10px; /* Adjusted padding */
-    width: 80px; /* Fixed width for all bubbles */
-    border-radius: 25px; /* Oval shape */
-    background-color: transparent; /* White background */
-    text-decoration: none;
-    color: black;
-    text-align: center; /* Center the text */
-    box-sizing: border-box; /* Include padding and border in the width */
-    font-size: 0.85em;
-    line-height: 1;
+  display:inline-block; margin:7px; padding:10px; width:80px;
+  border-radius:25px; background:transparent; text-decoration:none;
+  color:#000; text-align:center; font-size:.85em; line-height:1;
+}
+.bubble:hover { background: rgba(0,0,0,.04); }
+.bubble.active { background: var(--accent); }
+
+/* Profile section */
+.profile-section { display:flex; align-items:center; gap:40px; margin-top:20px; }
+
+/* Support BOTH versions (div background and img element) */
+div.profile-photo {
+  width:300px; height:414px; margin:50px 50px 50px 0;
+  background-size:130%; background-position:center; overflow:hidden;
+}
+img.profile-photo {
+  width:300px; height:auto; aspect-ratio:300/414; display:block;
+  margin:50px 50px 50px 0; object-fit:cover;
 }
 
-.bubble.active {
-    background-color: #d0e4d6; /* Soft green for active page */
-    border-color: #d0e4d6; /* Optional: change border color for active bubble */
-}
+/* Default/div photo sources + page overrides */
+div.profile-photo { background-image:url('vondy.jpg'); } /* home default */
+.research-page div.profile-photo { background-image:url('vondysuit.jpg'); }
+.choir-page   div.profile-photo { background-image:url('vondychoir.jpg'); background-size:100%; }
 
+.about-text { flex:1; font-size:1.1em; line-height:2; }
 
+/* Green bar */
+.green-bar { width:100%; height:2px; background:var(--accent); margin:20px 0; }
 
-/* Profile Section */
-.profile-section {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
+/* Research page */
+.research-page .profile-section { align-items:flex-start; }
+.research-page .about-text p:first-child { margin-top:35px; }
+.research-page .about-text p { padding-top:5px; }
+.research-page .indented-points { line-height:1.6; margin-left:40px; text-indent:-1.1em; }
 
-/* Rule for choir page */
-.choir-page .profile-section {
-    align-items: flex-start;
-}
-.choir-page .about-text h2 {
-    margin-top: 35px; /* Eliminate any top margin on the h2 */
-}
+/* Minimal publication/media lists */
+.pub-list, .media-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.pub-list li, .media-list li { padding:0; }
+.pub-list li strong { display:block; }
+.meta { color:#6b6b6b; font-size:.95em; }
+.inline-links a { margin-right:.4rem; }
 
-
-.profile-photo {
-    width: 300px; /* Set a fixed width */
-    height: 414px; /* Set a fixed height */
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-image: url('vondy.jpg'); /* Set your image here */
-    background-size: 130%; /* Cover the entire area */
-    background-position: center; /* Center the image */
-    overflow: hidden; /* Hide overflow */
-}
-
-/* Rule for Choir Page */
-.choir-page .profile-photo {
-    background-image: url('vondychoir.jpg');
-    background-size: 100%;
-}
-
-/* Rule for research Page */
-.research-page .profile-photo {
-    background-image: url('vondysuit.jpg');
-}
-
-.about-text {
-    flex: 1;
-    font-size: 1.1em; /* Adjusts the font size; 'em' is a relative sizing (so it proportions on different screen sizes, e.g., mobile*/
-    line-height: 2 !important;
-}
-
-
-/* Green Bar Styling */
-.green-bar {
-    width: 100%; /* Full width of the container */
-    height: 2px; /* Height of the bar */
-    background-color: #d0e4d6; /* Same green as active bubble */
-    margin-bottom: 20px; /* Spacing below the bar */
-    margin-top: 20px;
-}
-
-/* RESEARCH PAGE */
-
-.research-page .profile-section {
-    align-items: flex-start; /* Align items at the top */
-}
-
-.research-page .about-text p:first-child {
-    margin-top: 35px; /* Adjust the value for moving the first line down */
-}
-
-.research-page .about-text p {
-    padding-top: 5px;
-}
-
-.research-page .indented-points {
-    line-height: 1.5;
-    margin-left: 40px;
-    text-indent: -1.1em;
-}
-
-
-/* CV PAGE */
-
-.cv-button-container {
-    text-align: center; /* Center the button */
-    margin-top: 150px; /* Space from the top */
-}
-
-.cv-button {
-    display: inline-block;
-    width: 120px; /* Set a fixed width for the buttons */
-    height: 40px; /* Set a fixed height for the buttons */
-    line-height: 40px; /* Center the text vertically */
-    background-color: #d0e4d6; /* Your green color */
-    color: black; /* Text color */
-    text-decoration: none; /* Removes underline from links */
-    font-size: 1em; /* Adjust font size as needed */
-    border-radius: 50px; /* Makes it oval */
-    border: none; /* Removes border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    margin-right: 60px;
-}
-
-.cv-button:hover {
-    background-color: #b8d0bf; /* Slightly darker green on hover */
-}
-
-
-/* CHOIR PAGE */
-
-.choir-page {
-    background-color: black; /* Sets background to black */
-    color: white; /* Sets text color to white */
-}
-
-/* To ensure links are also white */
-.choir-page a {
-    color: white;
-}
-
-/* Adjust the color of the active bubble on the choir page */
-.choir-page .bubble.active {
-    background-color: white;
-    color: black;
-}
-
-.choir-page,
+/* Choir page — the ONLY dark page */
+.choir-page { background:#000; color:#fff; }
+.choir-page a { color:#fff; }
+.choir-page .bubble.active { background:#fff; color:#000; }
 .choir-page .header-container h1,
 .choir-page .header-container .p2,
 .choir-page .surname,
-.choir-page .nav-bubbles a {
-    color: white; /* This should ensure text within these elements is white */
+.choir-page .nav-bubbles a { color:#fff; }
+.choir-page .about-text h2 { margin-top:35px; color:#fff; }
+.choir-page .about-text .choir-list { color:#fff; list-style:none; padding-left:0; }
+
+
+/* CV buttons */
+.cv-button-container {
+  text-align: center;
+  margin-top: 150px;
+}
+.cv-button {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #d0e4d6;
+  color: black;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  margin-right: 60px;
+}
+.cv-button:hover {
+  background-color: #b8d0bf;
 }
 
-.choir-page .bubble.active {
-    background-color: white;
-    color: black; /* Ensures active bubble has black text for contrast */
-}
-
-/* Style for the title */
-.choir-page .about-text h2 {
-    color: white; /* White color for the title text */
-    margin-bottom: 10px; /* Spacing below the title */
-    /* Add other styles like font-size, font-weight as needed */
-}
-
-/* Style for the choir list */
-.choir-page .about-text .choir-list {
-    color: white; /* White color for the list */
-    list-style-type: none; /* Removes bullet points */
-    padding-left: 0; /* Aligns text with the rest of the content */
-    /* Add other styles like line-height, font-size as needed */
-}
+/* optional: make the small “PhD candidate…” line breathe a bit */
+.cv-subline { margin-top: 8px; }
 
 
+/* Footer — keep in normal flow */
+.footer { position: static; margin-top: 2rem; text-align:center; padding-bottom: 2rem; }
 
-/* Footer Style */
-.footer {
-    position: absolute; /* Absolute positioning */
-    bottom: 0; /* Stick to the bottom */
-    width: 100%; /* Full width */
-    /* Other styles... */
-}
-
-
-/* Existing Styles (Header, Navigation, Main, etc.) */
-
-/* Responsive Design Adjustments for header-container */
+/* Small screens */
 @media (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-bubbles {
-        margin-top: 10px; /* Add space between name and bubbles on small screens */
-    }
+  body { margin: 18px; }
+  .content-container { width:auto; padding:0; }
+  .header-container { flex-direction:column; align-items:flex-start; }
+  img.profile-photo, div.profile-photo { margin:20px 20px 20px 0; width:220px; }
 }

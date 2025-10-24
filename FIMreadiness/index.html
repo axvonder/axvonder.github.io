@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>FIM Organizational Readiness Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#667085;
+      --primary:#0B6BCB;
+      --primary-strong:#084f98;
+      --surface:#f7f9fc;
+      --ok:#166534;
+      --warn:#b45309;
+      --bad:#b91c1c;
+      --focus:#93c5fd;            /* accessible focus ring */
+      --border:#d1d5db;
+      --chip:#eef2f7;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.45;
+    }
+    header{
+      border-bottom:1px solid var(--border);
+      background:#fff;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    header .wrap{
+      max-width:1000px;
+      margin:0 auto;
+      padding:16px 20px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    header h1{font-size:1.25rem; margin:0}
+    header p{margin:0; color:var(--muted); font-size:.95rem}
+
+    main{max-width:1000px; margin:0 auto; padding:20px}
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:10px; padding:18px;
+      box-shadow:0 1px 2px rgba(0,0,0,.03);
+    }
+    .grid{display:grid; gap:14px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
+    input[type="text"]{
+      width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; font-size:1rem;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .btn{
+      appearance:none; border:1px solid var(--primary); background:var(--primary); color:#fff;
+      border-radius:8px; padding:10px 14px; font-size:1rem; cursor:pointer; line-height:1.2;
+    }
+    .btn.secondary{background:#fff; color:var(--primary)}
+    .btn.ghost{background:#fff; color:#111827; border-color:var(--border)}
+    .btn[disabled]{opacity:.5; cursor:not-allowed}
+    .btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+
+    /* Start */
+    .start{display:none}
+    .start.active{display:block}
+    .features{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:10px; margin-top:8px;
+    }
+    .feat{
+      display:flex; gap:8px; align-items:flex-start; background:var(--surface);
+      border:1px solid var(--border); border-radius:10px; padding:10px;
+    }
+    .feat svg{width:20px; height:20px; flex:0 0 auto}
+
+    /* Domain */
+    .domain{display:none}
+    .domain.active{display:block}
+    .progress{display:flex; align-items:center; gap:12px; margin-bottom:12px; color:var(--muted); font-size:.95rem}
+    .progressbar{flex:1; height:8px; background:var(--surface); border-radius:999px; overflow:hidden; border:1px solid var(--border)}
+    .progressbar .fill{height:100%; width:0; background:var(--primary); transition:width .2s ease}
+    #domainCard h2{margin:0 0 8px 0}
+    fieldset{border:0; padding:0; margin:0}
+    legend{font-weight:600; padding:0; margin:0 0 8px 0}
+
+    .item{padding:12px 0}
+    .item + .item{border-top:1px solid var(--border); margin-top:8px}
+    .scale{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
+      gap:8px; margin-top:8px;
+    }
+    .option{
+      display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:flex-start;
+      padding:10px 12px; border:1px solid var(--border); border-radius:999px; background:#fff;
+      line-height:1.3; white-space:normal; word-break:normal;
+    }
+    .option input{accent-color:var(--primary); margin-top:2px}
+    /* selected state for modern browsers; JS also adds .selected */
+    label.option:has(input:checked){border-color:var(--primary); box-shadow:0 0 0 2px rgba(11,107,203,.12) inset}
+    label.option.selected{border-color:var(--primary); box-shadow:0 0 0 2px rgba(11,107,203,.12) inset}
+    label.option input:checked + span{font-weight:600}
+
+    /* Sticky controls */
+    .sticky-controls{
+      position:sticky; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--border);
+      padding:10px 20px; z-index:5;
+    }
+    .sticky-controls .wrap{
+      max-width:1000px; margin:0 auto; display:flex; gap:10px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+    }
+    .saved-toast{font-size:.9rem; color:var(--muted)}
+
+    /* Results */
+    .results{display:none}
+    .results.active{display:block}
+    .hero{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+    .score-badge{font-weight:700; font-size:2rem; padding:8px 12px; border-radius:8px; background:var(--surface); border:1px solid var(--border)}
+    .tier{font-weight:700; padding:6px 10px; border-radius:999px; font-size:.95rem}
+    .tier.low{background:#fee2e2; color:var(--bad); border:1px solid #fecaca}
+    .tier.mod{background:#fff7ed; color:var(--warn); border:1px solid #ffedd5}
+    .tier.high{background:#dcfce7; color:var(--ok); border:1px solid #bbf7d0}
+    .chart-wrap{background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px}
+    .legend-list{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0 0}
+    .chip{background:var(--chip); border:1px solid var(--border); border-radius:999px; padding:4px 10px; font-size:.85rem}
+    .chip .na{margin-left:6px; background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:2px 6px; border-radius:999px; font-weight:600; font-size:.75rem}
+    .gap-list li{margin-bottom:6px}
+    .recommend{font-weight:700; margin:8px 0 0 0}
+    .muted{color:var(--muted)}
+    .visually-hidden{position:absolute !important;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap;border:0;padding:0;margin:-1px}
+
+    /* Focus handling */
+    :focus{outline:none}
+    :focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+
+    /* Print */
+    @media print{
+      header,.domain,.start,.sticky-controls{display:none !important}
+      main{padding:0; max-width:none}
+      .results{display:block !important}
+      .results .actions{display:none}
+      .chart-wrap{page-break-inside:avoid}
+      body{background:#fff}
+    }
+  </style>
+</head>
+<body>
+  <a href="#app-main" class="visually-hidden">Skip to content</a>
+  <header role="banner" aria-label="Header">
+    <div class="wrap">
+      <h1 id="app-title">FIM Organizational Readiness Assessment</h1>
+      <p>Rate each domain, then review your score, tier, and a recommended starting model.</p>
+    </div>
+  </header>
+
+  <main id="app-main" tabindex="-1">
+    <!-- Start -->
+    <section id="start" class="start card active" aria-labelledby="start-h">
+      <h2 id="start-h" style="margin-top:0">Get started</h2>
+      <div class="grid grid-2">
+        <div>
+          <label for="orgName">Organization name</label>
+          <input id="orgName" name="orgName" type="text" autocomplete="organization" />
+        </div>
+        <div class="features" aria-label="What you will get">
+          <div class="feat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M9 16.2 4.8 12l1.4-1.4L9 13.4l8.8-8.8L19.2 6z"/></svg>
+            <div>Score and tier in minutes</div>
+          </div>
+          <div class="feat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M3 3h18v2H3V3zm0 6h12v2H3V9zm0 6h18v2H3v-2z"/></svg>
+            <div>One horizontal bar chart by domain</div>
+          </div>
+          <div class="feat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0B6BCB" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5l4 2-1 1-5-3V7h2z"/></svg>
+            <div>Model suggestion: in‑house, vendor‑first, or hybrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <button id="beginBtn" class="btn" type="button">Begin</button>
+        <button id="clearBtn" class="btn ghost" type="button" aria-describedby="clearHelp">Reset</button>
+        <span id="clearHelp" class="muted" style="font-size:.9rem">Clears saved entries from this browser.</span>
+      </div>
+    </section>
+
+    <!-- Domain screen -->
+    <section id="domain" class="domain" aria-live="polite">
+      <div class="progress" aria-label="Progress">
+        <div id="progressText">Domain 1 of 9</div>
+        <div class="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
+      <div id="domainCard" class="card" tabindex="-1"><!-- injected --></div>
+    </section>
+
+    <!-- Sticky nav for domain screens -->
+    <div id="controls" class="sticky-controls" role="region" aria-label="Navigation controls" hidden>
+      <div class="wrap">
+        <div class="left">
+          <button id="backBtn" class="btn secondary" type="button">Back</button>
+          <button id="nextBtn" class="btn" type="button">Next</button>
+        </div>
+        <div class="right">
+          <button id="saveBtn" class="btn ghost" type="button" aria-describedby="saveHelp">Save for later</button>
+          <div id="saveHelp" class="visually-hidden">Saves your entries to this browser using local storage.</div>
+          <div class="saved-toast" id="saveToast" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <section id="results" class="results" aria-labelledby="results-h">
+      <div class="card">
+        <h2 id="results-h" style="margin-top:0">Results</h2>
+        <div class="hero">
+          <div class="score-badge" id="overallScore" aria-live="polite">0%</div>
+          <div id="tierBadge" class="tier low" aria-live="polite">Tier: Low</div>
+        </div>
+        <div class="muted" id="orgLine"></div>
+
+        <div class="chart-wrap" aria-label="Domain scores chart">
+          <canvas id="barChart" aria-label="Horizontal bar chart of domain scores" role="img"></canvas>
+          <div id="chartFallback" class="muted" style="display:none">Chart unavailable. Scores listed below.</div>
+        </div>
+        <div id="legendDomains" class="legend-list" aria-live="polite" aria-label="Domain list with status"></div>
+
+        <div class="grid grid-2" style="margin-top:16px">
+          <div>
+            <h3 style="margin-top:0">Top gaps</h3>
+            <ol id="gapList" class="gap-list"></ol>
+          </div>
+          <div>
+            <h3 style="margin-top:0">Recommended starting model</h3>
+            <p id="recommendText" class="recommend"></p>
+            <div id="recommendWhy" class="muted"></div>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:14px">
+          <button id="printBtn" class="btn secondary" type="button">Print or Save PDF</button>
+          <button id="csvBtn" class="btn secondary" type="button">Download CSV</button>
+          <button id="restartBtn" class="btn" type="button">Start over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    /* ---------- Exact configuration JSON ---------- */
+    const CONFIG = {
+      "meta": {
+        "title": "FIM Organizational Readiness Assessment",
+        "version": "v1.0",
+        "criticalDomains": ["A","C","G","H"],
+        "weights": { "A":1.5, "B":1.0, "C":1.5, "D":1.0, "E":1.0, "F":1.0, "G":1.5, "H":1.5, "I":1.0 }
+      },
+      "domains": {
+        "A": { "name": "Strategic Alignment", "items": [
+          "A board-approved strategy names food or nutrition security as a priority with a measurable goal and a named executive sponsor (current fiscal year).",
+          "The current fiscal plan includes a FIM objective with a budget line and target enrollment for adults with diabetes.",
+          "Our organization has at least one active program addressing diet-related conditions with documented protocols."
+        ]},
+        "B": { "name": "Leadership and Administrative Support", "items": [
+          "A C-suite sponsor meets at least quarterly on FIM with minutes and action items.",
+          "A clinic medical lead and an operations lead are appointed for FIM with role descriptions on file.",
+          "A governance structure to oversee FIM implementation meets on a defined cadence."
+        ]},
+        "C": { "name": "Clinical Integration Capacity", "items": [
+          "Hunger Vital Sign is documented in the EHR for at least 80 percent of adult primary care visits in the last 90 days.",
+          "A FIM referral order set is live in the EHR and routes automatically to a coordinator; at least one test referral was completed in the last 30 days.",
+          "A written SOP covers screening, referral, and follow-up and has been updated within the last 12 months."
+        ]},
+        "D": { "name": "Staffing and Training", "items": [
+          "At least 80 percent of front-line staff completed FIM training within the last 12 months (roster and dates available).",
+          "At least 0.5 FTE per 1,000 adult patients is allocated for FIM coordination in the staffing plan.",
+          "At least one CHW or care coordinator is assigned to FIM activities."
+        ]},
+        "E": { "name": "Community Partnerships", "items": [
+          "At least one executed MOU or contract exists with a food vendor able to deliver MTM, MTG, or PRx in our service area.",
+          "Closed-loop referral status from at least one partner is returned to our EHR or care platform within 7 days for at least 80 percent of referrals.",
+          "Service levels for timeliness and delivery are defined and measured monthly."
+        ]},
+        "F": { "name": "Infrastructure and Logistics (in-house food only)", "items": [
+          "Secured storage, refrigerator, and freezer capacity are on site and meet code; temperature logs are available for the last 30 days.",
+          "Written SOPs for safe storage, temperature checks, and product recall are in use with monthly staff sign-offs.",
+          "A plan exists to source culturally appropriate and medically tailored foods."
+        ], "conditional": true },
+        "G": { "name": "Funding and Program Sustainability", "items": [
+          "Funding covers direct program costs for at least 12 months at the planned volume.",
+          "A billing pathway has been tested with at least 10 paid claims or there is a Medicaid waiver approval.",
+          "A multi-year sustainability plan is drafted with triggers and risk mitigation."
+        ]},
+        "H": { "name": "Data and Evaluation", "items": [
+          "A dashboard reports A1c, blood pressure, ED visits, and enrollment by race, ethnicity, and language within 30 days of month end.",
+          "Data use or business associate agreements are executed with at least one FIM vendor; a secure data exchange runs at least weekly.",
+          "An evaluation plan lists metrics aligned to a named framework, with owners and refresh cadence."
+        ]},
+        "I": { "name": "Patient Experience and Equity", "items": [
+          "Eligibility prioritizes food-insecure, Medicaid, or uninsured patients based on screening and a written policy.",
+          "Translated materials and interpretation are available for the top languages served.",
+          "A patient or community advisory group meets at least quarterly and at least two changes were implemented in the last year from their feedback."
+        ]}
+      }
+    };
+
+    const TIPS = {
+      "A": "Add a funded FIM objective with sponsor and KPI to the FY plan.",
+      "B": "Stand up governance with named clinical and ops leads and a quarterly cadence.",
+      "C": "Embed screening in EHR to at least 80 percent, publish the order set, and finalize the SOP.",
+      "D": "Allocate FTE for coordination and complete staff training.",
+      "E": "Execute an MOU and enable closed-loop referral updates.",
+      "F": "Stand up cold chain, SOPs, and a culturally appropriate sourcing plan.",
+      "G": "Secure 12-month runway, validate billing, and document the multi-year plan.",
+      "H": "Launch an outcomes dashboard, execute DUAs, and automate weekly data feeds.",
+      "I": "Add language access and a patient advisory that drives at least two changes a year."
+    };
+
+    /* ---------- State ---------- */
+    const STORAGE_KEY = "fim_readiness_v1";
+    const state = { orgName:"", responses:{}, currentIndex:0 };
+    for (const code of Object.keys(CONFIG.domains)) {
+      const len = CONFIG.domains[code].items.length;
+      state.responses[code] = Array.from({length: len}, () => null);
+    }
+
+    /* ---------- Helpers ---------- */
+    const $  = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+    function saveLocal(msg=true){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); if(msg) toast("Saved"); }catch(e){ toast("Could not save"); } }
+    function loadLocal(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; const saved=JSON.parse(raw)||{}; state.orgName=saved.orgName||""; state.responses=saved.responses||state.responses; state.currentIndex=Number.isInteger(saved.currentIndex)?saved.currentIndex:0; }catch(e){} }
+    function clearLocal(){ localStorage.removeItem(STORAGE_KEY); }
+    function toast(t){ const el=$("#saveToast"); el.textContent=t; setTimeout(()=>el.textContent="", 1500); }
+    function includedDomains(){ return Object.keys(CONFIG.domains); } // Domain F can be ignored via all N/A
+
+    /* ---------- Screens ---------- */
+    const screens={start:$("#start"), domain:$("#domain"), results:$("#results"), controls:$("#controls")};
+    function showScreen(name){
+      ["start","domain","results"].forEach(k=>screens[k].classList.toggle("active", k===name));
+      screens.controls.hidden = name!=="domain";
+      if (name==="start") $("#start-h").focus();
+      if (name==="domain") $("#domainTitle")?.focus();
+      if (name==="results") $("#results-h").focus();
+    }
+
+    function begin(){
+      state.orgName = $("#orgName").value.trim();
+      state.currentIndex = 0;
+      saveLocal(false);
+      renderDomain();
+      updateProgress();
+      showScreen("domain");
+    }
+
+    function wireScaleSelection(scale){
+      const labels = Array.from(scale.querySelectorAll("label.option"));
+      const inputs = Array.from(scale.querySelectorAll('input[type="radio"]'));
+      function refresh(){ labels.forEach(l => l.classList.toggle("selected", l.querySelector("input").checked)); }
+      inputs.forEach(inp=> inp.addEventListener("change", refresh));
+      refresh();
+    }
+
+    function renderDomain(){
+      const codes = includedDomains();
+      const idx = Math.min(state.currentIndex, codes.length-1);
+      state.currentIndex = idx;
+      const code = codes[idx];
+      const domain = CONFIG.domains[code];
+
+      const card = $("#domainCard");
+      card.innerHTML = "";
+
+      const h = document.createElement("h2");
+      h.id = "domainTitle";
+      h.textContent = `Domain ${code}: ${domain.name}`;
+      h.tabIndex = -1;
+      card.appendChild(h);
+
+      const fs = document.createElement("fieldset");
+      const values = state.responses[code] || [];
+
+      domain.items.forEach((text, i) => {
+        const itemFs = document.createElement("fieldset");
+        itemFs.className = "item";
+        const leg = document.createElement("legend");
+        leg.textContent = text;
+        itemFs.appendChild(leg);
+
+        const scale = document.createElement("div");
+        scale.className = "scale";
+        scale.setAttribute("role","radiogroup");
+        scale.setAttribute("aria-label","Agreement scale");
+
+        const options = [
+          {v:0, label:"Strongly disagree", aria:"0 Strongly disagree"},
+          {v:1, label:"Somewhat disagree", aria:"1 Somewhat disagree"},
+          {v:2, label:"Neither", aria:"2 Neither"},
+          {v:3, label:"Somewhat agree", aria:"3 Somewhat agree"},
+          {v:4, label:"Strongly agree", aria:"4 Strongly agree"},
+          {v:"na", label:"N/A", aria:"Not applicable"}
+        ];
+
+        options.forEach(opt=>{
+          const wrap = document.createElement("label");
+          wrap.className = "option";
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `item-${code}-${i}`;
+          input.value = String(opt.v);
+          input.setAttribute("aria-label", opt.aria);
+          if (values[i] === opt.v) input.checked = true;
+          input.addEventListener("change", ()=>{
+            state.responses[code][i] = (input.value === "na") ? "na" : Number(input.value);
+            saveLocal(false);
+          });
+          const span = document.createElement("span");
+          span.textContent = opt.label;
+          wrap.appendChild(input);
+          wrap.appendChild(span);
+          scale.appendChild(wrap);
+        });
+
+        itemFs.appendChild(scale);
+        fs.appendChild(itemFs);
+        wireScaleSelection(scale);
+      });
+
+      card.appendChild(fs);
+
+      const isLast = state.currentIndex === (codes.length-1);
+      $("#nextBtn").textContent = isLast ? "See results" : "Next";
+    }
+
+    function updateProgress(){
+      const codes = includedDomains();
+      const total = codes.length;
+      const idx = state.currentIndex + 1;
+      $("#progressText").textContent = `Domain ${idx} of ${total}`;
+      const pct = Math.round((idx-1) / total * 100);
+      $("#progressFill").style.width = `${pct}%`;
+      $(".progressbar").setAttribute("aria-valuenow", String(pct));
+    }
+
+    function goNext(){
+      const codes = includedDomains();
+      const last = codes.length - 1;
+      if (state.currentIndex >= last){ computeAndShowResults(); }
+      else { state.currentIndex++; saveLocal(false); renderDomain(); updateProgress(); }
+    }
+    function goBack(){ if (state.currentIndex===0){ showScreen("start"); } else { state.currentIndex--; saveLocal(false); renderDomain(); updateProgress(); } }
+
+    /* ---------- Scoring ---------- */
+    function computeScores(){
+      const codes = includedDomains();
+      const weights = CONFIG.meta.weights;
+      const critical = CONFIG.meta.criticalDomains;
+
+      const domainMeans={}, domainPercents={}, allNA={};
+      for (const code of codes){
+        const items = state.responses[code] || [];
+        const nums = items.filter(v => typeof v === "number");
+        if (nums.length === 0){ domainMeans[code]=null; domainPercents[code]=null; allNA[code]=true; }
+        else{
+          const mean = nums.reduce((a,b)=>a+b,0)/nums.length;
+          domainMeans[code]=mean; domainPercents[code]=mean/4*100; allNA[code]=false;
+        }
+      }
+
+      let num=0, den=0;
+      for (const code of codes){
+        const p = domainPercents[code];
+        if (p!==null){ const w=weights[code]??1.0; num += w*p; den += w; }
+      }
+      const overallPercent = den>0 ? (num/den) : null;
+
+      let gatingHit=false;
+      for (const cd of critical){
+        if (!codes.includes(cd)) continue;
+        const p = domainPercents[cd];
+        if (p!==null && p<50){ gatingHit=true; break; }
+      }
+
+      return {codes, domainMeans, domainPercents, allNA, overallPercent, gatingHit};
+    }
+
+    function decideTier(overall, gatingHit){
+      if (overall===null) return {tier:"Low", className:"low"};
+      let t="Low", c="low";
+      if (overall < 40) { t="Low"; c="low"; }
+      else if (overall <= 70) { t="Moderate"; c="mod"; }
+      else { t="High"; c="high"; }
+      if (t==="High" && gatingHit) { t="Moderate"; c="mod"; }
+      return {tier:t, className:c};
+    }
+
+    function decideModel(domainPercents){
+      const get = c => domainPercents[c];
+      const inHouseApplicable = get("F") !== null; // scored at all
+      const Aok = (get("A") ?? -1) >= 70;
+      const Cok = (get("C") ?? -1) >= 70;
+      const Gok = (get("G") ?? -1) >= 70;
+      const Hok = (get("H") ?? -1) >= 70;
+      const Fok = inHouseApplicable ? ((get("F") ?? -1) >= 70) : true;
+
+      if (Aok && Cok && Gok && Hok && Fok){
+        return {label:"In-house pilot", why:"Strong scores in core domains suggest capacity to run services internally."};
+      }
+      if ((get("C") !== null && get("C") < 50) || (get("H") !== null && get("H") < 50)){
+        return {label:"Vendor-first", why:"Lower clinical integration or data capacity indicates starting with an experienced vendor."};
+      }
+      return {label:"Hybrid", why:"Blend internal strengths with vendor provision while you build capacity."};
+    }
+
+    /* ---------- Results ---------- */
+    let chart;
+    function computeAndShowResults(){
+      const {codes, domainMeans, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
+
+      $("#overallScore").textContent = overallPercent===null ? "N/A" : `${(Math.round(overallPercent*10)/10).toFixed(1)}%`;
+      const {tier, className} = decideTier(overallPercent, gatingHit);
+      const badge = $("#tierBadge"); badge.className = `tier ${className}`;
+      badge.textContent = `Tier: ${tier}${(tier==="Moderate" && gatingHit) ? " (critical domain below 50%)" : ""}`;
+
+      $("#orgLine").textContent = `${state.orgName ? state.orgName + " • " : ""}${CONFIG.meta.title} ${CONFIG.meta.version}`;
+
+      // Prepare chart data (exclude fully N/A domains)
+      const labels=[], data=[];
+      for (const code of codes){
+        if (domainPercents[code] !== null){
+          labels.push(`Domain ${code}: ${CONFIG.domains[code].name}`);
+          data.push(Number((Math.round(domainPercents[code]*10)/10).toFixed(1)));
+        }
+      }
+
+      try {
+        if (chart){ chart.destroy(); }
+        if (typeof Chart === "undefined") throw new Error("ChartJS not loaded");
+        const canvas = document.getElementById("barChart");
+        // dynamic height based on bar count to prevent overlap
+        const chartHeight = Math.max(220, labels.length * 36 + 60);
+        canvas.style.height = chartHeight + "px";
+
+        chart = new Chart(canvas, {
+          type:'bar',
+          data:{ labels, datasets:[{label:'Percent', data, borderWidth:1, backgroundColor:'rgba(11,107,203,0.85)', borderColor:'#084f98'}] },
+          options:{
+            indexAxis:'y',
+            responsive:true,
+            maintainAspectRatio:false,
+            scales:{ x:{ min:0, max:100, ticks:{ callback:v=>v+'%' } } },
+            plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label:ctx=>` ${ctx.raw}%` } } }
+          }
+        });
+        $("#chartFallback").style.display = "none";
+      } catch(e){
+        $("#chartFallback").style.display = "block";
+      }
+
+      // Legend chips with N/A badges
+      const legend = $("#legendDomains"); legend.innerHTML = "";
+      for (const code of codes){
+        const chip = document.createElement("div");
+        chip.className = "chip";
+        chip.textContent = `Domain ${code}: ${CONFIG.domains[code].name}`;
+        if (allNA[code]){ const na=document.createElement("span"); na.className="na"; na.textContent="N/A"; chip.appendChild(na); }
+        legend.appendChild(chip);
+      }
+
+      // Top gaps
+      const scorable = codes.filter(c => domainPercents[c] !== null).sort((a,b)=> domainPercents[a]-domainPercents[b]);
+      const gapList = $("#gapList"); gapList.innerHTML = "";
+      if (!scorable.length){
+        const li=document.createElement("li"); li.textContent="No scored domains yet. Complete at least one domain to see gaps."; gapList.appendChild(li);
+      } else {
+        scorable.slice(0,3).forEach(code=>{
+          const li=document.createElement("li");
+          const pct=`${(Math.round(domainPercents[code]*10)/10).toFixed(1)}%`;
+          li.innerHTML = `<strong>Domain ${code}</strong> - ${CONFIG.domains[code].name} • ${pct}<br><span class="muted">${TIPS[code]}</span>`;
+          gapList.appendChild(li);
+        });
+      }
+
+      // Recommendation
+      const rec = decideModel(domainPercents);
+      $("#recommendText").textContent = rec.label;
+      $("#recommendWhy").textContent = rec.why;
+
+      showScreen("results");
+    }
+
+    /* ---------- CSV ---------- */
+    function downloadCSV(){
+      const {codes, domainMeans, domainPercents, allNA, overallPercent, gatingHit} = computeScores();
+
+      const allCodes = Object.keys(CONFIG.domains);
+      const head = ["org_name","date_time","in_house_food","version"];
+      const itemCols=[], meanCols=[], pctCols=[], weightCols=[], includeCols=[];
+      for (const code of allCodes){
+        const n=CONFIG.domains[code].items.length;
+        for (let i=0;i<n;i++) itemCols.push(`${code}${i+1}`);
+        meanCols.push(`${code}_mean`); pctCols.push(`${code}_percent`); weightCols.push(`${code}_weight`); includeCols.push(`${code}_included`);
+      }
+      head.push(...itemCols, ...meanCols, ...pctCols, ...weightCols, ...includeCols, "overall_percent","tier","gating_applied","recommended_model");
+
+      const row=[];
+      function esc(v){ if(v===null||v===undefined) return ""; const s=String(v); return (s.includes(",")||s.includes("\"")||s.includes("\n"))?`"${s.replace(/"/g,'""')}"`:s; }
+
+      row.push(state.orgName||"", new Date().toISOString(),
+               (domainPercents["F"]!==null) ? "Derived: Yes" : "Derived: No",
+               CONFIG.meta.version);
+
+      for (const code of allCodes){
+        const items=state.responses[code]||[]; const n=CONFIG.domains[code].items.length;
+        for(let i=0;i<n;i++){ const v=items[i]; row.push(v===null?"":(v==="na"?"N/A":String(v))); }
+      }
+      for (const code of allCodes){ const m=domainMeans[code]; row.push(m==null||isNaN(m)?"":(Math.round(m*100)/100).toFixed(2)); }
+      for (const code of allCodes){ const p=domainPercents[code]; row.push(p==null||isNaN(p)?"":(Math.round(p*10)/10).toFixed(1)); }
+      for (const code of allCodes){ row.push(CONFIG.meta.weights[code]??1.0); }
+      const inc=includedDomains();
+      for (const code of allCodes){ const included=inc.includes(code)&&(domainPercents[code]!==null||allNA[code]===true); row.push(included?"Yes":"No"); }
+
+      const {tier}=decideTier(overallPercent, gatingHit);
+      const rec=decideModel(domainPercents);
+      row.push(overallPercent==null?"":(Math.round(overallPercent*10)/10).toFixed(1), tier, gatingHit?"Yes":"No", rec.label);
+
+      const csv=[head.join(","), row.map(esc).join(",")].join("\n");
+      const blob=new Blob([csv], {type:"text/csv;charset=utf-8"});
+      const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+      a.download=`fim_readiness_${new Date().toISOString().slice(0,10)}.csv`; document.body.appendChild(a); a.click();
+      URL.revokeObjectURL(a.href); a.remove();
+    }
+
+    /* ---------- Events / Init ---------- */
+    function attachEvents(){
+      $("#beginBtn").addEventListener("click", begin);
+      $("#clearBtn").addEventListener("click", ()=>{
+        if (confirm("Clear all saved entries?")){
+          clearLocal(); $("#orgName").value=""; state.orgName=""; for (const c of Object.keys(CONFIG.domains)){ const n=CONFIG.domains[c].items.length; state.responses[c]=Array.from({length:n},()=>null); }
+          state.currentIndex=0; toast("Cleared");
+        }
+      });
+      $("#backBtn").addEventListener("click", goBack);
+      $("#nextBtn").addEventListener("click", goNext);
+      $("#saveBtn").addEventListener("click", ()=> saveLocal(true));
+      $("#printBtn").addEventListener("click", ()=> window.print());
+      $("#csvBtn").addEventListener("click", downloadCSV);
+      $("#restartBtn").addEventListener("click", ()=>{ if (confirm("Start over and clear all saved entries?")){ clearLocal(); window.location.reload(); }});
+      $("#orgName").addEventListener("input", e=>{ state.orgName=e.target.value; saveLocal(false); });
+    }
+    function hydrateStart(){ $("#orgName").value = state.orgName || ""; }
+
+    document.addEventListener("DOMContentLoaded", ()=>{ loadLocal(); attachEvents(); hydrateStart(); });
+  </script>
+</body>
+</html>
