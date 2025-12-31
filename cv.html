@@ -1,36 +1,42 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <style type="text/css">
-  </style>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to External CSS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Alexander Vonderschmidt</title>
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 
-<body>
-  <div class="content-container"> <!-- Start of content container -->
-    <div class="header-container">
+<body class="cv-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main id="main" class="content-container">
+    <header class="header-container">
       <div class="title-and-subtitle">
         <h1><span class="s1">Alexander <span class="surname">Vonderschmidt</span></span></h1>
-        <p class="p2"><span class="s1">PhD candidate — University of Edinburgh</span></p>  
+        <p class="p2"><span class="s1">PhD candidate · University of Edinburgh</span></p>
       </div>
-      <!-- Navigation Bubbles -->
-      <div class="nav-bubbles">
+
+      <nav class="nav-bubbles" aria-label="Primary">
         <a href="index.html" class="bubble">home</a>
         <a href="research.html" class="bubble">research</a>
-        <a href="cv.html" class="bubble active">cv</a>
+        <a href="cv.html" class="bubble active" aria-current="page">cv</a>
         <a href="choir.html" class="bubble">choir</a>
-      </div>
-    </div>
+      </nav>
+    </header>
 
     <div class="cv-button-container">
-      <a href="Vonderschmidt CV short PDF.pdf" target="_blank" class="cv-button">resume</a>
-      <a href="Vonderschmidt CV PDF.pdf" target="_blank" class="cv-button">full cv</a>
-    </div>    
+      <a href="Vonderschmidt CV short PDF.pdf" target="_blank" rel="noopener" class="cv-button">resume</a>
+      <a href="Vonderschmidt CV PDF.pdf" target="_blank" rel="noopener" class="cv-button">full cv</a>
+    </div>
+  </main>
 
-  </div> <!-- End of content container -->
+  <footer class="footer">
+    <p class="p2"><span class="s1">Copyright © <span id="year"></span> Vondy</span></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
-<footer class="footer">
-  <p class="p2"><span class="s1">Copyright © 2023 Vondy</span></p>
-</footer>
 </html>

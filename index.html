@@ -1,48 +1,51 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <style type="text/css">
-  </style>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to External CSS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Alexander Vonderschmidt</title>
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 
-<body>
-  <div class="content-container"> <!-- Start of content container -->
-    <div class="header-container">
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main id="main" class="content-container">
+    <header class="header-container">
       <div class="title-and-subtitle">
         <h1><span class="s1">Alexander <span class="surname">Vonderschmidt</span></span></h1>
-        <p class="p2"><span class="s1">PhD candidate — University of Edinburgh</span></p>  
+        <p class="p2"><span class="s1">PhD candidate · University of Edinburgh</span></p>
       </div>
-      <!-- Navigation Bubbles -->
-          <div class="nav-bubbles">
-            <a href="index.html" class="bubble active">home</a>
-            <a href="research.html" class="bubble">research</a>
-            <a href="cv.html" class="bubble">cv</a>
-            <a href="choir.html" class="bubble">choir</a>
-          </div>
-    </div>
 
-    <!-- Profile Section -->
+      <nav class="nav-bubbles" aria-label="Primary">
+        <a href="index.html" class="bubble active" aria-current="page">home</a>
+        <a href="research.html" class="bubble">research</a>
+        <a href="cv.html" class="bubble">cv</a>
+        <a href="choir.html" class="bubble">choir</a>
+      </nav>
+    </header>
+
     <div class="profile-section">
-        <div class="profile-photo" style="background-image: url('vondy.jpg');"></div>
-        <div class="about-text">
-            <p>Hi! I'm a nutritional epidemiologist, registered dietitian, and PhD candidate at the University of Edinburgh in Scotland.</p>
-            <p>Visit my pages to see my latest endeavors ~</p>
-        </div>
+      <img class="profile-photo" src="vondy.jpg" alt="Portrait of Alexander Vonderschmidt">
+      <div class="about-text">
+        <p>Hi! I'm a nutritional epidemiologist, registered dietitian, and PhD candidate at the University of Edinburgh in Scotland.</p>
+        <p>Visit my pages to see my latest endeavors ~</p>
+      </div>
     </div>
 
-    <!-- Green Bar -->
     <div class="green-bar"></div>
 
-    <!-- Contact Section -->
-    <p class="p2"><span class="s1">a.vonderschmidt@sms.ed.ac.uk</span></p>
+    <p class="p2">
+      <span class="s1"><a href="mailto:a.vonderschmidt@sms.ed.ac.uk">a.vonderschmidt@sms.ed.ac.uk</a></span>
+    </p>
+  </main>
 
-  </div> <!-- End of content container -->
+  <footer class="footer">
+    <p class="p2"><span class="s1">Copyright © <span id="year"></span> Vondy</span></p>
+  </footer>
 
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
-<footer class="footer">
-  <p class="p2"><span class="s1">Copyright © 2023 Vondy</span></p>
-</footer>
 </html>
