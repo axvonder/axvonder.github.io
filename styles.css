@@ -491,6 +491,49 @@ a:focus-visible{
   font-size: 0.95rem;
 }
 .footer p{ margin: var(--s3) 0 0; }
+.contact-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--s5);
+  margin: var(--s3) 0 var(--s4);
+}
+.contact-row a{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  text-decoration: none;
+  color: var(--accent);
+}
+.contact-row a:hover{ text-decoration: underline; }
+.contact-label{
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.contact-icon{
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+}
+.contact-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
 
 /* Responsive layout */
 @media (max-width: 920px){
