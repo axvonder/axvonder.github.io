@@ -101,26 +101,6 @@ body{
   background-attachment: fixed;
 }
 
-/* Skip link for keyboard users */
-.skip-link{
-  position: absolute;
-  inset-inline-start: 0.75rem;
-  inset-block-start: 0.75rem;
-  padding: 0.6rem 0.85rem;
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-  text-decoration: none;
-  transform: translateY(-140%);
-}
-.skip-link:focus{ transform: translateY(0); }
-.skip-link:focus-visible{
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
-
 /* Global typography */
 h1,h2,h3{
   font-family: var(--font-heading);
@@ -533,6 +513,33 @@ a:focus-visible{
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+/* Home page staff launch */
+.home-page .staff-launch{
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.home-page .staff-launch img{
+  width: 1.6rem;
+  height: auto;
+  display: block;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  opacity: 0.65;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.home-page .staff-launch:hover img{
+  opacity: 0.9;
+  transform: rotate(-90deg) translateY(-1px);
+}
+.home-page .staff-launch:focus-visible{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 /* Responsive layout */

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forest Mage | Alexander Vonderschmidt</title>
+  <link rel="stylesheet" href="../styles.css?v=4">
+  <link rel="stylesheet" href="game.css?v=1">
+</head>
+
+<body class="game-page">
+  <main id="main" class="content-container">
+    <header class="game-header">
+      <h1 class="game-title">Forest Mage</h1>
+      <a class="game-home" href="../index.html" aria-label="Back to home">home</a>
+    </header>
+
+    <section class="game-section" aria-label="Game">
+      <div class="game-stage" id="gameStage">
+        <canvas
+          id="gameCanvas"
+          class="game-canvas"
+          width="768"
+          height="432"
+          tabindex="0"
+          aria-label="Forest Mage game canvas"
+        ></canvas>
+
+        <div class="game-hud" id="hud">
+          <div class="hud-bottom">
+            <div class="hud-orb hud-orb-hp" id="hudHpOrb">
+              <div class="hud-orb-fill hud-orb-fill-hp" id="hudHpFill"></div>
+              <div class="hud-orb-text" id="hudHpText">HP 0/0</div>
+            </div>
+
+            <div class="hud-center">
+              <div class="hud-center-top">
+                <div class="hud-meta">
+                  <span class="hud-label">Level</span>
+                  <span class="hud-value" id="hudLevel">1</span>
+                  <span class="hud-meta-divider">&middot;</span>
+                  <span class="hud-label">Kills</span>
+                  <span class="hud-value" id="hudKills">0</span>
+                </div>
+                <button class="hud-stats-button" id="btnStats" type="button">STATS</button>
+              </div>
+              <div class="hud-bar hud-bar-xp">
+                <div class="hud-bar-label" id="hudXpText">XP 0/0</div>
+                <div class="hud-bar-track">
+                  <div class="hud-bar-fill hud-bar-fill-xp" id="hudXpFill"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hud-orb hud-orb-mana" id="hudManaOrb">
+              <div class="hud-orb-fill hud-orb-fill-mana" id="hudManaFill"></div>
+              <div class="hud-orb-text" id="hudManaText">Mana 0/0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-overlay" id="overlayPlay" role="dialog" aria-modal="true" aria-hidden="false" aria-labelledby="playTitle">
+          <div class="game-overlay-panel">
+            <h2 id="playTitle">Forest Mage</h2>
+            <p class="game-overlay-lede">Survive the slimes, explore the forest, and power up your spells.</p>
+            <div class="overlay-spacer overlay-spacer-lg" aria-hidden="true"></div>
+            <div class="game-overlay-section">
+              <h3>Controls</h3>
+              <div class="game-controls">
+                <div class="control-block control-block-wide">
+                  <span class="control-title">Move</span>
+                  <div class="control-clusters">
+                    <div class="key-cluster" aria-label="WASD">
+                      <div class="key-row key-row-top"><kbd>W</kbd></div>
+                      <div class="key-row"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
+                    </div>
+                    <span class="control-or">or</span>
+                    <div class="key-cluster" aria-label="Arrow keys">
+                      <div class="key-row key-row-top"><kbd>Up</kbd></div>
+                      <div class="key-row"><kbd>Left</kbd><kbd>Down</kbd><kbd>Right</kbd></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Attack</span>
+                  <div class="control-keys-inline"><kbd>Left Click</kbd></div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Mega Attack</span>
+                  <div class="control-keys-inline"><kbd>Right Click</kbd></div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Run</span>
+                  <div class="control-keys-inline"><kbd>Shift</kbd></div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Heal</span>
+                  <div class="control-keys-inline"><kbd>H</kbd></div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Pause</span>
+                  <div class="control-keys-inline"><kbd>Esc</kbd></div>
+                </div>
+                <div class="control-block">
+                  <span class="control-title">Stats</span>
+                  <div class="control-keys-inline"><span class="control-label">Click</span><kbd>STATS</kbd><span class="control-or">or</span><kbd>C</kbd></div>
+                </div>
+              </div>
+            </div>
+            <div class="overlay-spacer" aria-hidden="true"></div>
+            <div class="game-overlay-bottom">
+              <p class="game-overlay-note">Earn XP from kills to level up: more HP, stronger bolts, better heals.</p>
+              <p class="game-overlay-best" id="playBest">Best: —</p>
+            </div>
+            <div class="game-overlay-actions">
+              <button class="game-button" id="btnPlay" type="button">Play</button>
+              <span class="game-overlay-hint">Press Enter</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-overlay game-overlay-hidden" id="overlayGameOver" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="gameOverTitle">
+          <div class="game-overlay-panel">
+            <h2 id="gameOverTitle">Game Over</h2>
+            <div class="game-over-stats">
+              <p>Kills: <span id="gameOverKills">0</span></p>
+              <p>Time: <span id="gameOverTime">0.0s</span></p>
+              <p>Level: <span id="gameOverLevel">1</span></p>
+              <p class="game-over-best" id="gameOverBest">Best: —</p>
+            </div>
+            <div class="game-overlay-actions">
+              <button class="game-button" id="btnRestart" type="button">Restart</button>
+              <span class="game-overlay-hint">Press Enter or R</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-overlay game-overlay-hidden" id="overlayPause" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pauseTitle">
+          <div class="game-overlay-panel">
+            <h2 id="pauseTitle">Paused</h2>
+            <p class="game-overlay-lede">Catch your breath. The forest waits.</p>
+            <div class="game-overlay-actions">
+              <button class="game-button" id="btnResume" type="button">Resume</button>
+              <span class="game-overlay-hint">Press Esc</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-overlay game-overlay-hidden" id="overlayStats" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsTitle">
+          <div class="game-overlay-panel game-overlay-panel-stats">
+            <h2 id="statsTitle">Spellbook &amp; Stats</h2>
+            <div class="stats-grid" id="statsBody"></div>
+            <div class="game-overlay-actions">
+              <button class="game-button" id="btnCloseStats" type="button">Close</button>
+              <span class="game-overlay-hint">Press Esc or C</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="game/main.js"></script>
+</body>
+</html>
