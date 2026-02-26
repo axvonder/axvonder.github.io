@@ -289,28 +289,48 @@
       return a1 + ' \u2192 ' + a2 + ' \u2192 ' + a3;
     }
 
-    function showResult(){
-      let rec = '', note = '';
+function showResult(){
+  let rec = '', note = '';
 
-      // Special case per request: controlled + lower clinical risk + high social risk -> Education + PRx
-      if (bloodWell && !medComplex && accessDiff){
-        rec = 'Education + PRx';
-        note = 'If not available, consider SNAP/WIC with education.';
-      } else if (bloodWell){
-        rec = 'Education Only';
-      } else if (!medComplex && !accessDiff){
-        rec = 'Education Only';
-      } else if (!medComplex && accessDiff){
-        rec = 'Education + PRx';
-        note = 'If not available, consider SNAP/WIC with education.';
-      } else if (medComplex && !accessDiff){
-        rec = 'Education + MTG';
-        note = 'If not available, consider alternative options such as Produce Prescription or SNAP/WIC.';
-      } else {
+  // ─────────────────────────────────────────────────────────────
+  // UPDATED LOGIC (Feb 2026)
+  // ─────────────────────────────────────────────────────────────
+  if (bloodWell) {                    // Controlled HbA1c
+    if (medComplex) {                 // High clinical risk
+      if (accessDiff) {               // High social risk
         rec = 'Education + MTM';
         note = 'If not available, consider alternative options such as Medically Tailored Groceries or SNAP/WIC.';
+      } else {                        // Low social risk
+        rec = 'Education + PRx';
+        note = 'If not available, consider SNAP/WIC with education.';
       }
-
+    } else {                          // Lower clinical risk
+      if (accessDiff) {               // High social risk
+        rec = 'Education + PRx';
+        note = 'If not available, consider SNAP/WIC with education.';
+      } else {                        // Low social risk
+        rec = 'Education Only';
+      }
+    }
+  } else {                            // Uncontrolled HbA1c
+    if (medComplex) {                 // High clinical risk
+      if (accessDiff) {               // High social risk
+        rec = 'Education + MTM';
+        note = 'If not available, consider alternative options such as Medically Tailored Groceries or SNAP/WIC.';
+      } else {                        // Low social risk
+        rec = 'Education + MTG';
+        note = 'If not available, consider alternative options such as Produce Prescription or SNAP/WIC.';
+      }
+    } else {                          // Lower clinical risk
+      if (accessDiff) {               // High social risk
+        rec = 'Education + MTG';
+        note = 'If not available, consider alternative options such as Produce Prescription or SNAP/WIC.';
+      } else {                        // Low social risk
+        rec = 'Education Only';
+      }
+    }
+  }
+  // ─────────────────────────────────────────────────────────────
       // Populate the selection trail
       const trail = document.getElementById('trail');
       trail.innerHTML = '<strong>You chose:</strong> ' + selectionLabel();
