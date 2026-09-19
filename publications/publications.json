@@ -328,8 +328,8 @@
     "sourcePDFURL": "https://era.ed.ac.uk/bitstreams/4b4496d9-a39e-483b-886b-6069f80cd4d9/download",
     "downloadFile": "publications/PDFs/Jaacks, 2024, CXC.pdf",
     "version": "Published report",
-    "rightsNote": "The University of Edinburgh owns the report copyright (PDF page 64: © The University of Edinburgh, 2024; all rights reserved). Its repository Data policy permits unchanged full-item copies to be reproduced and given to third parties for personal research, educational or not-for-profit purposes without prior permission. No separate item-level rights restriction is specified in the repository metadata. This permits hosting the unchanged repository PDF on this noncommercial author website; it is not a Creative Commons licence. Source attribution and repository link must be retained. The ERA PDF is byte-identical to the ClimateXChange-hosted PDF.",
-    "checkedDate": "2026-09-18",
+    "rightsNote": "The University of Edinburgh owns the report copyright (PDF page 64: © The University of Edinburgh, 2024; all rights reserved). Its repository Data policy permits unchanged full-item copies to be reproduced and given to third parties for personal research, educational or not-for-profit purposes without prior permission. No separate item-level rights restriction is specified in the repository metadata. This permits hosting the unchanged repository PDF on this noncommercial author website; it is not a Creative Commons licence. Source attribution and repository link must be retained. The ERA PDF is byte-identical to the ClimateXChange-hosted PDF. The website quotes the opening two paragraphs of the executive summary. These also form the Edinburgh Research Archive metadata abstract, with greenhouse gas abbreviated there. The repository metadata policy permits noncommercial reuse with a link to the original record. The website retains the report wording, including the expanded term greenhouse gas (GHG), and its full citation and repository link.",
+    "checkedDate": "2026-09-19",
     "authors": [
       "Lindsay Jaacks",
       "Sarah Frank",
@@ -351,13 +351,18 @@
     "shareable": true,
     "bytes": 1653826,
     "downloadStatus": "downloaded",
-    "contentType": "summary",
+    "contentType": "excerpt",
     "paragraphs": [
       {
-        "text": "This report reviews Scottish food consumption and its contribution to greenhouse gas emissions, combining a rapid evidence assessment with analyses of dietary data. Meat and dairy contribute substantially to both nutrient intake and emissions. Available estimates of food-related emissions differ widely because models cover different parts of the food system and handle imports, land use and dietary underreporting differently. Better consumption and supply-chain data, together with complementary modelling approaches, would improve estimates."
+        "text": "The foods we eat in Scotland contribute to greenhouse gas (GHG) emissions. Different foods have different GHG emissions, and therefore dietary transitions can play a role in meeting net zero emission targets. The Climate Change Committee’s Scottish progress review in December 2022 included a call to change Scottish diets."
+      },
+      {
+        "text": "This report examines current evidence on dietary patterns and their associated emissions to establish a baseline understanding of the climate impact of food consumed in Scotland."
       }
     ],
-    "citation": "Jaacks L, Frank S, Vonderschmidt A, Stewart C, Runions R, Kennedy J, McNeill G, Alexander P. Understanding the Climate Impact of Food Consumed in Scotland. ClimateXChange; 2024. doi:10.7488/era/4343"
+    "citation": "Jaacks L, Frank S, Vonderschmidt A, Stewart C, Runions R, Kennedy J, McNeill G, Alexander P. Understanding the Climate Impact of Food Consumed in Scotland. ClimateXChange; 2024. doi:10.7488/era/4343",
+    "excerptSource": "Executive summary, opening two paragraphs, p. 1 (PDF page 1).",
+    "excerptRightsURL": "https://library.ed.ac.uk/research-support/publish-research/scholarly-communications/sct-policies/repository-policies"
   },
   {
     "fullTitle": "Disaggregation of Dairy in Composite Foods in the United Kingdom",
@@ -422,8 +427,8 @@
     "sourcePDFURL": "https://www.foodstandards.gov.scot/sites/default/files/migration/downloads/Approaches_to_modelling_impact_of_reduction_in_meat_and_dairy_consumption_on_nutrient_intakes_and_disease_risk.pdf",
     "downloadFile": "publications/PDFs/Comrie, 2024, FSS.pdf",
     "version": "Published report",
-    "rightsNote": "FSS copyright policy permits reuse of website information under the Open Government Licence, excluding logos and separately identified third-party copyright material. The 128-page report contains no separate copyright or reuse restriction. Full report downloaded from FSS and unchanged. Authors are listed alphabetically, with Fiona Comrie first. A short original summary is used because the report has no formal abstract.",
-    "checkedDate": "2026-09-18",
+    "rightsNote": "FSS copyright policy permits reuse of website information under the Open Government Licence, excluding logos and separately identified third-party copyright material. The 128-page report contains no separate copyright or reuse restriction. Full report downloaded from FSS and unchanged. Authors are listed alphabetically, with Fiona Comrie first. The website quotes the final paragraph of the Conclusions on page 124 under the Open Government Licence, with the full citation and required licence credit.",
+    "checkedDate": "2026-09-19",
     "authors": [
       "Fiona Comrie",
       "Lindsay Jaacks",
@@ -445,13 +450,15 @@
     "shareable": true,
     "bytes": 7172952,
     "downloadStatus": "downloaded",
-    "contentType": "summary",
+    "contentType": "excerpt",
     "paragraphs": [
       {
-        "text": "Using dietary data from the 2021 Scottish Health Survey, this report models how reductions in meat and dairy consumption could affect nutrient intake and disease risk. Reductions without suitable replacements could worsen already low intakes of some micronutrients. Carefully chosen substitutes can lessen these effects. Scenarios targeting high consumers of red and processed red meat indicate potential reductions in cardiovascular disease and type 2 diabetes, supporting dietary changes that consider both nutrient adequacy and long-term health."
+        "text": "Overall, this research provides further evidence of poor diet in Scotland and additional justification for work to improve dietary intakes in general. Most people should be able to get the micronutrients they need by consuming a healthy, balanced diet as depicted by the Eatwell Guide. However, the majority of the population in Scotland do not have a diet similar to the Eatwell Guide, and meat and dairy are therefore relatively more important in the diet as an important source of nutrients. The modelling demonstrated that the 20% reduction in all meat can be achieved by cutting intakes of high consumers of red and red processed meat only to 60g, which would help ensure that insufficiencies in intake do not become more widespread in the population. The research has also shown that it is possible to mitigate the negative impact of a shift away from meat and dairy on nutrient intakes, with careful consideration of replacements."
       }
     ],
-    "citation": "Comrie F, Jaacks L, Kennedy J, McDonald A, McNeill G, Runions R, Stewart C, Vonderschmidt A. Approaches to Modelling Impact of Reduction in Meat and Dairy Consumption on Nutrient Intakes and Disease Risk. Food Standards Scotland; 2024. Accessed September 18, 2026. https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk"
+    "citation": "Comrie F, Jaacks L, Kennedy J, McDonald A, McNeill G, Runions R, Stewart C, Vonderschmidt A. Approaches to Modelling Impact of Reduction in Meat and Dairy Consumption on Nutrient Intakes and Disease Risk. Food Standards Scotland; 2024. Accessed September 18, 2026. https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk",
+    "excerptSource": "Conclusions, final paragraph, p. 124 (PDF page 124).",
+    "excerptRightsURL": "https://www.foodstandards.gov.scot/copyright"
   },
   {
     "fullTitle": "Analysis combining the multiple FAO food balance sheet datasets needs careful treatment",
@@ -472,10 +479,9 @@
     "sourcePDFURL": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/415526459/PIIS2542519623002760.pdf",
     "downloadFile": "publications/PDFs/Vonderschmidt, 2024, Lancet Planet Health.pdf",
     "version": "Publisher version of record with institutional repository cover sheet",
-    "rightsNote": "The article explicitly carries CC BY 4.0. Publisher PDF may be redistributed with author attribution, DOI and a license link. The repository cover lists an earlier title; the title above matches the actual published article.",
-    "checkedDate": "2026-09-18",
-    "abstractNote": "This is a Comment without an abstract. Display a brief original summary clearly labeled Summary instead of presenting it as an abstract.",
-    "summaryType": "Original summary, not the published abstract",
+    "rightsNote": "The article explicitly carries CC BY 4.0. Publisher PDF may be redistributed with author attribution, DOI and a license link. The repository cover lists an earlier title; the title above matches the actual published article. The website quotes the closing paragraph on page e70 under CC BY 4.0. The wording and reference numbers are retained, with the full citation and licence link.",
+    "checkedDate": "2026-09-19",
+    "abstractNote": "This Comment has no abstract. Display its closing paragraph as an excerpt.",
     "licenseEvidence": "Copyright © 2024 The Author(s). Published by Elsevier Ltd. This is an Open Access article under the CC BY 4.0 license.",
     "sourceAttribution": "PDF source: University of Edinburgh Research Explorer. Publisher PDF includes repository cover sheet.",
     "sha256": "766066756c820b20e90a64d2d7bcb9646f0c70b60bf9ba0fef7cb2c79b603bca",
@@ -487,16 +493,18 @@
     "shareable": true,
     "bytes": 1180382,
     "downloadStatus": "downloaded",
-    "contentType": "summary",
+    "contentType": "excerpt",
     "paragraphs": [
       {
-        "text": "The FAO changed its food balance sheet methods in 2020. Comparing the overlapping years shows differences between the old and new datasets that can distort estimates of food-supply trends, including reversing their direction. This comment illustrates the problem and explains why analyses combining the datasets need careful treatment."
+        "text": "Overall, the FBS is a crucial dataset that has been used internationally to inform research and policy. In some cases, these data are the only dietary information available for countries and are often used as a proxy for consumption.11 For researchers using the FBS to investigate dietary trends or for modelling purposes, transparency of the methods used to calculate FBS indicators is essential. Users of the FBS need to be aware of the potential inconsistencies created by the change in methodology. Unadjusted aggregation of data from before and after 2014 can and has skewed food supply trends, for example inverting the trends.10 We argue that these issues should be more widely reported and understood to avoid inaccurate conclusions being drawn from research using these data, with the potential to lead to incorrect policy advice and decisions."
       }
     ],
     "citation": "Vonderschmidt A, Arendarczyk B, Jaacks LM, Bellows AL, Alexander P. Analysis combining the multiple FAO food balance sheet datasets needs careful treatment. Lancet Planet Health. 2024;8(2):e69-e71. doi:10.1016/S2542-5196(23)00276-0",
     "volume": "8",
     "issue": "2",
     "pages": "e69-e71",
-    "citationSource": "https://pubmed.ncbi.nlm.nih.gov/38331531/"
+    "citationSource": "https://pubmed.ncbi.nlm.nih.gov/38331531/",
+    "excerptSource": "Closing paragraph, p. e70 (PDF page 3). Reference numbers 11 and 10 are retained and link to the references on PDF page 4.",
+    "excerptRightsURL": "https://creativecommons.org/licenses/by/4.0/"
   }
 ]

@@ -111,10 +111,12 @@ Understanding the climate impact of food consumed in Scotland
 
 The University of Edinburgh owns the report copyright (PDF page 64: © The University of Edinburgh, 2024; all rights reserved). Its repository Data policy permits unchanged full-item copies to be reproduced and given to third parties for personal research, educational or not-for-profit purposes without prior permission. No separate item-level rights restriction is specified in the repository metadata. This permits hosting the unchanged repository PDF on this noncommercial author website; it is not a Creative Commons licence. Source attribution and repository link must be retained. The ERA PDF is byte-identical to the ClimateXChange-hosted PDF.
 
+The website quotes the opening two paragraphs of the executive summary. These also form the Edinburgh Research Archive metadata abstract, with greenhouse gas abbreviated there. The repository metadata policy permits noncommercial reuse with a link to the original record. The website retains the report wording, including the expanded term greenhouse gas (GHG), and its full citation and repository link.
+
 - [Article or report](https://www.climatexchange.org.uk/publications/understanding-the-climate-impact-of-food-consumed-in-scotland/)
 - [PDF source](https://era.ed.ac.uk/bitstreams/4b4496d9-a39e-483b-886b-6069f80cd4d9/download)
 - [Permission or licence](https://library.ed.ac.uk/research-support/publish-research/scholarly-communications/sct-policies/repository-policies)
-- Website disclosure: summary.
+- Website disclosure: excerpt. Executive summary, opening two paragraphs, p. 1 (PDF page 1).
 
 Jaacks L, Frank S, Vonderschmidt A, Stewart C, Runions R, Kennedy J, McNeill G, Alexander P. Understanding the climate impact of food consumed in Scotland. ClimateXChange; 2024. DOI: 10.7488/era/4343. © The University of Edinburgh, 2024. Shared unchanged for noncommercial use under Edinburgh Research Archive policy.
 
@@ -137,12 +139,14 @@ PDF source: University of Edinburgh Research Explorer. Publisher PDF includes re
 
 Approaches to modelling impact of reduction in meat and dairy consumption on nutrient intakes and disease risk
 
-FSS copyright policy permits reuse of website information under the Open Government Licence, excluding logos and separately identified third-party copyright material. The 128-page report contains no separate copyright or reuse restriction. Full report downloaded from FSS and unchanged. Authors are listed alphabetically, with Fiona Comrie first. A short original summary is used because the report has no formal abstract.
+FSS copyright policy permits reuse of website information under the Open Government Licence, excluding logos and separately identified third-party copyright material. The 128-page report contains no separate copyright or reuse restriction. Full report downloaded from FSS and unchanged. Authors are listed alphabetically, with Fiona Comrie first.
+
+The website quotes the final paragraph of the Conclusions on page 124 under the Open Government Licence, with the full citation and required licence credit.
 
 - [Article or report](https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk)
 - [PDF source](https://www.foodstandards.gov.scot/sites/default/files/migration/downloads/Approaches_to_modelling_impact_of_reduction_in_meat_and_dairy_consumption_on_nutrient_intakes_and_disease_risk.pdf)
 - [Permission or licence](https://www.foodstandards.gov.scot/copyright)
-- Website disclosure: summary.
+- Website disclosure: excerpt. Conclusions, final paragraph, p. 124 (PDF page 124).
 
 Comrie F, Jaacks L, Kennedy J, McDonald A, McNeill G, Runions R, Stewart C, Vonderschmidt A. Approaches to modelling impact of reduction in meat and dairy consumption on nutrient intakes and disease risk. Food Standards Scotland; 2024. Contains public sector information licensed under the Open Government Licence v3.0. © Crown copyright.
 
@@ -152,10 +156,12 @@ Analysis combining the multiple FAO food balance sheet datasets needs careful tr
 
 The article explicitly carries CC BY 4.0. Publisher PDF may be redistributed with author attribution, DOI and a license link. The repository cover lists an earlier title; the title above matches the actual published article.
 
+The website quotes the closing paragraph on page e70 under CC BY 4.0. The wording and reference numbers are retained, with the full citation and licence link.
+
 - [Article or report](https://doi.org/10.1016/S2542-5196(23)00276-0)
 - [PDF source](https://www.pure.ed.ac.uk/ws/portalfiles/portal/415526459/PIIS2542519623002760.pdf)
 - [Permission or licence](https://creativecommons.org/licenses/by/4.0/)
-- Website disclosure: summary.
+- Website disclosure: excerpt. Closing paragraph, p. e70 (PDF page 3). Reference numbers 11 and 10 are retained and link to the references on PDF page 4.
 
 Vonderschmidt et al. (2024). Analysis combining the multiple FAO food balance sheet datasets needs careful treatment. DOI: 10.1016/S2542-5196(23)00276-0.
 
