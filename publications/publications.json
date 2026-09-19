@@ -175,7 +175,7 @@
     "sourcePDFURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12341026/pdf/CD013396.pdf",
     "downloadFile": "publications/PDFs/Patchen, 2025, Cochrane Database Syst Rev.pdf",
     "version": "Published version with the required Cochrane sharing acknowledgement added to the cover; review text unchanged",
-    "rightsNote": "Cochrane green OA licence, Authors’ rights, permits authors to post the published PDF on their own website. Copyright 2025 The Cochrane Collaboration; not Creative Commons. Alexander supplied the PDF on 19 September 2026. The required sharing acknowledgement was added to the cover beside the existing citation and DOI; all review text and the remaining 121 pages are unchanged. The supplied original is archived locally outside the published repository. Separate HTML abstract republication is not expressly covered; an original summary is supplied.",
+    "rightsNote": "Cochrane green OA licence, Authors’ rights, permits authors to post the published PDF on their own website. Copyright 2025 The Cochrane Collaboration; not Creative Commons. Alexander supplied the PDF on 19 September 2026. The required sharing acknowledgement was added to the cover beside the existing citation and DOI; all review text and the remaining 121 pages are unchanged. The supplied original is archived locally outside the published repository. The website quotes the three Key messages from the supplied review’s plain language summary, 88 words in total, at the co-author’s request. Wiley’s author reuse guidance permits selected text up to 250 words for noncommercial reuse with full attribution. The quotation retains its wording, full citation, copyright credit, and Cochrane update acknowledgement. This is not a Creative Commons licence.",
     "checkedDate": "2026-09-19",
     "authors": [
       "Bonnie K Patchen",
@@ -195,10 +195,16 @@
     "articleURL": "https://doi.org/10.1002/14651858.CD013396.pub2",
     "shareable": true,
     "downloadStatus": "available; supplied by author",
-    "contentType": "summary",
+    "contentType": "key messages",
     "paragraphs": [
       {
-        "text": "This Cochrane review combined evidence from 18 randomized studies involving 10,611 participants to assess whether vitamin D supplementation during pregnancy or early childhood prevents asthma and related outcomes. High-dose supplementation during pregnancy probably reduces childhood wheeze, but evidence for asthma prevention remains limited. Effects of supplementation in infants and young children are less certain, and evidence on adverse events is insufficient. The review searched for studies through October 2023."
+        "text": "The children of women given high doses of vitamin D during pregnancy are less likely to develop wheeze (a whistling sound heard on exhalation, due to lower airway swelling, inflammation, or constriction) than children whose mothers did not take vitamin D in pregnancy."
+      },
+      {
+        "text": "Vitamin D treatment in early childhood may have little effect on preventing asthma or wheeze, though we are uncertain of these results."
+      },
+      {
+        "text": "We are very uncertain about the evidence for any unwanted effects of vitamin D treatment in pregnant or breastfeeding women or young children."
       }
     ],
     "citation": "Patchen BK, Best CM, Boiteau J, Solvik BS, Vonderschmidt A, Xu J, Cohen RT, Cassano PA. Vitamin D supplementation in pregnant or breastfeeding women or young children for preventing asthma. Cochrane Database Syst Rev. 2025;(8):CD013396. doi:10.1002/14651858.CD013396.pub2",
@@ -208,7 +214,9 @@
     "sourceSHA256": "fd6e7a196f87343f38390febcfb60ca91d6931a534182736a1b64b35a0597ba4",
     "sha256": "d4208e33ec1db8b2ecc31f25008bd57ccc0fb0f3a27d095a486c2e03d0228beb",
     "sourceNote": "PDF supplied by Alexander Vonderschmidt as CD013396.pdf on 19 September 2026.",
-    "acknowledgementLocation": "PDF cover, below the citation"
+    "acknowledgementLocation": "PDF cover, below the citation",
+    "excerptSource": "Published review, page 3, Plain language summary, Key messages",
+    "excerptRightsURL": "https://authors.wiley.com/author-resources/Journal-Authors/licensing/licensing-info-faqs.html"
   },
   {
     "id": "publication-5",

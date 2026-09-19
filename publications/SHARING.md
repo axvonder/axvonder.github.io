@@ -64,14 +64,16 @@ PDF source: PubMed Central (NLM). Retrieved 18 September 2026. Saved copy may no
 
 Vitamin D supplementation in pregnant or breastfeeding women or young children for preventing asthma
 
-Cochrane green OA licence, Authors’ rights, permits authors to post the published PDF on their own website. This article is copyright 2025 The Cochrane Collaboration, not Creative Commons. Permission does not depend on the repository embargo. Alexander supplied the 122-page PDF as `CD013396.pdf` on 19 September 2026. The required sharing acknowledgement was added to its cover, below the existing citation and DOI. All original text and the content of the remaining 121 pages are unchanged. Separate HTML abstract republication is not expressly covered. An original summary is supplied.
+Cochrane green OA licence, Authors’ rights, permits authors to post the published PDF on their own website. This article is copyright 2025 The Cochrane Collaboration, not Creative Commons. Permission does not depend on the repository embargo. Alexander supplied the 122-page PDF as `CD013396.pdf` on 19 September 2026. The required sharing acknowledgement was added to its cover, below the existing citation and DOI. All original text and the content of the remaining 121 pages are unchanged.
+
+At the co-author’s request, the website quotes the three Key messages from page 3 of the review’s plain language summary. The excerpt contains 88 words. [Wiley’s author reuse guidance](https://authors.wiley.com/author-resources/Journal-Authors/licensing/licensing-info-faqs.html) permits selected text up to 250 words for noncommercial reuse with full attribution. The quotation retains its wording, full citation, copyright credit, and Cochrane update acknowledgement. This does not grant a Creative Commons licence.
 
 The supplied original is archived at `../../publication-originals/Patchen, 2025, Cochrane Database Syst Rev.pdf`, outside the published repository. Its SHA-256 hash and the website copy’s hash are recorded in `publications.json`.
 
 - [Article or report](https://doi.org/10.1002/14651858.CD013396.pub2)
 - PDF source: author-supplied copy. [PMC record](https://pmc.ncbi.nlm.nih.gov/articles/PMC12341026/).
 - [Permission or licence](https://lfp-forms.cochrane.org/file/download/formPreview?licenseType=green-open-access&submissionType=review)
-- Website disclosure: summary.
+- Website disclosure: Key messages, quoted from the plain language summary.
 
 Patchen BK, Best CM, Boiteau J, Solvik BS, Vonderschmidt A, Xu J, Cohen RT, Cassano PA. Vitamin D supplementation in pregnant or breastfeeding women or young children for preventing asthma. Cochrane Database of Systematic Reviews 2025, Issue 8. Art. No.: CD013396. DOI: 10.1002/14651858.CD013396.pub2. Copyright © 2025 The Cochrane Collaboration. Published by John Wiley & Sons, Ltd.
 

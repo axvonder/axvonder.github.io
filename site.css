@@ -117,6 +117,9 @@ footer { border-top: 1px solid #cfd5cb; padding: 40px 0 25px; }
 .publication-abstract { max-width: 70ch; margin-top: 16px; padding: 0 0 5px 20px; border-left: 1px solid #cfd5cb; }
 .editorial-layout .publication-abstract p { margin: 0; font-size: 16px; line-height: 1.7; color: #454e44; }
 .editorial-layout .publication-abstract p + p { margin-top: 14px; }
+.publication-key-messages { margin: 0; font-size: 16px; line-height: 1.7; color: #454e44; }
+.publication-key-messages ul { margin: 0; padding-left: 1.1em; }
+.publication-key-messages li + li { margin-top: 12px; }
 .editorial-layout .publication-abstract .abstract-citation { margin-top: 20px; font-size: 13px; line-height: 1.6; color: #636b60; overflow-wrap: anywhere; }
 .abstract-citation strong { color: #242924; font-weight: 600; }
 .editorial-layout .publication-abstract .abstract-credit { margin-top: 6px; font-size: 12px; line-height: 1.6; color: #697266; }
