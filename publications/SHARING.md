@@ -1,15 +1,15 @@
 # Publication sharing checks
 
-Checked 18 September 2026 for the noncommercial personal website of co-author Alexander Vonderschmidt.
+Checked 18 September 2026 for the noncommercial personal website of co-author Alexander Vonderschmidt. Cochrane entry updated 19 September 2026.
 
-Nine original PDFs are stored in `PDFs/`. All ten have a documented sharing route; the Cochrane PDF still needs to be obtained because its download requires a CAPTCHA. No local link is shown until its PDF is present and checked.
+Ten PDFs are stored in `PDFs/`, each with a documented sharing route. The Cochrane PDF was supplied by Alexander. Its required sharing acknowledgement was added to the cover. The other nine PDFs are unchanged originals.
 
 | Publication | Local PDF | Basis for sharing |
 |---|---|---|
 | Plant-based diets and HDL cholesterol | [Baker, 2026, Adv Nutr.pdf](PDFs/Baker%2C%202026%2C%20Adv%20Nutr.pdf) | [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) |
 | Meat and dairy reduction in Scotland | [Kennedy, 2026, Nat Food.pdf](PDFs/Kennedy%2C%202026%2C%20Nat%20Food.pdf) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Plant and fungi-based alternatives: nutrition and environmental impact | [Nájera Espinosa, 2026, Curr Dev Nutr.pdf](PDFs/N%C3%A1jera%20Espinosa%2C%202026%2C%20Curr%20Dev%20Nutr.pdf) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| Vitamin D and childhood asthma prevention | Permitted; retrieval blocked | [Author website sharing rights under Cochrane standard publication licence (green OA), version 6 2024](https://lfp-forms.cochrane.org/file/download/formPreview?licenseType=green-open-access&submissionType=review) |
+| Vitamin D and childhood asthma prevention | [Patchen, 2025, Cochrane Database Syst Rev.pdf](PDFs/Patchen%2C%202025%2C%20Cochrane%20Database%20Syst%20Rev.pdf) | [Author website sharing rights under Cochrane standard publication licence (green OA), version 6 2024](https://lfp-forms.cochrane.org/file/download/formPreview?licenseType=green-open-access&submissionType=review) |
 | Food production and dietary guidance | [Stehl, 2025, Nat Food.pdf](PDFs/Stehl%2C%202025%2C%20Nat%20Food.pdf) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Smaller portions, lower meat consumption | [Vonderschmidt, 2024, Nat Food.pdf](PDFs/Vonderschmidt%2C%202024%2C%20Nat%20Food.pdf) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Climate impacts of food consumed in Scotland | [Jaacks, 2024, CXC.pdf](PDFs/Jaacks%2C%202024%2C%20CXC.pdf) | [Edinburgh Research Archive noncommercial reuse policy; unchanged copies](https://library.ed.ac.uk/research-support/publish-research/scholarly-communications/sct-policies/repository-policies) |
@@ -64,10 +64,12 @@ PDF source: PubMed Central (NLM). Retrieved 18 September 2026. Saved copy may no
 
 Vitamin D supplementation in pregnant or breastfeeding women or young children for preventing asthma
 
-Cochrane green OA licence, Authors’ rights, explicitly permits authors to post any published PDF on their own website. This article is copyright 2025 The Cochrane Collaboration, not Creative Commons. Permission does not depend on the repository embargo. The official PMC, Europe PMC and publisher PDF endpoints currently return a browser challenge or HTTP 403, so no local download link is enabled. Separate HTML abstract republication was not expressly covered; an original summary is supplied.
+Cochrane green OA licence, Authors’ rights, permits authors to post the published PDF on their own website. This article is copyright 2025 The Cochrane Collaboration, not Creative Commons. Permission does not depend on the repository embargo. Alexander supplied the 122-page PDF as `CD013396.pdf` on 19 September 2026. The required sharing acknowledgement was added to its cover, below the existing citation and DOI. All original text and the content of the remaining 121 pages are unchanged. Separate HTML abstract republication is not expressly covered. An original summary is supplied.
+
+The supplied original is archived at `../../publication-originals/Patchen, 2025, Cochrane Database Syst Rev.pdf`, outside the published repository. Its SHA-256 hash and the website copy’s hash are recorded in `publications.json`.
 
 - [Article or report](https://doi.org/10.1002/14651858.CD013396.pub2)
-- [PDF source](https://pmc.ncbi.nlm.nih.gov/articles/PMC12341026/pdf/CD013396.pdf)
+- PDF source: author-supplied copy. [PMC record](https://pmc.ncbi.nlm.nih.gov/articles/PMC12341026/).
 - [Permission or licence](https://lfp-forms.cochrane.org/file/download/formPreview?licenseType=green-open-access&submissionType=review)
 - Website disclosure: summary.
 

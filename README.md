@@ -10,9 +10,9 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 ## Publications
 
-Run `python3 publications/verify.py` to check the ten publication entries, nine PDF downloads, file hashes, and disclosure links.
+Run `python3 publications/verify.py` to check the ten publication entries, ten PDF downloads, file hashes, and disclosure links.
 
-Edit publication content in `index.html` and keep `publications/publications.json` consistent. List all authors in AMA-style citations and bold **Vonderschmidt A**. Keep the copyright and licence credits. See [publication sharing checks](publications/SHARING.md) for sources and reuse terms. Keep the saved PDFs unchanged.
+Edit publication content in `index.html` and keep `publications/publications.json` consistent. List all authors in AMA-style citations and bold **Vonderschmidt A**. Keep the copyright and licence credits. See [publication sharing checks](publications/SHARING.md) for sources and reuse terms. Keep the saved PDFs unchanged. The Cochrane copy includes its required sharing acknowledgement on the cover. The supplied original is archived locally in `../publication-originals/`, outside the published repository.
 
 ## Images
 
