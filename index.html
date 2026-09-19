@@ -3,80 +3,204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home | Alexander Vonderschmidt</title>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <meta name="description" content="Alexander Vonderschmidt, postdoctoral researcher at Tufts University. Epidemiology, Food is Medicine, and policy analysis. Research publications and classical music ensembles.">
+  <title>Alexander Vonderschmidt</title>
+  <link rel="canonical" href="https://axvonder.com/">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="site.css?v=20260918-1">
+  <script src="publications.js?v=20260918-1" defer></script>
 </head>
-
-<body class="home-page">
-  <main id="main" class="content-container">
-    <header class="header-container">
-      <div class="title-and-subtitle">
-        <h1><span class="s1">Alexander <span class="surname">Vonderschmidt</span></span></h1>
-        <p class="p2"><span class="s1">Postdoctoral Researcher · Tufts University</span></p>
-      </div>
-
-      <nav class="nav-bubbles" aria-label="Primary">
-        <a href="index.html" class="bubble active" aria-current="page">home</a>
-        <a href="research.html" class="bubble">research</a>
-        <a href="cv.html" class="bubble">cv</a>
-        <a href="choir.html" class="bubble">choir</a>
-      </nav>
+<body class="editorial home-page editorial-layout">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <nav aria-label="Primary"><a href="#research">Research</a><a href="music.html">Music</a><a href="Vonderschmidt%20CV%20PDF.pdf" target="_blank" rel="noopener">CV</a><a href="#contact">Contact</a></nav>
     </header>
-
-    <div class="profile-section">
-      <img class="profile-photo" src="vondy.jpg" alt="Portrait of Alexander Vonderschmidt">
-      <div class="about-text">
-        <p>
-I am a postdoctoral researcher at the Food is Medicine Institute, within the 
-Friedman School of Nutrition Science and Policy at Tufts University.
-</p>
-
-<p>
-My work focuses on population health modeling, diet–disease relationships,
-and evaluating the health and cost impacts of Food is Medicine interventions
-at national and state levels.
-</p>
-      </div>
-    </div>
-
-    <div class="green-bar"></div>
-
-    <div class="contact-row">
-      <span class="sr-only">Contact links</span>
-      <a href="mailto:Alexander.Vonderschmidt@tufts.edu" aria-label="Email">
-        <span class="contact-icon" aria-hidden="true">
-          <img src="icons/email.svg.png" alt="">
-        </span>
-      </a>
-      <a href="https://x.com/axvonder" target="_blank" rel="noopener" aria-label="X (Twitter)">
-        <span class="contact-icon" aria-hidden="true">
-          <img src="icons/Twitter_X.png" alt="">
-        </span>
-      </a>
-      <a href="https://scholar.google.com/citations?user=wpiBK0AAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-        <span class="contact-icon" aria-hidden="true">
-          <img src="icons/Google_Scholar_logo.svg.png" alt="">
-        </span>
-      </a>
-      <a href="https://orcid.org/0009-0004-8441-6632" target="_blank" rel="noopener" aria-label="ORCID">
-        <span class="contact-icon" aria-hidden="true">
-          <img src="icons/ORCID_iD.svg.png" alt="">
-        </span>
-      </a>
-    </div>
-  </main>
-
-  <footer class="footer">
-    <p class="p2">
-      <span class="s1">Copyright © <span id="year"></span> Vondy</span>
-      <a class="staff-launch" href="mage-game/game.html" aria-label="Launch mage game">
-        <img src="staff.png" alt="" loading="lazy" width="581" height="290">
-      </a>
-    </p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <main id="main">
+      <section class="intro" aria-labelledby="name">
+        <div class="intro-copy">
+          <h1 id="name">Alexander Vonderschmidt</h1>
+          <p class="intro-detail">Postdoctoral researcher<br>Food&nbsp;is&nbsp;Medicine&nbsp;Institute, Tufts&nbsp;University</p>
+        </div>
+        <div class="portrait">
+          <img class="headshot" src="assets/headshot.png" alt="Portrait of Alexander Vonderschmidt" width="815" height="859">
+          <nav class="profile-links" aria-label="Profiles">
+            <a href="https://scholar.google.com/citations?user=wpiBK0AAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><img src="icons/Google_Scholar_logo.svg.png" alt="" width="28" height="28"></a>
+            <a class="linkedin-link" href="https://www.linkedin.com/in/axvonder" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><img src="assets/linkedin.png" alt="" width="28" height="28"></a>
+            <a class="tufts-link" href="https://nutrition.tufts.edu/research/postdoctoral-scholars#accordion-button-1774545820" target="_blank" rel="noopener" aria-label="Tufts biography" title="Tufts biography"><img src="assets/tufts.png" alt="" width="399" height="173"></a>
+          </nav>
+        </div>
+      </section>
+      <section id="research" class="editorial-section research-section" aria-labelledby="research-title">
+        <div class="section-label">
+          <h2 id="research-title">Research</h2>
+          <a class="text-link publications" href="https://scholar.google.com/citations?user=wpiBK0AAAAAJ&amp;hl=en" target="_blank" rel="noopener">All publications</a>
+        </div>
+        <div class="research-content">
+          <div class="research-focus">
+            <h3><span>Epidemiology.</span> <span>Food is Medicine.</span> <span>Policy Analysis.</span></h3>
+          </div>
+          <section class="recent-publications" aria-labelledby="recent-title">
+            <h3 id="recent-title">Recent publications</h3>
+            <article aria-labelledby="publication-title-1">
+              <h4 id="publication-title-1"><a href="https://doi.org/10.1016/j.advnut.2026.100708" target="_blank" rel="noopener">Plant-based diets and HDL cholesterol</a></h4>
+              <p>Advances in Nutrition · 2026</p>
+              <div class="publication-actions">
+                <a href="https://doi.org/10.1016/j.advnut.2026.100708" target="_blank" rel="noopener" aria-describedby="publication-title-1">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Baker%2C%202026%2C%20Adv%20Nutr.pdf" download="Baker, 2026, Adv Nutr.pdf" aria-describedby="publication-title-1">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-1" aria-describedby="publication-title-1" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-1" hidden>
+                <p>Plant-based dietary patterns are associated with improved cardiometabolic health, including lower concentrations of serum low-density lipoprotein cholesterol, blood pressure, adiposity, inflammation, and lower risk of cardiovascular disease. However, some studies report modestly reduced high-density lipoprotein (HDL) cholesterol concentrations in populations following plant-based diets (e.g., vegan or vegetarian), whereas other studies show null associations. This has created uncertainty about whether these changes in HDL cholesterol reflect clinically meaningful harm or a neutral physiologic response. This review examines the significance of lower HDL cholesterol in the context of plant-based diets and broader cardiometabolic risk. We describe plausible mechanistic pathways, including lower saturated fat and cholesterol intake, reduced apolipoprotein A-I secretion and HDL production, and formation of smaller HDL particles that are cleared more rapidly. We suggest that modest HDL cholesterol reductions observed with healthy and appropriately planned plant-based diets should be interpreted within the broader context of net cardiometabolic benefit rather than as an isolated reason for clinical concern. However, substantial heterogeneity across studies—in both results and methodology, including variation in the definitions of plant-based diets—limits causal directionality and interpretation of reported diet–disease associations. Future analyses should improve diet classification and comparator selection, while controlling for weight change and macronutrient composition to isolate any potential effects of plant-based diets on HDL-related outcomes.</p>
+                <p class="abstract-citation">Baker K, <strong>Vonderschmidt A</strong>. Interpreting lower HDL cholesterol in plant-based diets: mechanisms and clinical implications. <em>Adv Nutr</em>. 2026;17(9):100708. doi:<a href="https://doi.org/10.1016/j.advnut.2026.100708" target="_blank" rel="noopener">10.1016/j.advnut.2026.100708</a></p>
+                <p class="abstract-credit">© 2026 The Authors · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-2">
+              <h4 id="publication-title-2"><a href="https://www.nature.com/articles/s43016-026-01384-3" target="_blank" rel="noopener">Meat and dairy reduction in Scotland</a></h4>
+              <p>Nature Food · 2026</p>
+              <div class="publication-actions">
+                <a href="https://www.nature.com/articles/s43016-026-01384-3" target="_blank" rel="noopener" aria-describedby="publication-title-2">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Kennedy%2C%202026%2C%20Nat%20Food.pdf" download="Kennedy, 2026, Nat Food.pdf" aria-describedby="publication-title-2">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-2" aria-describedby="publication-title-2" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-2" hidden>
+                <p>Shifting diets away from high levels of meat and dairy is increasingly considered an important part of climate mitigation, yet the best pathways for achieving these reductions without compromising nutrition, health or affordability remain unclear. Here, in a representative sample of Scottish adults, we evaluate 33 pathways to meeting the UK Climate Change Committee’s recommendations to reduce meat and dairy consumption by 20% by 2030, increasing to a 35% reduction in meat by 2050. The pathways incorporate existing dietary guidance, and modelled outcomes include intakes of 54 nutrients, obesity, type 2 diabetes, cardiovascular disease, all-cause mortality, diet costs, greenhouse gas emissions, freshwater use, land use and eutrophication. Nearly all pathways were estimated to benefit most nutritional, health and environmental outcomes without increasing diet costs. Benefits were greater when reductions targeted high consumers of red meat and when meat and dairy were replaced gram for gram with foods such as vegetables, beans, eggs and plant-based dairy alternatives.</p>
+                <p class="abstract-citation">Kennedy J, Clark M, Stewart C, Runions R, <strong>Vonderschmidt A</strong>, Frank SM, Scarborough P, Comrie F, McDonald A, McNeill G, Alexander P, Jaacks LM. Reduced meat and dairy consumption improves health, environmental and most nutritional outcomes without increasing diet costs among Scottish adults. <em>Nat Food</em>. 2026;7(7):711-721. doi:<a href="https://doi.org/10.1038/s43016-026-01384-3" target="_blank" rel="noopener">10.1038/s43016-026-01384-3</a></p>
+                <p class="abstract-credit">© 2026 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-3">
+              <h4 id="publication-title-3"><a href="https://doi.org/10.1016/j.cdnut.2026.107669" target="_blank" rel="noopener">Plant and fungi-based alternatives: nutrition and environmental impact</a></h4>
+              <p>Current Developments in Nutrition · 2026</p>
+              <div class="publication-actions">
+                <a href="https://doi.org/10.1016/j.cdnut.2026.107669" target="_blank" rel="noopener" aria-describedby="publication-title-3">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/N%C3%A1jera%20Espinosa%2C%202026%2C%20Curr%20Dev%20Nutr.pdf" download="Nájera Espinosa, 2026, Curr Dev Nutr.pdf" aria-describedby="publication-title-3">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-3" aria-describedby="publication-title-3" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-3" hidden>
+                <p><strong>Background.</strong> Evidence suggests dietary shifts away from animal-sourced toward plant-based foods benefit health and the environment. Although the United Kingdom’s (UK) meat consumption has decreased, further efforts are required to meet national targets. Novel plant- and fungi-based foods (NPBFs) could offer a straightforward alternative to animal-sourced foods with a similar sensory experience. However, their impact on nutrition, the environment, and cost remains unclear.</p>
+                <p><strong>Objectives.</strong> We aimed to identify trade-offs and co-benefits of substituting specific animal-sourced foods with NPBFs in a UK minimally accepted “basic basket” (baseline) stratified by gender.</p>
+                <p><strong>Methods.</strong> Nine new baskets were created to assess the nutritional, environmental, and cost outcomes by substituting either all processed meats, milk, or yogurt with NPBFs (most popular, nutritionally balanced, inexpensive). Foods from the “basic basket” were matched with the UK food composition table. NPBF nutritional data were collected from UK supermarkets using Open Food Facts. All foods were matched with dietary environmental footprints (greenhouse gas emissions, water, and land use). Prices were manually collected from UK supermarkets.</p>
+                <p><strong>Results.</strong> Dietary environmental footprints decreased in all new baskets (‒0.39% to ‒6.94%). Nutritional outcomes varied across new baskets, with most substitutions aligned with recommended weekly averages. Baskets with the most nutritionally balanced NPBFs showed minimal nutritional differences compared to the baseline. Notable micronutrient reductions occurred when replacing milk with the most inexpensive alternative. Nearly all dairy alternative substitutions lowered food basket costs, except for the most popular plant-based drink. All plant-based meats increased the cost.</p>
+                <p><strong>Conclusions.</strong> When the nutritional quality of individual NPBFs is considered, single-targeted replacements of specific animal-sourced foods by NPBFs present a powerful opportunity for health and environmental benefits, especially over processed meats. Without policies to improve NPBFs’ affordability, such a shift at the population level is unlikely, missing an opportunity to drive progress toward net zero and health targets.</p>
+                <p class="abstract-citation">Nájera Espinosa S, Zarate-Ortiz AG, Hadida G, Tereza da Silva J, <strong>Vonderschmidt A</strong>, Esievo EM, Carr T, Reuzé A, Scheelbeek P. Novel plant and fungi-based alternatives support nutritional adequacy of diets and reduce their environmental impacts. <em>Curr Dev Nutr</em>. 2026;10(4):107669. doi:<a href="https://doi.org/10.1016/j.cdnut.2026.107669" target="_blank" rel="noopener">10.1016/j.cdnut.2026.107669</a></p>
+                <p class="abstract-credit">© 2026 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-4">
+              <h4 id="publication-title-4"><a href="https://doi.org/10.1002/14651858.CD013396.pub2" target="_blank" rel="noopener">Vitamin D and childhood asthma prevention</a></h4>
+              <p>Cochrane Database of Systematic Reviews · 2025</p>
+              <div class="publication-actions">
+                <a href="https://doi.org/10.1002/14651858.CD013396.pub2" target="_blank" rel="noopener" aria-describedby="publication-title-4">View article <span aria-hidden="true">↗</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-4" aria-describedby="publication-title-4" data-content="summary"><span class="action-label">Expand summary</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-4" hidden>
+                <p>This Cochrane review combined evidence from 18 randomized studies involving 10,611 participants to assess whether vitamin D supplementation during pregnancy or early childhood prevents asthma and related outcomes. High-dose supplementation during pregnancy probably reduces childhood wheeze, but evidence for asthma prevention remains limited. Effects of supplementation in infants and young children are less certain, and evidence on adverse events is insufficient. The review searched for studies through October 2023.</p>
+                <p class="abstract-citation">Patchen BK, Best CM, Boiteau J, Solvik BS, <strong>Vonderschmidt A</strong>, Xu J, Cohen RT, Cassano PA. Vitamin D supplementation in pregnant or breastfeeding women or young children for preventing asthma. <em>Cochrane Database Syst Rev</em>. 2025;(8):CD013396. doi:<a href="https://doi.org/10.1002/14651858.CD013396.pub2" target="_blank" rel="noopener">10.1002/14651858.CD013396.pub2</a></p>
+                <p class="abstract-credit">Original summary.</p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-5">
+              <h4 id="publication-title-5"><a href="https://www.nature.com/articles/s43016-025-01173-4" target="_blank" rel="noopener">Food production and dietary guidance</a></h4>
+              <p>Nature Food · 2025</p>
+              <div class="publication-actions">
+                <a href="https://www.nature.com/articles/s43016-025-01173-4" target="_blank" rel="noopener" aria-describedby="publication-title-5">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Stehl%2C%202025%2C%20Nat%20Food.pdf" download="Stehl, 2025, Nat Food.pdf" aria-describedby="publication-title-5">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-5" aria-describedby="publication-title-5" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-5" hidden>
+                <p>In light of nationalist trends, disruptions to global food supply chains and efforts to concurrently promote sustainable diets, we assess national capacities to achieve dietary guidelines based on domestic production alone. Over a third of all countries cannot meet self-sufficiency for more than two of the seven essential food groups. Low self-sufficiency and overdependence on a few countries for imports threaten their capability to respond to global shocks, particularly for small states.</p>
+                <p class="abstract-citation">Stehl J, <strong>Vonderschmidt A</strong>, Vollmer S, Alexander P, Jaacks LM. Gap between national food production and food-based dietary guidance highlights lack of national self-sufficiency. <em>Nat Food</em>. 2025;6(6):571-576. doi:<a href="https://doi.org/10.1038/s43016-025-01173-4" target="_blank" rel="noopener">10.1038/s43016-025-01173-4</a></p>
+                <p class="abstract-credit">© 2025 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-6">
+              <h4 id="publication-title-6"><a href="https://www.nature.com/articles/s43016-024-01070-2" target="_blank" rel="noopener">Smaller portions, lower meat consumption</a></h4>
+              <p>Nature Food · 2024</p>
+              <div class="publication-actions">
+                <a href="https://www.nature.com/articles/s43016-024-01070-2" target="_blank" rel="noopener" aria-describedby="publication-title-6">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Vonderschmidt%2C%202024%2C%20Nat%20Food.pdf" download="Vonderschmidt, 2024, Nat Food.pdf" aria-describedby="publication-title-6">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-6" aria-describedby="publication-title-6" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-6" hidden>
+                <p>Reducing meat consumption can help improve environmental and health outcomes, yet the effect of specific meat-reducing strategies is context dependent. Here, using decomposition analysis of National Diet and Nutrition Survey data (2008–2009 to 2018–2019), we found that in the United Kingdom, reduced meat portions had the largest impact on total meat consumption decline (52%), followed by fewer meat-eating days (24%), fewer meat consumers (17%) and fewer meat-eating meal occasions (7%). Understanding meat consumption behaviour patterns is key for more effective policies.</p>
+                <p class="abstract-citation"><strong>Vonderschmidt A</strong>, Jaacks LM, Alexander P, Green R, Bellows AL, Stewart C. Smaller meat portions contribute the most to reducing meat consumption in the United Kingdom. <em>Nat Food</em>. 2024;5(12):982-987. doi:<a href="https://doi.org/10.1038/s43016-024-01070-2" target="_blank" rel="noopener">10.1038/s43016-024-01070-2</a></p>
+                <p class="abstract-credit">© 2024 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-7">
+              <h4 id="publication-title-7"><a href="https://www.climatexchange.org.uk/publications/understanding-the-climate-impact-of-food-consumed-in-scotland/" target="_blank" rel="noopener">Climate impacts of food consumed in Scotland</a></h4>
+              <p>ClimateXChange · 2024 · Report</p>
+              <div class="publication-actions">
+                <a href="https://www.climatexchange.org.uk/publications/understanding-the-climate-impact-of-food-consumed-in-scotland/" target="_blank" rel="noopener" aria-describedby="publication-title-7">View report <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Jaacks%2C%202024%2C%20CXC.pdf" download="Jaacks, 2024, CXC.pdf" aria-describedby="publication-title-7">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-7" aria-describedby="publication-title-7" data-content="summary"><span class="action-label">Expand summary</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-7" hidden>
+                <p>This report reviews Scottish food consumption and its contribution to greenhouse gas emissions, combining a rapid evidence assessment with analyses of dietary data. Meat and dairy contribute substantially to both nutrient intake and emissions. Available estimates of food-related emissions differ widely because models cover different parts of the food system and handle imports, land use and dietary underreporting differently. Better consumption and supply-chain data, together with complementary modelling approaches, would improve estimates.</p>
+                <p class="abstract-citation">Jaacks L, Frank S, <strong>Vonderschmidt A</strong>, Stewart C, Runions R, Kennedy J, McNeill G, Alexander P. <a href="https://era.ed.ac.uk/items/f415a72e-def7-4b8a-ac4f-98e33e3288b9" target="_blank" rel="noopener"><em>Understanding the Climate Impact of Food Consumed in Scotland</em></a>. ClimateXChange; 2024. doi:<a href="https://doi.org/10.7488/era/4343" target="_blank" rel="noopener">10.7488/era/4343</a></p>
+                <p class="abstract-credit">Original summary · © 2024 The University of Edinburgh · <a href="https://library.ed.ac.uk/research-support/publish-research/scholarly-communications/sct-policies/repository-policies" target="_blank" rel="noopener">Noncommercial reuse</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-8">
+              <h4 id="publication-title-8"><a href="https://doi.org/10.1016/j.cdnut.2024.103774" target="_blank" rel="noopener">Dairy ingredients in composite foods</a></h4>
+              <p>Current Developments in Nutrition · 2024</p>
+              <div class="publication-actions">
+                <a href="https://doi.org/10.1016/j.cdnut.2024.103774" target="_blank" rel="noopener" aria-describedby="publication-title-8">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Jaacks%2C%202024%2C%20Curr%20Dev%20Nutr.pdf" download="Jaacks, 2024, Curr Dev Nutr.pdf" aria-describedby="publication-title-8">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-8" aria-describedby="publication-title-8" data-content="abstract"><span class="action-label">Expand abstract</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-8" hidden>
+                <p>Dairy, especially cheese, is associated with high levels of greenhouse gas emissions. Accurate estimates of dairy consumption are therefore important for monitoring dietary transition targets. Previous studies found that disaggregating the meat out of composite foods significantly impacts estimates of meat consumption. Our objective was to determine whether disaggregating the dairy out of composite foods impacts estimates of dairy consumption in Scotland. Approximately 32% of foods in the UK Nutrient Databank contain some dairy. In the 2021 Scottish Health Survey, mean daily intakes of dairy with and without disaggregation of composite foods were 238.6 and 218.4 g, respectively. This translates into an 8% underestimation of dairy consumption when not accounting for dairy in composite foods. In particular, milk was underestimated by 7% and cheese and butter by 50%, whereas yogurt was overestimated by 15% and cream by 79%. Failing to disaggregate dairy from composite foods may underestimate dairy consumption.</p>
+                <p class="abstract-citation">Jaacks LM, Amoutzopoulos B, Runions R, <strong>Vonderschmidt A</strong>, McNeill G, Comrie F, McDonald A, Page P, Stewart C. Disaggregation of dairy in composite foods in the United Kingdom. <em>Curr Dev Nutr</em>. 2024;8(8):103774. doi:<a href="https://doi.org/10.1016/j.cdnut.2024.103774" target="_blank" rel="noopener">10.1016/j.cdnut.2024.103774</a></p>
+                <p class="abstract-credit">© 2024 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-9">
+              <h4 id="publication-title-9"><a href="https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk" target="_blank" rel="noopener">Modelling meat and dairy reduction: nutrients and disease risk</a></h4>
+              <p>Food Standards Scotland · 2024 · Report</p>
+              <div class="publication-actions">
+                <a href="https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk" target="_blank" rel="noopener" aria-describedby="publication-title-9">View report <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Comrie%2C%202024%2C%20FSS.pdf" download="Comrie, 2024, FSS.pdf" aria-describedby="publication-title-9">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-9" aria-describedby="publication-title-9" data-content="summary"><span class="action-label">Expand summary</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-9" hidden>
+                <p>Using dietary data from the 2021 Scottish Health Survey, this report models how reductions in meat and dairy consumption could affect nutrient intake and disease risk. Reductions without suitable replacements could worsen already low intakes of some micronutrients. Carefully chosen substitutes can lessen these effects. Scenarios targeting high consumers of red and processed red meat indicate potential reductions in cardiovascular disease and type 2 diabetes, supporting dietary changes that consider both nutrient adequacy and long-term health.</p>
+                <p class="abstract-citation">Comrie F, Jaacks L, Kennedy J, McDonald A, McNeill G, Runions R, Stewart C, <strong>Vonderschmidt A</strong>. <em>Approaches to Modelling Impact of Reduction in Meat and Dairy Consumption on Nutrient Intakes and Disease Risk</em>. Food Standards Scotland; 2024. Accessed September 18, 2026. <a href="https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk" target="_blank" rel="noopener">https://www.foodstandards.gov.scot/science-and-evidence/modelling-the-impact-of-reductions-in-meat-and-dairy-consumption-on-nutrient-intakes-and-disease-risk</a></p>
+                <p class="abstract-credit">Original summary · © Crown copyright. Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="noopener">Open Government Licence v3.0</a>.</p>
+              </div>
+            </article>
+            <article aria-labelledby="publication-title-10">
+              <h4 id="publication-title-10"><a href="https://doi.org/10.1016/S2542-5196(23)00276-0" target="_blank" rel="noopener">Combining FAO food balance sheet datasets</a></h4>
+              <p>The Lancet Planetary Health · 2024</p>
+              <div class="publication-actions">
+                <a href="https://doi.org/10.1016/S2542-5196(23)00276-0" target="_blank" rel="noopener" aria-describedby="publication-title-10">View article <span aria-hidden="true">↗</span></a>
+                <a href="publications/PDFs/Vonderschmidt%2C%202024%2C%20Lancet%20Planet%20Health.pdf" download="Vonderschmidt, 2024, Lancet Planet Health.pdf" aria-describedby="publication-title-10">Download PDF <span aria-hidden="true">↓</span></a>
+                <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="publication-abstract-10" aria-describedby="publication-title-10" data-content="summary"><span class="action-label">Expand summary</span> <span class="action-symbol" aria-hidden="true">+</span></button>
+              </div>
+              <div class="publication-abstract" id="publication-abstract-10" hidden>
+                <p>The FAO changed its food balance sheet methods in 2020. Comparing the overlapping years shows differences between the old and new datasets that can distort estimates of food-supply trends, including reversing their direction. This comment illustrates the problem and explains why analyses combining the datasets need careful treatment.</p>
+                <p class="abstract-citation"><strong>Vonderschmidt A</strong>, Arendarczyk B, Jaacks LM, Bellows AL, Alexander P. Analysis combining the multiple FAO food balance sheet datasets needs careful treatment. <em>Lancet Planet Health</em>. 2024;8(2):e69-e71. doi:<a href="https://doi.org/10.1016/S2542-5196(23)00276-0" target="_blank" rel="noopener">10.1016/S2542-5196(23)00276-0</a></p>
+                <p class="abstract-credit">Original summary · © 2024 The Authors · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+      <section id="music" class="editorial-section music-section" aria-labelledby="music-title">
+        <div class="section-label"><h2 id="music-title">Music</h2></div>
+        <div class="music-content">
+          <img loading="lazy" src="vondychoir.jpg" alt="Alexander singing from a score in a church" width="2203" height="3042">
+          <div>
+            <h3>Tenor</h3>
+            <p>Classical music ensembles</p>
+            <a class="text-link" href="music.html">Singing experience</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="contact"><a class="email-link" href="mailto:Alexander.Vonderschmidt@tufts.edu">Alexander.Vonderschmidt@tufts.edu</a></footer>
+  </div>
 </body>
 </html>
