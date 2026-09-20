@@ -12,6 +12,10 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 `theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. Each page starts in light mode, including reloads and browser Back. Dark mode requires a toggle click on that page. System preferences and previously saved choices do not change the default. Run `node theme.test.cjs` to check this behaviour.
 
+## Music player
+
+The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. The file loads only after a click. Click again to stop and return to the beginning. Navigation also stops playback. Run `node music-player.test.cjs` to check playback, cancellation, and error handling.
+
 ## Publications
 
 Run `python3 publications/verify.py` to check the ten publication entries, ten PDF downloads, file hashes, and disclosure links.
