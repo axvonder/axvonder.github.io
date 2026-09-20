@@ -1,0 +1,8 @@
+Generated with the built-in image generation tool.
+References: sunglasses.png (edit target), headshot.png (fit reference).
+
+Use case: precise-object-edit.
+Asset type: transparent PNG sunglasses overlay for an animated personal-website portrait.
+Input 1 is the EDIT TARGET: gold round Ray-Ban sunglasses with bright cyan-blue mirrored lenses grading to violet at the bottom. Input 2 is a FIT AND CAMERA-ANGLE REFERENCE ONLY: the man's unmodified portrait.
+Create a new cutout of ONLY the sunglasses from input 1, adjusted to fit over the black glasses in input 2. Match the portrait's slightly low camera viewpoint, subtle head angle, lens spacing, and asymmetry. The viewer-left lens should be slightly larger than the viewer-right lens; the viewer-right lens should sit just a little lower (about 2 degrees clockwise overall). Bring the lenses a little closer together and make them a little taller so their edges can cover the underlying black eyeglass rims. Tuck the temple arms backward as if worn, with no upward arching arms above the temples. Preserve the thin gold metal, round lens design, brilliant cyan-to-violet mirror colours, reflections, and small existing Ray-Ban marking. Do not redesign the glasses.
+OUTPUT ONLY ONE PAIR OF SUNGLASSES, with real alpha transparency everywhere else, including between and around the frames. The lenses themselves remain opaque and vividly coloured. No face, skin, hair, person, background, shadow backdrop, checkerboard pattern, or extra objects. This must be a separate overlay, not an edited portrait. Frame the sunglasses closely with a small transparent margin on all sides in a wide PNG canvas, ideally about 1024 by 512 pixels.

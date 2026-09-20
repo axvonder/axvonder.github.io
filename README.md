@@ -20,4 +20,4 @@ Edit publication content in `index.html` and keep `publications/publications.jso
 
 ## Images
 
-The portrait, Tufts logo, and sunglasses in `assets/` were supplied by Alexander. The homepage layers the sunglasses over the portrait in dark mode. A manual toggle animates them; reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
+The portrait, Tufts logo, and original sunglasses in `assets/` were supplied by Alexander. `sunglasses-fitted.png` is a transparent variant generated with the built-in image tool to match the portrait angle. [The prompt](assets/sunglasses-fitted.prompt.txt) is saved beside it. The original `sunglasses.png` is retained. The homepage layers the fitted sunglasses over the portrait in dark mode. A manual toggle animates them. Reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
