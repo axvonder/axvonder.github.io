@@ -42,7 +42,7 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
   --sunglasses-start-y: -100vh;
   position: absolute;
   top: 24.5%;
-  left: 26.6%;
+  left: calc(26.6% + 1px);
   width: 45.5%;
   height: 22.7%;
   z-index: 2;
