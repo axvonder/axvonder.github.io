@@ -1,14 +1,14 @@
 :root {
   color-scheme: light;
-  --page-bg: #faf9f5;
-  --text: #242924;
-  --secondary: #62695f;
-  --muted: #697266;
-  --link: #315743;
-  --rule: #dedfd8;
-  --inset-rule: #cfd5cb;
-  --abstract-text: #454e44;
-  --focus-ring: #245c46;
+  --page-bg: #faf9fc;
+  --text: #28272f;
+  --secondary: #626373;
+  --muted: #6b6c7c;
+  --link: #575581;
+  --rule: #dedee8;
+  --inset-rule: #c6c6d5;
+  --abstract-text: #4b4c5c;
+  --focus-ring: #615995;
   background: var(--page-bg);
   color: var(--text);
 }
