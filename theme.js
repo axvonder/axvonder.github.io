@@ -29,6 +29,7 @@
     document.querySelectorAll('.theme-toggle').forEach(button => {
       button.hidden = false;
       button.addEventListener('click', () => {
+        document.documentElement.dataset.themeMotion = 'on';
         preference = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         try { localStorage.setItem(key, preference); } catch { /* The toggle still works when storage is blocked. */ }
         applyTheme();

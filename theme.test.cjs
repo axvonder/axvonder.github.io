@@ -38,8 +38,10 @@ for (const dark of [false, true]) {
     assert.equal(p.dataset.theme, expected, 'Theme must be set before the body exists');
     p.ready();
     assert.equal(p.button.hidden, false);
+    assert.equal(p.dataset.themeMotion, undefined, 'Page loads do not replay the sunglasses drop');
     assert.equal(p.button['aria-checked'], String(expected === 'dark'));
     p.button.click();
+    assert.equal(p.dataset.themeMotion, 'on', 'A manual toggle enables the sunglasses animation');
     assert.equal(p.dataset.theme, expected === 'dark' ? 'light' : 'dark');
     assert.equal(p.storage.value, p.dataset.theme);
     assert.equal(p.button['aria-checked'], String(p.dataset.theme === 'dark'));

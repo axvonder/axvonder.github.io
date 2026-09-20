@@ -20,4 +20,4 @@ Edit publication content in `index.html` and keep `publications/publications.jso
 
 ## Images
 
-The portrait and Tufts logo in `assets/` were supplied by Alexander. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
+The portrait, Tufts logo, and sunglasses in `assets/` were supplied by Alexander. The homepage layers the sunglasses over the portrait in dark mode. A manual toggle animates them; reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
