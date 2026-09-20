@@ -75,3 +75,7 @@
   background-image: none;
 }
 .cv-page .theme-toggle { margin-bottom: 20px; }
+
+/* Temporarily hide these features. Preserve the toggle's space for header alignment. */
+.theme-toggle { visibility: hidden; }
+.portrait-sunglasses { display: none; }
