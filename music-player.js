@@ -47,6 +47,11 @@
     audio.load();
   }
 
+  function skipOpeningSilence() {
+    // The supplied recording is silent until 7.349 seconds. Keep the first note intact.
+    if (audio.currentTime === 0 || audio.ended) audio.currentTime = 7.3;
+  }
+
   if (document.readyState === 'complete') preload();
   else window.addEventListener('load', preload, { once: true });
 
@@ -57,6 +62,7 @@
     }
     audio.preload = 'auto';
     if (audio.error) audio.load();
+    skipOpeningSilence();
     audio.play().catch(error => {
       // Pausing while the file loads cancels play normally.
       if (error.name !== 'AbortError') showError();
@@ -66,6 +72,7 @@
   audio.addEventListener('pause', update);
   audio.addEventListener('ended', update);
   audio.addEventListener('error', showError);
+  audio.addEventListener('loadedmetadata', skipOpeningSilence);
   ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked', 'ended'].forEach(event => {
     audio.addEventListener(event, updateProgress);
   });

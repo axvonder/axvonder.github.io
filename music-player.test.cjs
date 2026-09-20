@@ -18,8 +18,8 @@ function page(readyState = 'loading') {
     style: { setProperty(name, value) { this[name] = value; } }
   });
   const audio = Object.assign(new EventTarget(), {
-    paused: true, currentTime: 0, duration: NaN, preload: 'none', plays: 0, loads: 0, error: null,
-    play() { this.plays++; this.paused = false; emit(this, 'play'); return this.pending || Promise.resolve(); },
+    paused: true, ended: false, currentTime: 0, duration: NaN, preload: 'none', plays: 0, loads: 0, error: null,
+    play() { this.plays++; this.paused = false; this.ended = false; emit(this, 'play'); return this.pending || Promise.resolve(); },
     pause() { this.paused = true; emit(this, 'pause'); },
     load() { this.loads++; this.error = null; this.currentTime = 0; }
   });
@@ -50,6 +50,7 @@ function page(readyState = 'loading') {
 
   audio.duration = 659.3;
   emit(audio, 'loadedmetadata');
+  assert.equal(audio.currentTime, 7.3, 'Buffer the first note instead of the silent opening');
   assert.equal(progress.disabled, false);
   assert.equal(Number(progress.max), 659.3);
   assert.equal(progress.hidden, true, 'Preloading must not show the bar');
@@ -59,6 +60,8 @@ function page(readyState = 'loading') {
   assert.equal(button['aria-pressed'], 'true');
   assert.match(button['aria-label'], /^Pause /);
   audio.currentTime = 42;
+  emit(audio, 'loadedmetadata');
+  assert.equal(audio.currentTime, 42, 'Metadata updates must not reset playback');
   emit(audio, 'timeupdate');
   assert.equal(progress.value, '42');
   assert.equal(progress['aria-valuetext'], '0:42 of 10:59');
@@ -97,15 +100,20 @@ function page(readyState = 'loading') {
   emit(audio, 'error');
   click();
   assert.equal(audio.loads, 2, 'Retry reloads a failed file');
+  assert.equal(audio.currentTime, 7.3, 'Retry skips the silent opening');
   assert.equal(audio.paused, false);
   assert.equal(progress.hidden, false);
   audio.paused = true;
+  audio.ended = true;
   audio.currentTime = audio.duration;
   emit(audio, 'ended');
   assert.equal(progress.hidden, true, 'Hide the bar at the end of the track');
+  click();
+  assert.equal(audio.currentTime, 7.3, 'Replay starts at the first note');
 
   const early = page();
   early.click();
+  assert.equal(early.audio.currentTime, 7.3, 'An early click also skips the silence');
   early.audio.currentTime = 42;
   emit(early.window, 'load');
   assert.equal(early.audio.loads, 0, 'Do not interrupt playback started before the load event');
@@ -114,5 +122,5 @@ function page(readyState = 'loading') {
   const loaded = page('complete');
   assert.equal(loaded.audio.loads, 1, 'Handle a page that has already finished loading');
   assert.equal(loaded.audio.plays, 0);
-  console.log('Music checks passed: deferred loading, no autoplay, early clicks, pause/resume, seeking, navigation, cancellation, and retry.');
+  console.log('Music checks passed: deferred loading, silent opening skipped, no autoplay, early clicks, pause/resume, seeking, replay, navigation, cancellation, and retry.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
