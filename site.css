@@ -26,10 +26,10 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
 .music-toggle { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0; border: 0; background: none; color: var(--secondary); font: inherit; font-size: 13px; line-height: 1.4; cursor: pointer; white-space: nowrap; }
 .music-toggle[hidden] { display: none; }
 .music-toggle svg { width: 22px; height: 22px; flex-shrink: 0; }
-.music-toggle .music-stop { display: none; }
+.music-toggle .music-pause { display: none; }
 .music-toggle[aria-pressed="true"] { color: var(--link); }
 .music-toggle[aria-pressed="true"] .music-play { display: none; }
-.music-toggle[aria-pressed="true"] .music-stop { display: block; }
+.music-toggle[aria-pressed="true"] .music-pause { display: block; }
 .music-toggle:hover { color: var(--text); }
 .music-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; border-radius: 3px; }
 .editorial h1, .editorial h2, .editorial h3 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-weight: 400; }
@@ -52,7 +52,7 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
   --sunglasses-start-y: -100vh;
   position: absolute;
   top: 24.5%;
-  left: 28.4%;
+  left: 28%;
   width: 45.5%;
   height: 22.7%;
   z-index: 2;

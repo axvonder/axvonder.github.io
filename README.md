@@ -14,7 +14,7 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 ## Music player
 
-The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. The file loads only after a click. Click again to stop and return to the beginning. Navigation also stops playback. Run `node music-player.test.cjs` to check playback, cancellation, and error handling.
+The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. The file loads only after a click. Click again to pause, then click to resume from the same position. Navigation pauses playback. Run `node music-player.test.cjs` to check playback, cancellation, and error handling.
 
 ## Publications
 

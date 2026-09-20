@@ -26,9 +26,9 @@ runInNewContext(readFileSync(`${__dirname}/music-player.js`, 'utf8'), {
   document: { querySelector: selector => selector === '.music-toggle' ? button : audio }
 });
 const click = () => button.dispatchEvent(new Event('click'));
-const stopped = () => {
+const paused = () => {
   assert.equal(audio.paused, true);
-  assert.equal(audio.currentTime, 0);
+  assert.equal(audio.currentTime, 42, 'Keep the playback position');
   assert.equal(button['aria-pressed'], 'false');
 };
 
@@ -42,15 +42,18 @@ const stopped = () => {
   assert.equal(label.textContent, 'Bach BWV 1080');
   audio.currentTime = 42;
   click();
-  stopped();
+  paused();
   assert.equal(label.textContent, invitation);
 
   click();
+  assert.equal(audio.currentTime, 42, 'Resume from the paused position');
+  assert.match(button['aria-label'], /^Pause /);
+  audio.paused = true;
   audio.dispatchEvent(new Event('ended'));
-  stopped();
+  paused();
   click();
   window.dispatchEvent(new Event('pagehide'));
-  stopped();
+  paused();
 
   let cancel;
   audio.pending = new Promise((resolve, reject) => { cancel = reject; });
@@ -58,21 +61,21 @@ const stopped = () => {
   click();
   cancel({ name: 'AbortError' });
   await new Promise(setImmediate);
-  stopped();
+  paused();
   assert.equal(label.textContent, invitation, 'A quick second click is not a playback failure');
 
   audio.pending = Promise.reject({ name: 'NotSupportedError' });
   click();
   await new Promise(setImmediate);
-  stopped();
+  paused();
   assert.equal(label.textContent, 'Unable to play. Try again?');
   audio.pending = null;
   audio.error = new Error('Network failure');
   audio.dispatchEvent(new Event('error'));
-  stopped();
+  paused();
   click();
   assert.equal(audio.loads, 1, 'Retry reloads a failed file');
   assert.equal(audio.paused, false);
   click();
-  console.log('Music checks passed: no autoplay, play/stop, reset, navigation, cancellation, and retry.');
+  console.log('Music checks passed: no autoplay, pause/resume, navigation, cancellation, and retry.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
