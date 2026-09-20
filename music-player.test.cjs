@@ -2,58 +2,80 @@
 const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
 const { runInNewContext } = require('node:vm');
+const source = readFileSync(`${__dirname}/music-player.js`, 'utf8');
 const invitation = "some music while you're here?";
-const label = { textContent: invitation };
-const button = Object.assign(new EventTarget(), {
-  hidden: true,
-  querySelector: () => label,
-  setAttribute(name, value) { this[name] = value; }
-});
-const audio = Object.assign(new EventTarget(), {
-  paused: true, currentTime: 0, plays: 0, loads: 0, error: null,
-  play() {
-    this.plays++;
-    this.paused = false;
-    this.dispatchEvent(new Event('play'));
-    return this.pending || Promise.resolve();
-  },
-  pause() { this.paused = true; this.dispatchEvent(new Event('pause')); },
-  load() { this.loads++; this.error = null; }
-});
-const window = new EventTarget();
-runInNewContext(readFileSync(`${__dirname}/music-player.js`, 'utf8'), {
-  window,
-  document: { querySelector: selector => selector === '.music-toggle' ? button : audio }
-});
-const click = () => button.dispatchEvent(new Event('click'));
-const paused = () => {
-  assert.equal(audio.paused, true);
-  assert.equal(audio.currentTime, 42, 'Keep the playback position');
-  assert.equal(button['aria-pressed'], 'false');
-};
+const emit = (target, name) => target.dispatchEvent(new Event(name));
+
+function page(readyState = 'loading') {
+  const label = { textContent: invitation };
+  const button = Object.assign(new EventTarget(), {
+    hidden: true, querySelector: () => label,
+    setAttribute(name, value) { this[name] = value; }
+  });
+  const progress = Object.assign(new EventTarget(), {
+    hidden: true, disabled: true, value: '0', max: '100',
+    setAttribute(name, value) { this[name] = value; },
+    style: { setProperty(name, value) { this[name] = value; } }
+  });
+  const audio = Object.assign(new EventTarget(), {
+    paused: true, currentTime: 0, duration: NaN, preload: 'none', plays: 0, loads: 0, error: null,
+    play() { this.plays++; this.paused = false; emit(this, 'play'); return this.pending || Promise.resolve(); },
+    pause() { this.paused = true; emit(this, 'pause'); },
+    load() { this.loads++; this.error = null; this.currentTime = 0; }
+  });
+  const window = new EventTarget();
+  runInNewContext(source, {
+    window,
+    document: {
+      readyState,
+      querySelector: selector => ({ '.music-toggle': button, '#background-music': audio, '.music-progress': progress })[selector]
+    }
+  });
+  return { button, progress, audio, window, label, click: () => emit(button, 'click') };
+}
 
 (async () => {
+  const p = page();
+  const { button, progress, audio, window, label, click } = p;
   assert.equal(button.hidden, false);
-  assert.equal(audio.plays, 0, 'Do not autoplay');
-  assert.equal(audio.loads, 0, 'Do not load the file before a click');
-  click();
-  assert.equal(audio.paused, false);
-  assert.equal(button['aria-pressed'], 'true');
-  assert.equal(label.textContent, 'Bach BWV 1080');
-  audio.currentTime = 42;
-  click();
-  paused();
-  assert.equal(label.textContent, invitation);
+  assert.equal(progress.hidden, false);
+  assert.equal(progress.disabled, true, 'Cannot seek before the duration is known');
+  assert.equal(audio.loads, 0, 'Wait for the rest of the page to load');
+  emit(window, 'load');
+  assert.equal(audio.loads, 1, 'Preload once the page has loaded');
+  assert.equal(audio.preload, 'auto');
+  assert.equal(audio.plays, 0, 'Preloading must not autoplay');
+  emit(window, 'load');
+  assert.equal(audio.loads, 1);
 
+  audio.duration = 659.3;
+  emit(audio, 'loadedmetadata');
+  assert.equal(progress.disabled, false);
+  assert.equal(Number(progress.max), 659.3);
   click();
-  assert.equal(audio.currentTime, 42, 'Resume from the paused position');
+  assert.equal(label.textContent, 'Bach BWV 1080');
+  assert.equal(button['aria-pressed'], 'true');
   assert.match(button['aria-label'], /^Pause /);
-  audio.paused = true;
-  audio.dispatchEvent(new Event('ended'));
-  paused();
+  audio.currentTime = 42;
+  emit(audio, 'timeupdate');
+  assert.equal(progress.value, '42');
+  assert.equal(progress['aria-valuetext'], '0:42 of 10:59');
   click();
-  window.dispatchEvent(new Event('pagehide'));
-  paused();
+  assert.equal(audio.paused, true);
+  assert.equal(audio.currentTime, 42, 'Pausing must keep the position');
+  progress.value = '123';
+  emit(progress, 'input');
+  assert.equal(audio.currentTime, 123);
+  assert.equal(audio.paused, true, 'Seeking while paused must not start playback');
+  click();
+  assert.equal(audio.currentTime, 123, 'Resume from the selected position');
+  progress.value = '400';
+  emit(progress, 'input');
+  assert.equal(audio.currentTime, 400);
+  assert.equal(audio.paused, false, 'Seeking during playback must keep playing');
+  emit(window, 'pagehide');
+  assert.equal(audio.paused, true);
+  assert.equal(audio.currentTime, 400);
 
   let cancel;
   audio.pending = new Promise((resolve, reject) => { cancel = reject; });
@@ -61,21 +83,30 @@ const paused = () => {
   click();
   cancel({ name: 'AbortError' });
   await new Promise(setImmediate);
-  paused();
   assert.equal(label.textContent, invitation, 'A quick second click is not a playback failure');
-
+  assert.equal(audio.currentTime, 400);
   audio.pending = Promise.reject({ name: 'NotSupportedError' });
   click();
   await new Promise(setImmediate);
-  paused();
+  assert.equal(audio.paused, true);
   assert.equal(label.textContent, 'Unable to play. Try again?');
   audio.pending = null;
   audio.error = new Error('Network failure');
-  audio.dispatchEvent(new Event('error'));
-  paused();
+  emit(audio, 'error');
   click();
-  assert.equal(audio.loads, 1, 'Retry reloads a failed file');
+  assert.equal(audio.loads, 2, 'Retry reloads a failed file');
   assert.equal(audio.paused, false);
   click();
-  console.log('Music checks passed: no autoplay, pause/resume, navigation, cancellation, and retry.');
+
+  const early = page();
+  early.click();
+  early.audio.currentTime = 42;
+  emit(early.window, 'load');
+  assert.equal(early.audio.loads, 0, 'Do not interrupt playback started before the load event');
+  assert.equal(early.audio.currentTime, 42);
+  assert.equal(early.audio.paused, false);
+  const loaded = page('complete');
+  assert.equal(loaded.audio.loads, 1, 'Handle a page that has already finished loading');
+  assert.equal(loaded.audio.plays, 0);
+  console.log('Music checks passed: deferred loading, no autoplay, early clicks, pause/resume, seeking, navigation, cancellation, and retry.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
