@@ -4,7 +4,7 @@ const { readFileSync } = require('node:fs');
 const { runInNewContext } = require('node:vm');
 const source = readFileSync(`${__dirname}/theme.js`, 'utf8');
 
-function page({ saved = null, dark = false, blocked = false } = {}) {
+function page({ saved = null, dark = false, blocked = false, portrait = true, viewportTop = 0 } = {}) {
   const events = {};
   const dataset = {};
   const button = {
@@ -13,6 +13,13 @@ function page({ saved = null, dark = false, blocked = false } = {}) {
     addEventListener(name, handler) { this[name] = handler; }
   };
   let ready = false;
+  const imageStyle = {};
+  const sunglasses = {
+    offsetTop: 57,
+    parentElement: { getBoundingClientRect: () => ({ top: 118 }) },
+    style: { setProperty(name, value) { imageStyle[name] = value; } },
+    addEventListener(name, handler) { this[name] = handler; }
+  };
   const system = { matches: dark, addEventListener(name, handler) { this[name] = handler; } };
   const storage = {
     value: saved,
@@ -21,14 +28,15 @@ function page({ saved = null, dark = false, blocked = false } = {}) {
   };
   runInNewContext(source, {
     localStorage: storage,
-    window: { matchMedia: () => system, addEventListener(name, handler) { events[name] = handler; } },
+    window: { visualViewport: { offsetTop: viewportTop }, matchMedia: () => system, addEventListener(name, handler) { events[name] = handler; } },
     document: {
       documentElement: { dataset },
+      querySelector: () => portrait ? sunglasses : null,
       querySelectorAll: () => ready ? [button] : [],
       addEventListener(name, handler) { events[name] = handler; }
     }
   });
-  return { dataset, button, events, system, storage, ready() { ready = true; events.DOMContentLoaded(); } };
+  return { dataset, button, events, system, storage, sunglasses, imageStyle, ready() { ready = true; events.DOMContentLoaded(); } };
 }
 
 for (const dark of [false, true]) {
@@ -42,6 +50,10 @@ for (const dark of [false, true]) {
     p.button.click();
     assert.equal(p.dataset.themeMotion, 'on', 'A manual toggle enables the sunglasses animation');
     assert.equal(p.dataset.theme, 'dark', 'Only the toggle enables dark mode');
+    assert.equal(p.imageStyle['--sunglasses-start-y'], '-175px', 'The drop starts at the visible top edge');
+    p.sunglasses.animationend();
+    assert.equal(p.dataset.themeMotion, undefined, 'Release the animation after landing');
+    assert.equal(p.dataset.theme, 'dark', 'The glasses stay on after the animation ends');
     assert.equal(p.button['aria-checked'], 'true');
     assert.equal(p.button.title, 'Switch to light mode');
     assert.equal(page({ saved: p.storage.value, dark }).dataset.theme, 'light', 'Navigation starts in light mode');
@@ -70,4 +82,14 @@ blocked.button.click();
 assert.equal(blocked.dataset.theme, 'dark', 'Blocked storage must not break the switch');
 blocked.button.click();
 assert.equal(blocked.dataset.theme, 'light');
-console.log('Theme checks passed: light by default, manual toggle, navigation, Back, and blocked storage.');
+
+const music = page({ portrait: false });
+music.ready();
+music.button.click();
+assert.equal(music.dataset.theme, 'dark', 'Pages without sunglasses still toggle');
+
+const zoomed = page({ viewportTop: 120 });
+zoomed.ready();
+zoomed.button.click();
+assert.equal(zoomed.imageStyle['--sunglasses-start-y'], '-55px', 'Pinch zoom uses the visible viewport edge');
+console.log('Theme checks passed: light default, immediate drop, animation cleanup, navigation, Back, and pages without glasses.');

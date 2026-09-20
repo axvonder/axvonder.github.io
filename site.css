@@ -38,9 +38,11 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
 .headshot-frame { position: relative; width: var(--portrait-width); max-width: 100%; }
 .headshot-frame .headshot { width: 100%; border-radius: 10px; }
 .portrait-sunglasses {
+  --sunglasses-angle: -1deg;
+  --sunglasses-start-y: -100vh;
   position: absolute;
   top: 24.5%;
-  left: 27.5%;
+  left: 26.6%;
   width: 45.5%;
   height: 22.7%;
   z-index: 2;
@@ -48,22 +50,22 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
   user-select: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-100vh) rotate(-12deg);
+  transform: translateY(var(--sunglasses-start-y)) rotate(-12deg);
 }
-:root[data-theme="dark"] .portrait-sunglasses { opacity: 1; visibility: visible; transform: rotate(1deg); }
+:root[data-theme="dark"] .portrait-sunglasses { opacity: 1; visibility: visible; transform: rotate(var(--sunglasses-angle)); }
 @media (prefers-reduced-motion: no-preference) {
   :root[data-theme="light"][data-theme-motion="on"] .portrait-sunglasses { animation: sunglasses-lift .35s ease-in both; }
-  :root[data-theme="dark"][data-theme-motion="on"] .portrait-sunglasses { animation: sunglasses-drop .85s both; }
+  :root[data-theme="dark"][data-theme-motion="on"] .portrait-sunglasses { animation: sunglasses-drop .55s both; }
 }
 @keyframes sunglasses-drop {
-  0% { transform: translateY(-100vh) rotate(-12deg); animation-timing-function: cubic-bezier(.55, 0, .9, .65); }
+  0% { transform: translateY(var(--sunglasses-start-y)) rotate(-6deg); animation-timing-function: cubic-bezier(.25, .15, .65, 1); }
   72% { transform: translateY(6px) rotate(2deg); animation-timing-function: ease-out; }
   86% { transform: translateY(-4px) rotate(-3deg); animation-timing-function: ease-in-out; }
-  100% { transform: rotate(1deg); }
+  100% { transform: rotate(var(--sunglasses-angle)); }
 }
 @keyframes sunglasses-lift {
-  from { transform: rotate(1deg); opacity: 1; visibility: visible; }
-  to { transform: translateY(-100vh) rotate(-12deg); opacity: 0; visibility: hidden; }
+  from { transform: rotate(var(--sunglasses-angle)); opacity: 1; visibility: visible; }
+  to { transform: translateY(calc(var(--sunglasses-start-y) - 100%)) rotate(-12deg); opacity: 0; visibility: hidden; }
 }
 .editorial-section { border-top: 1px solid var(--rule); padding: 40px 0 58px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 64px; }
 .editorial h2 { font-size: 25px; letter-spacing: -.02em; line-height: 1.2; }
