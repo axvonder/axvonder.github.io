@@ -27,8 +27,8 @@
 .theme-toggle {
   position: relative;
   display: block;
-  flex: 0 0 68px;
-  width: 68px;
+  flex: 0 0 44px;
+  width: 44px;
   height: 44px;
   padding: 0;
   border: 0;
@@ -44,19 +44,19 @@
   position: absolute;
   border-radius: 20px;
 }
-.theme-toggle::before { inset: 5px 0; background: var(--text); }
+.theme-toggle::before { inset: 13.5px 5px; background: var(--text); }
 .theme-toggle::after {
-  top: 9px;
-  left: 4px;
-  width: 26px;
-  height: 26px;
+  top: 15.5px;
+  left: 7px;
+  width: 13px;
+  height: 13px;
   background: var(--page-bg);
   transition: transform .25s ease;
 }
-.theme-toggle[aria-checked="true"]::after { transform: translateX(34px); }
-.theme-toggle svg { position: absolute; top: 14px; width: 16px; height: 16px; }
-.theme-toggle .sun { left: 9px; }
-.theme-toggle .moon { right: 9px; }
+.theme-toggle[aria-checked="true"]::after { transform: translateX(17px); }
+.theme-toggle svg { position: absolute; top: 18px; width: 8px; height: 8px; }
+.theme-toggle .sun { left: 9.5px; }
+.theme-toggle .moon { right: 9.5px; }
 .theme-toggle:hover { opacity: .8; }
 .theme-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { .theme-toggle::after { transition: none; } }

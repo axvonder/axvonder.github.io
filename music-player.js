@@ -12,6 +12,7 @@
     button.setAttribute('aria-pressed', String(playing));
     button.setAttribute('aria-label', `${playing ? 'Pause' : 'Play'} Bach BWV 1080, performed by Daniil Trifonov`);
     label.textContent = playing ? 'Bach BWV 1080' : invitation;
+    progress.hidden = !playing;
   }
 
   function pause() {
@@ -77,5 +78,4 @@
   update();
   updateProgress();
   button.hidden = false;
-  progress.hidden = false;
 })();

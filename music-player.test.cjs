@@ -38,7 +38,7 @@ function page(readyState = 'loading') {
   const p = page();
   const { button, progress, audio, window, label, click } = p;
   assert.equal(button.hidden, false);
-  assert.equal(progress.hidden, false);
+  assert.equal(progress.hidden, true, 'Hide the bar before playback');
   assert.equal(progress.disabled, true, 'Cannot seek before the duration is known');
   assert.equal(audio.loads, 0, 'Wait for the rest of the page to load');
   emit(window, 'load');
@@ -52,7 +52,9 @@ function page(readyState = 'loading') {
   emit(audio, 'loadedmetadata');
   assert.equal(progress.disabled, false);
   assert.equal(Number(progress.max), 659.3);
+  assert.equal(progress.hidden, true, 'Preloading must not show the bar');
   click();
+  assert.equal(progress.hidden, false, 'Show the bar during playback');
   assert.equal(label.textContent, 'Bach BWV 1080');
   assert.equal(button['aria-pressed'], 'true');
   assert.match(button['aria-label'], /^Pause /);
@@ -62,19 +64,18 @@ function page(readyState = 'loading') {
   assert.equal(progress['aria-valuetext'], '0:42 of 10:59');
   click();
   assert.equal(audio.paused, true);
+  assert.equal(progress.hidden, true, 'Hide the bar when paused');
   assert.equal(audio.currentTime, 42, 'Pausing must keep the position');
-  progress.value = '123';
-  emit(progress, 'input');
-  assert.equal(audio.currentTime, 123);
-  assert.equal(audio.paused, true, 'Seeking while paused must not start playback');
   click();
-  assert.equal(audio.currentTime, 123, 'Resume from the selected position');
+  assert.equal(progress.hidden, false, 'Show the bar again when resumed');
+  assert.equal(audio.currentTime, 42, 'Resume from the paused position');
   progress.value = '400';
   emit(progress, 'input');
   assert.equal(audio.currentTime, 400);
   assert.equal(audio.paused, false, 'Seeking during playback must keep playing');
   emit(window, 'pagehide');
   assert.equal(audio.paused, true);
+  assert.equal(progress.hidden, true, 'Hide the bar when navigation pauses playback');
   assert.equal(audio.currentTime, 400);
 
   let cancel;
@@ -89,6 +90,7 @@ function page(readyState = 'loading') {
   click();
   await new Promise(setImmediate);
   assert.equal(audio.paused, true);
+  assert.equal(progress.hidden, true, 'Hide the bar after a playback failure');
   assert.equal(label.textContent, 'Unable to play. Try again?');
   audio.pending = null;
   audio.error = new Error('Network failure');
@@ -96,7 +98,11 @@ function page(readyState = 'loading') {
   click();
   assert.equal(audio.loads, 2, 'Retry reloads a failed file');
   assert.equal(audio.paused, false);
-  click();
+  assert.equal(progress.hidden, false);
+  audio.paused = true;
+  audio.currentTime = audio.duration;
+  emit(audio, 'ended');
+  assert.equal(progress.hidden, true, 'Hide the bar at the end of the track');
 
   const early = page();
   early.click();
