@@ -10,7 +10,7 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 ## Colour themes
 
-`theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. The first visit follows the system preference. A toggle choice is saved in the browser and applied before rendering each page. Run `node theme.test.cjs` to check preference handling.
+`theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. Each page starts in light mode, including reloads and browser Back. Dark mode requires a toggle click on that page. System preferences and previously saved choices do not change the default. Run `node theme.test.cjs` to check this behaviour.
 
 ## Publications
 
@@ -20,4 +20,4 @@ Edit publication content in `index.html` and keep `publications/publications.jso
 
 ## Images
 
-The portrait, Tufts logo, and original sunglasses in `assets/` were supplied by Alexander. `sunglasses-fitted.png` is a transparent variant generated with the built-in image tool to match the portrait angle. [The prompt](assets/sunglasses-fitted.prompt.txt) is saved beside it. The original `sunglasses.png` is retained. The homepage layers the fitted sunglasses over the portrait in dark mode. A manual toggle animates them. Reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
+The portrait, Tufts logo, and original sunglasses in `assets/` were supplied by Alexander. `sunglasses-fitted-v2.png` is the current transparent overlay, generated with the built-in image tool. Its lenses have no visible arm shapes, and its bridge and placement follow the portrait's glasses. [The prompts](assets/sunglasses-fitted-v2.prompt.txt) are saved beside it. The original and first fitted variant are retained. The homepage layers the sunglasses over the portrait in dark mode. A manual toggle animates them. Reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.

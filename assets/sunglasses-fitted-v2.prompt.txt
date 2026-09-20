@@ -1,0 +1,29 @@
+Mode: built-in image_gen editing.
+Final asset: sunglasses-fitted-v2.png.
+References: sunglasses-fitted.png and headshot.png. The second pass uses the first pass as its edit target and headshot.png as its fit reference.
+
+FIRST PASS
+Use case: precise-object-edit.
+Asset type: transparent PNG sunglasses overlay for the supplied portrait.
+
+Input 1 is the edit target, a pair of gold round sunglasses with cyan-to-purple mirrored lenses. Input 2 is a fit reference only, the original portrait with dark blue eyeglasses. Produce ONLY a separate transparent cutout of the sunglasses, never a face or an edited portrait.
+
+Change the lens interiors: make both lenses fully opaque, with clean cyan-blue mirror colour fading into a small violet band at the bottom. REMOVE every visible temple arm, earpiece silhouette, nose-pad silhouette, or ghost shape from inside the lenses. No objects should be visible through either lens. Retain subtle broad mirror highlights, but no recognizable arm or hardware reflections.
+
+Refine the fit to the dark blue frames in the portrait. Keep the familiar thin gold round frames, but make the lens shapes slightly more compact and less oversized. The two lens centres should be almost level, with no noticeable clockwise tilt. The viewer-left lens can remain only very slightly larger. Use the dark blue frame outlines and bridge in input 2 to guide the front perspective, lens spacing and shape, so the cutout can cover those rims when aligned. Bring the gold bridge lower to sit across the existing dark bridge, with a slightly fuller gold arch to help hide it. Preserve the round design, bright cyan/blue/violet palette and small white Ray-Ban marking. Tuck the side arms backward and out of view.
+
+Output one pair of sunglasses on a TRUE ALPHA TRANSPARENT background, including the gap under the bridge. Only the background is transparent; lens surfaces must be completely opaque. Clean antialiased edges, no coloured fringe or stray pixels. No face, skin, hair, backing, checkerboard pattern, drop shadow, extra objects, or new text. Wide, close-cropped canvas with a small clear margin.
+
+FINAL PASS
+Use case: precise-object-edit.
+Edit target: input 1, the new transparent gold sunglasses with clean opaque blue/violet lenses.
+Fit reference only: input 2, the original portrait.
+
+Make ONE focused geometry refinement. Keep the lens artwork clean and unchanged, but bring the two lenses about 10 percent closer together, measured between their centres, by shortening the bridge. Do NOT shrink the lenses to achieve this. Make the viewer-right lens about 4 percent narrower and 3 percent shorter than the viewer-left lens. The viewer-left lens should be a subtly irregular round shape matching the left dark eyeglass rim on the portrait, with the right lens matching the right rim. Aim to fit the original eyeglass outlines rather than place two perfect circles far apart. Both lens centres should be nearly level, with the right at most 1 percent of lens height lower.
+
+For concrete geometry, on a 1774 by 887 canvas place the lens centres approximately at (515,450) and (1260,455). Outer lens diameters roughly 600 by 550 on the left and 575 by 530 on the right. Adjust the short gold bridge naturally to connect those inner edges, with its arch slightly lower and fuller to cover more of the dark blue bridge in the portrait. These coordinates only guide relative spacing and shape.
+
+Preserve the gold round-frame style, vivid cyan/blue lenses with purple lower edges, soft broad highlights and the small white Ray-Ban marking. Keep arms tucked behind and out of sight. Each lens must be a fully opaque mirrored surface, with NO ghost arms, earpieces, eyes, nose pads or hardware visible inside either lens.
+
+Output ONLY the separate sunglasses cutout, not a portrait. Real alpha transparency outside the frames and below the bridge; solid opaque lens interiors (alpha 255). Clean antialiased edges with no red or yellow fringe and no stray pixels. No face, skin, hair, background, checkerboard, drop shadow, extra objects or text.
+
