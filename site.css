@@ -1,23 +1,23 @@
-:root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; color: #242924; background: #faf9f5; font-size: 16px; }
+:root { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; color: var(--text); background: var(--page-bg); font-size: 16px; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; text-underline-offset: 5px; }
 a:hover { text-decoration: underline; }
-a:focus-visible { outline: 2px solid #245c46; outline-offset: 5px; }
+a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; }
 h1, h2, h3, p, figure { margin: 0; }
 section, footer { scroll-margin-top: 32px; }
 .page { max-width: 1160px; margin: auto; padding: 0 48px; }
 .site-header { padding: 28px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
-.skip { position: fixed; top: -80px; left: 16px; background: white; padding: 12px; z-index: 10; }
+.skip { position: fixed; top: -80px; left: 16px; background: var(--page-bg); padding: 12px; z-index: 10; }
 .skip:focus { top: 10px; }
 .eyebrow { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
 .text-link { display: inline-block; font-size: 14px; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
 .text-link span { margin-left: 10px; }
 .text-link:hover { text-decoration: none; opacity: .75; }
-.editorial { background: #faf9f5; }
+.editorial { background: var(--page-bg); }
 .editorial .page { max-width: 1060px; }
 .editorial.editorial-layout .page { max-width: 1280px; padding: 0 32px; }
 .editorial .site-header { justify-content: flex-end; padding-top: 36px; }
@@ -25,40 +25,41 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
 .editorial h1, .editorial h2, .editorial h3 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif; font-weight: 400; }
 .intro { padding: 66px 0 90px; display: grid; grid-template-columns: minmax(0, 1fr) 200px; align-items: center; gap: 64px; }
 .editorial h1 { font-size: 48px; letter-spacing: -.04em; line-height: 1.05; }
-.intro-detail { max-width: 375px; margin-top: 26px; font-size: 15px; color: #62695f; }
+.intro-detail { max-width: 375px; margin-top: 26px; font-size: 15px; color: var(--secondary); }
 .editorial .profile-links { margin-top: 12px; gap: 8px; justify-content: center; flex-wrap: nowrap; }
 .profile-links a { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; height: 48px; padding: 0 8px; }
 .profile-links a:hover { opacity: .65; }
 .profile-links img { width: 28px; height: 28px; object-fit: contain; }
 .profile-links .linkedin-link img { transform: translateX(3px); }
+:root[data-theme="dark"] .profile-links .linkedin-link img { filter: brightness(1.35); }
 .profile-links .tufts-link img { width: 64px; }
 .portrait { width: fit-content; }
 .portrait > img { width: 200px; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 70%; }
 .portrait > img.headshot { aspect-ratio: auto; border-radius: 10px; }
-.editorial-section { border-top: 1px solid #dedfd8; padding: 40px 0 58px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 64px; }
+.editorial-section { border-top: 1px solid var(--rule); padding: 40px 0 58px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 64px; }
 .editorial h2 { font-size: 25px; letter-spacing: -.02em; line-height: 1.2; }
 .editorial h3 { font-size: 25px; letter-spacing: -.02em; line-height: 1.25; }
 .research-section { align-items: baseline; }
-.publications { margin-top: 14px; color: #315743; }
+.publications { margin-top: 14px; color: var(--link); }
 .research-focus { margin: 0 0 44px; }
 .editorial .research-focus h3 { font-size: 32px; line-height: 1.2; }
 .research-focus h3 span { display: inline-block; }
-.editorial .recent-publications h3 { margin-bottom: 22px; font: 400 13px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; letter-spacing: 0; color: #697266; }
+.editorial .recent-publications h3 { margin-bottom: 22px; font: 400 13px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; letter-spacing: 0; color: var(--muted); }
 .recent-publications article + article { margin-top: 32px; }
 .recent-publications h4 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.45; }
-.recent-publications p { margin-top: 4px; font-size: 13px; color: #697266; }
+.recent-publications p { margin-top: 4px; font-size: 13px; color: var(--muted); }
 .music-content { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 40px; align-items: center; }
 .music-content img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 35% 25%; border-radius: 10px; }
 .editorial .music-content h3 { font-size: 32px; }
-.music-content p { max-width: 30ch; font-size: 15px; color: #636b60; margin: 14px 0 24px; }
-.music-content .text-link { color: #315743; }
+.music-content p { max-width: 30ch; font-size: 15px; color: var(--secondary); margin: 14px 0 24px; }
+.music-content .text-link { color: var(--link); }
 .music-page .portrait > img { aspect-ratio: 3/4; object-position: 35% 25%; border-radius: 10px; }
 .ensemble-list { display: grid; gap: 22px; list-style: none; margin: 0; padding: 0; font: 400 22px/1.4 "Iowan Old Style", "Palatino Linotype", Palatino, serif; }
 .music-page nav [aria-current="page"] { text-decoration: underline; text-decoration-thickness: 1px; }
-footer { border-top: 1px solid #cfd5cb; padding: 40px 0 25px; }
-.editorial footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 20px; padding: 27px 0 35px; border-color: #dedfd8; font-size: 14px; color: #636b60; }
+footer { border-top: 1px solid var(--inset-rule); padding: 40px 0 25px; }
+.editorial footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 20px; padding: 27px 0 35px; border-color: var(--rule); font-size: 14px; color: var(--secondary); }
 .email-link { overflow-wrap: anywhere; }
-.footer-bottom { display: flex; justify-content: space-between; gap: 22px; color: #656d61; font-size: 12px; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 22px; color: var(--secondary); font-size: 12px; }
 .footer-bottom > div { display: flex; gap: 22px; }
 .collection { background: #fff; color: #202020; }
 .collection .page { max-width: 1300px; padding: 0 52px; }
@@ -111,18 +112,18 @@ footer { border-top: 1px solid #cfd5cb; padding: 40px 0 25px; }
 .editorial-layout .recent-publications h4 { font-size: 20px; }
 .editorial-layout .recent-publications p, .editorial.editorial-layout .recent-publications h3 { font-size: 15px; }
 .publication-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-top: 7px; }
-.publication-actions a, .publication-actions button { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0; border: 0; background: none; color: #315743; font: inherit; font-size: 14px; cursor: pointer; }
+.publication-actions a, .publication-actions button { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0; border: 0; background: none; color: var(--link); font: inherit; font-size: 14px; cursor: pointer; }
 .publication-actions a:hover, .publication-actions button:hover { text-decoration: underline; text-underline-offset: 5px; }
-.publication-actions button:focus-visible { outline: 2px solid #245c46; outline-offset: 5px; }
-.publication-abstract { max-width: 70ch; margin-top: 16px; padding: 0 0 5px 20px; border-left: 1px solid #cfd5cb; }
-.editorial-layout .publication-abstract p { margin: 0; font-size: 16px; line-height: 1.7; color: #454e44; }
+.publication-actions button:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 5px; }
+.publication-abstract { max-width: 70ch; margin-top: 16px; padding: 0 0 5px 20px; border-left: 1px solid var(--inset-rule); }
+.editorial-layout .publication-abstract p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--abstract-text); }
 .editorial-layout .publication-abstract p + p { margin-top: 14px; }
-.publication-abstract blockquote { margin: 0; font-size: 16px; line-height: 1.7; color: #454e44; }
+.publication-abstract blockquote { margin: 0; font-size: 16px; line-height: 1.7; color: var(--abstract-text); }
 .publication-key-messages ul { margin: 0; padding-left: 1.1em; }
 .publication-key-messages li + li { margin-top: 12px; }
-.editorial-layout .publication-abstract .abstract-citation { margin-top: 20px; font-size: 13px; line-height: 1.6; color: #636b60; overflow-wrap: anywhere; }
-.abstract-citation strong { color: #242924; font-weight: 600; }
-.editorial-layout .publication-abstract .abstract-credit { margin-top: 6px; font-size: 12px; line-height: 1.6; color: #697266; }
+.editorial-layout .publication-abstract .abstract-citation { margin-top: 20px; font-size: 13px; line-height: 1.6; color: var(--secondary); overflow-wrap: anywhere; }
+.abstract-citation strong { color: var(--text); font-weight: 600; }
+.editorial-layout .publication-abstract .abstract-credit { margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--muted); }
 .abstract-citation a, .abstract-credit a { text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 761px) {
   .editorial-layout .site-header, .editorial-layout .intro, .editorial-layout .editorial-section { grid-template-columns: 220px minmax(0, 1fr); column-gap: 48px; }
@@ -141,7 +142,8 @@ footer { border-top: 1px solid #cfd5cb; padding: 40px 0 25px; }
 @media (max-width: 760px) {
   .editorial.editorial-layout .page { padding: 0 24px; }
   .editorial .profile-links { gap: 0; }
-  .editorial-layout .site-header { padding: 24px 0 16px; }
+  .editorial-layout .site-header { padding: 24px 0 16px; flex-wrap: wrap; gap: 12px 24px; }
+  .editorial-layout .site-header nav { flex: 1 1 300px; }
   .editorial-layout .intro { grid-template-columns: 1fr; gap: 28px; padding: 28px 0 48px; }
   .editorial-layout .editorial-section { grid-template-columns: 1fr; gap: 28px; }
   .editorial-layout h1 { font-size: 38px; }

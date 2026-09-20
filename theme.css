@@ -1,0 +1,77 @@
+:root {
+  color-scheme: light;
+  --page-bg: #faf9f5;
+  --text: #242924;
+  --secondary: #62695f;
+  --muted: #697266;
+  --link: #315743;
+  --rule: #dedfd8;
+  --inset-rule: #cfd5cb;
+  --abstract-text: #454e44;
+  --focus-ring: #245c46;
+  background: var(--page-bg);
+  color: var(--text);
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #1c201d;
+  --text: #eeeee6;
+  --secondary: #bec4b9;
+  --muted: #a9b3a5;
+  --link: #b1cbb7;
+  --rule: #3b443c;
+  --inset-rule: #535e53;
+  --abstract-text: #d4d9cf;
+  --focus-ring: #c2dcc8;
+}
+.theme-toggle {
+  position: relative;
+  display: block;
+  flex: 0 0 68px;
+  width: 68px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: var(--page-bg);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle::before, .theme-toggle::after {
+  content: "";
+  position: absolute;
+  border-radius: 20px;
+}
+.theme-toggle::before { inset: 5px 0; background: var(--text); }
+.theme-toggle::after {
+  top: 9px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background: var(--page-bg);
+  transition: transform .25s ease;
+}
+.theme-toggle[aria-checked="true"]::after { transform: translateX(34px); }
+.theme-toggle svg { position: absolute; top: 14px; width: 16px; height: 16px; }
+.theme-toggle .sun { left: 9px; }
+.theme-toggle .moon { right: 9px; }
+.theme-toggle:hover { opacity: .8; }
+.theme-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .theme-toggle::after { transition: none; } }
+
+/* Keep the old CV URL readable with the same saved preference. */
+.cv-page {
+  --bg: var(--page-bg);
+  --surface: var(--page-bg);
+  --ink: var(--text);
+  --muted: var(--secondary);
+  --faint: var(--secondary);
+  --line: var(--rule);
+  --accent: var(--link);
+  --accent-weak: var(--rule);
+  --focus: var(--focus-ring);
+  background-image: none;
+}
+.cv-page .theme-toggle { margin-bottom: 20px; }

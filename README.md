@@ -6,7 +6,11 @@ Static personal website for [axvonder.com](https://axvonder.com/).
 
 Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `http://127.0.0.1:8000/`.
 
-`index.html` is the homepage. `music.html` lists singing experience. Both use `site.css`. The old `research.html` and `choir.html` URLs redirect to their replacements. `cv.html` and both existing CV PDFs remain unchanged. `CNAME` preserves the custom domain. The `FIMreadiness` and `mage-game` folders retain their existing URLs. `RiskStratTool/` redirects to the integrated [Tufts toolkit](https://fimtoolkit.tufts.edu/design/program-design/). The original tool and its assets are archived locally at `../archived-projects/RiskStratTool/`, outside the published repository.
+`index.html` is the homepage. `music.html` lists singing experience. Both use `site.css`. The old `research.html` and `choir.html` URLs redirect to their replacements. `cv.html` keeps its existing content. Both existing CV PDFs remain unchanged. `CNAME` preserves the custom domain. The `FIMreadiness` and `mage-game` folders retain their existing URLs. `RiskStratTool/` redirects to the integrated [Tufts toolkit](https://fimtoolkit.tufts.edu/design/program-design/). The original tool and its assets are archived locally at `../archived-projects/RiskStratTool/`, outside the published repository.
+
+## Colour themes
+
+`theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. The first visit follows the system preference. A toggle choice is saved in the browser and applied before rendering each page. Run `node theme.test.cjs` to check preference handling.
 
 ## Publications
 
