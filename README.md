@@ -14,7 +14,7 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 ## Music player
 
-The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. It starts loading after the page finishes loading, without autoplay. Playback starts at 7.3 seconds to skip the recording's silent opening. The first audio signal is at 7.349 seconds. Click to play or pause. The thin bar appears during playback and supports seeking with a click, drag, or arrow keys. Navigation pauses playback. Run `node music-player.test.cjs` to check loading, the start position, pause/resume, seeking, cancellation, and error handling.
+The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. It starts loading after the page finishes loading, without autoplay. Playback starts at 7.3 seconds to skip the recording's silent opening. The first audio signal is at 7.349 seconds. Click to play or pause. The thin bar appears during playback and supports seeking with a click, drag, or arrow keys. `site-navigation.js` keeps the player attached while changing pages through links marked `data-site-page`, including browser Back and Forward. Leaving the site or reloading pauses playback. Run `node music-player.test.cjs` and `node site-navigation.test.cjs` to check playback and navigation.
 
 ## Publications
 

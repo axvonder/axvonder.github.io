@@ -75,6 +75,14 @@ assert.equal(p.dataset.theme, 'dark', 'Other tabs must not change this page');
 p.events.pageshow({ persisted: true });
 assert.equal(p.dataset.theme, 'light', 'Browser Back restores light mode');
 assert.equal(p.dataset.themeMotion, undefined, 'Browser Back does not replay an animation');
+p.button.click();
+p.events['site:navigated']();
+assert.equal(p.dataset.theme, 'light', 'Internal navigation also starts in light mode');
+assert.equal(p.dataset.themeMotion, undefined, 'Internal navigation clears the previous animation');
+p.button.click();
+assert.equal(p.dataset.theme, 'dark', 'The retained toggle works after internal navigation');
+p.sunglasses.animationend();
+assert.equal(p.dataset.themeMotion, undefined);
 
 const blocked = page({ blocked: true });
 blocked.ready();

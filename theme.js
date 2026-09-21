@@ -10,15 +10,26 @@
   // Every page starts in light mode, before the first paint.
   applyTheme('light');
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function bindPortrait() {
     const sunglasses = document.querySelector('.portrait-sunglasses');
     sunglasses?.addEventListener('animationend', () => {
       // Release the animated layer so Safari can redraw the full-resolution image.
       delete document.documentElement.dataset.themeMotion;
     });
+  }
+
+  document.addEventListener('site:navigated', () => {
+    bindPortrait();
+    delete document.documentElement.dataset.themeMotion;
+    applyTheme('light');
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    bindPortrait();
     document.querySelectorAll('.theme-toggle').forEach(button => {
       button.hidden = false;
       button.addEventListener('click', () => {
+        const sunglasses = document.querySelector('.portrait-sunglasses');
         if (sunglasses) {
           const top = sunglasses.parentElement.getBoundingClientRect().top + sunglasses.offsetTop;
           const viewportTop = window.visualViewport?.offsetTop || 0;
