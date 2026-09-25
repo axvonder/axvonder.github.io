@@ -67,6 +67,7 @@
 :root[data-theme="dark"] .editorial-layout .recent-publications > h3,
 :root[data-theme="dark"] .recent-publications > article > p { font-size: 16px; }
 :root[data-theme="dark"] .publication-actions a,
-:root[data-theme="dark"] .publication-actions button { font-size: 15px; }
+:root[data-theme="dark"] .publication-actions button,
+:root[data-theme="dark"] .publications-toggle { font-size: 15px; }
 :root[data-theme="dark"] .publication-abstract .abstract-citation { font-size: 14px; }
 :root[data-theme="dark"] .publication-abstract .abstract-credit { font-size: 13px; }
