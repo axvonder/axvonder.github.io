@@ -2,7 +2,7 @@
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     document.querySelectorAll('.theme-toggle').forEach(button => {
-      button.setAttribute('aria-checked', String(theme === 'dark'));
+      button.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
       button.title = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
     });
   }

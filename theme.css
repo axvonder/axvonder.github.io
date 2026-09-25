@@ -25,41 +25,26 @@
   --focus-ring: #d3c5f4;
 }
 .theme-toggle {
-  position: relative;
   display: block;
-  flex: 0 0 51px;
-  width: 51px;
-  height: 44px;
+  flex: 0 0 auto;
+  min-width: 88px;
+  min-height: 44px;
   padding: 0;
   border: 0;
-  border-radius: 22px;
+  border-radius: 3px;
   background: transparent;
-  color: var(--page-bg);
+  color: var(--muted);
+  font: 400 15px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 .theme-toggle[hidden] { display: none; }
-.theme-toggle::before, .theme-toggle::after {
-  content: "";
-  position: absolute;
-  border-radius: 20px;
-}
-.theme-toggle::before { inset: 9.25px 0; background: var(--text); }
-.theme-toggle::after {
-  top: 12.25px;
-  left: 3px;
-  width: 19.5px;
-  height: 19.5px;
-  background: var(--page-bg);
-  transition: transform .25s ease;
-}
-.theme-toggle[aria-checked="true"]::after { transform: translateX(25.5px); }
-.theme-toggle svg { position: absolute; top: 16px; width: 12px; height: 12px; }
-.theme-toggle .sun { left: 6.75px; }
-.theme-toggle .moon { right: 6.75px; }
-.theme-toggle:hover { opacity: .8; }
+:root[data-theme="dark"] .theme-toggle { font-size: 16px; }
+.theme-toggle:hover { color: var(--text); }
 .theme-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
-@media (prefers-reduced-motion: reduce) { .theme-toggle::after { transition: none; } }
 
 /* Keep the old CV URL readable with the shared palette. */
 .cv-page {

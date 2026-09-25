@@ -9,7 +9,6 @@ function page({ saved = null, dark = false, blocked = false, portrait = true, vi
   const dataset = {};
   const button = {
     hidden: true,
-    setAttribute(name, value) { this[name] = value; },
     addEventListener(name, handler) { this[name] = handler; }
   };
   let ready = false;
@@ -46,7 +45,7 @@ for (const dark of [false, true]) {
     p.ready();
     assert.equal(p.button.hidden, false);
     assert.equal(p.dataset.themeMotion, undefined, 'Page loads do not replay the sunglasses drop');
-    assert.equal(p.button['aria-checked'], 'false');
+    assert.equal(p.button.textContent, 'Dark mode');
     p.button.click();
     assert.equal(p.dataset.themeMotion, 'on', 'A manual toggle enables the sunglasses animation');
     assert.equal(p.dataset.theme, 'dark', 'Only the toggle enables dark mode');
@@ -54,12 +53,12 @@ for (const dark of [false, true]) {
     p.sunglasses.animationend();
     assert.equal(p.dataset.themeMotion, undefined, 'Release the animation after landing');
     assert.equal(p.dataset.theme, 'dark', 'The glasses stay on after the animation ends');
-    assert.equal(p.button['aria-checked'], 'true');
+    assert.equal(p.button.textContent, 'Light mode');
     assert.equal(p.button.title, 'Switch to light mode');
     assert.equal(page({ saved: p.storage.value, dark }).dataset.theme, 'light', 'Navigation starts in light mode');
     p.button.click();
     assert.equal(p.dataset.theme, 'light');
-    assert.equal(p.button['aria-checked'], 'false');
+    assert.equal(p.button.textContent, 'Dark mode');
   }
 }
 
