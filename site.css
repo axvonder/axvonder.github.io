@@ -210,3 +210,8 @@ footer { border-top: 1px solid var(--inset-rule); padding: 40px 0 25px; }
   .music-label { max-width: 16ch; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.home-page footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.campfire-link { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 4px; }
+.campfire-link img { width: 32px; height: auto; image-rendering: pixelated; }
+.campfire-link:hover { opacity: .8; }

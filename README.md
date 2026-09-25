@@ -16,6 +16,10 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. It starts loading after the page finishes loading, without autoplay. Playback starts at 7.3 seconds to skip the recording's silent opening. The first audio signal is at 7.349 seconds. Click to play or pause. The thin bar appears during playback and supports seeking with a click, drag, or arrow keys. `site-navigation.js` keeps the player attached while changing pages through links marked `data-site-page`, including browser Back and Forward. Leaving the site or reloading pauses playback. Run `node music-player.test.cjs` and `node site-navigation.test.cjs` to check playback and navigation.
 
+## Campfire
+
+The small campfire in the homepage footer opens `campfire.html`. The scene and Tristram recording in `assets/campfire/` repeat. The final black GIF frame is omitted to avoid a flash, and the existing crop trims the bottom padding. The speaker button mutes without pausing; it also starts playback when the browser blocks autoplay. The back arrow returns home. Opening the campfire stops Bach, so the two recordings do not overlap. Run `node campfire.test.cjs` to check its controls and loops.
+
 ## Publications
 
 Run `python3 publications/verify.py` to check the ten publication entries, ten PDF downloads, file hashes, and disclosure links.
@@ -24,4 +28,4 @@ Edit publication content in `index.html` and keep `publications/publications.jso
 
 ## Images
 
-The portrait, Tufts logo, and original sunglasses in `assets/` were supplied by Alexander. `sunglasses-fitted-v2.png` is the current transparent overlay, generated with the built-in image tool. Its lenses have no visible arm shapes, and its bridge and placement follow the portrait's glasses. [The prompts](assets/sunglasses-fitted-v2.prompt.txt) are saved beside it. The original and first fitted variant are retained. The homepage layers the sunglasses over the portrait in dark mode. A manual toggle animates them. Reduced-motion settings skip the animation. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.
+The portrait, Tufts logo, and original sunglasses in `assets/` were supplied by Alexander. `sunglasses-fitted-v2.png` is the current transparent overlay, generated with the built-in image tool. Its lenses have no visible arm shapes, and its bridge and placement follow the portrait's glasses. [The prompts](assets/sunglasses-fitted-v2.prompt.txt) are saved beside it. The original and first fitted variant are retained. The sunglasses are disabled on the live site. Their markup remains in the inert `sunglasses-overlay` template in `index.html`; the assets, positioning rules, and animation code remain in the project. The local dark-mode preview still demonstrates them. The LinkedIn icon comes from [LinkedIn's official downloads](https://brand.linkedin.com/downloads). The choir photograph and Google Scholar icon reuse the existing site files.

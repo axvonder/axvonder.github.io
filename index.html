@@ -7,10 +7,9 @@
   <title>Alexander Vonderschmidt</title>
   <link rel="canonical" href="https://axvonder.com/">
   <link rel="icon" href="favicon.ico">
-  <link rel="preload" href="assets/sunglasses-fitted-v2.png" as="image" fetchpriority="high">
   <script src="theme.js?v=20260920-5"></script>
-  <link rel="stylesheet" href="theme.css?v=20260920-6">
-  <link rel="stylesheet" href="site.css?v=20260920-17">
+  <link rel="stylesheet" href="theme.css?v=20260925-1">
+  <link rel="stylesheet" href="site.css?v=20260925-1">
   <script src="music-player.js?v=20260920-5" defer></script>
   <script src="publications.js?v=20260920-2" defer></script>
   <script src="site-navigation.js?v=20260920-1" defer></script>
@@ -42,7 +41,9 @@
         <div class="portrait">
           <div class="headshot-frame">
             <img class="headshot" src="assets/headshot.png" alt="Portrait of Alexander Vonderschmidt" width="815" height="859">
-            <img class="portrait-sunglasses" src="assets/sunglasses-fitted-v2.png" alt="" aria-hidden="true" width="1774" height="887" loading="eager" decoding="sync" fetchpriority="high" draggable="false">
+            <template id="sunglasses-overlay">
+              <img class="portrait-sunglasses" src="assets/sunglasses-fitted-v2.png" alt="" aria-hidden="true" width="1774" height="887" loading="eager" decoding="sync" fetchpriority="high" draggable="false">
+            </template>
           </div>
           <nav class="profile-links" aria-label="Profiles">
             <a href="https://scholar.google.com/citations?user=wpiBK0AAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><img src="icons/Google_Scholar_logo.svg.png" alt="" width="28" height="28"></a>
@@ -235,7 +236,10 @@
         </div>
       </section>
     </main>
-    <footer id="contact"><a class="email-link" href="mailto:Alexander.Vonderschmidt@tufts.edu">Alexander.Vonderschmidt@tufts.edu</a></footer>
+    <footer id="contact">
+      <a class="email-link" href="mailto:Alexander.Vonderschmidt@tufts.edu">Alexander.Vonderschmidt@tufts.edu</a>
+      <a class="campfire-link" href="campfire.html" aria-label="Sit by the campfire" title="Sit by the campfire"><img src="assets/campfire/campfire.png" alt="" width="108" height="112" loading="lazy"></a>
+    </footer>
   </div>
 </body>
 </html>
