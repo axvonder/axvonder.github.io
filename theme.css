@@ -46,6 +46,18 @@
 .theme-toggle:hover { opacity: .8; }
 .theme-toggle:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
 
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-theme-motion="on"] .theme-toggle img {
+    transform-origin: 50% 75%;
+    animation: bulb-bounce .38s ease-out;
+  }
+}
+@keyframes bulb-bounce {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-3px) rotate(-6deg); }
+  65% { transform: translateY(1px) rotate(3deg); }
+}
+
 /* Keep the old CV URL readable with the shared palette. */
 .cv-page {
   --bg: var(--page-bg);
