@@ -22,6 +22,7 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
 .editorial.editorial-layout .page { max-width: 1280px; padding: 0 32px; }
 .editorial .site-header { justify-content: flex-end; padding-top: 36px; }
 .editorial-layout .site-header { justify-content: flex-start; padding: 28px 0 18px; }
+.site-header > .theme-toggle { justify-self: center; display: flex; align-items: center; justify-content: center; height: 44px; }
 .music-player { position: relative; justify-self: end; width: 217px; max-width: 100%; }
 .music-toggle { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0; border: 0; background: none; color: var(--secondary); font: inherit; font-size: 13px; line-height: 1.4; cursor: pointer; white-space: nowrap; }
 .music-toggle[hidden] { display: none; }
@@ -51,8 +52,7 @@ nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
 .profile-links .linkedin-link img { transform: translateX(3px); }
 :root[data-theme="dark"] .profile-links .linkedin-link img { filter: brightness(1.35); }
 .profile-links .tufts-link img { width: 64px; }
-.portrait { --portrait-width: 200px; position: relative; width: fit-content; }
-.portrait .theme-toggle { position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); }
+.portrait { --portrait-width: 200px; width: fit-content; }
 .portrait > img { width: var(--portrait-width); aspect-ratio: 4/5; object-fit: cover; object-position: 50% 70%; }
 .headshot-frame { position: relative; width: var(--portrait-width); max-width: 100%; }
 .headshot-frame .headshot { width: 100%; border-radius: 10px; }
@@ -196,10 +196,9 @@ footer { border-top: 1px solid var(--inset-rule); padding: 40px 0 25px; }
   .editorial-layout .editorial-section { grid-template-columns: 1fr; gap: 28px; }
   .editorial-layout h1 { font-size: 38px; }
   .editorial-layout .portrait { --portrait-width: 170px; }
-  .portrait .theme-toggle { position: static; transform: none; margin: 0 auto 8px; }
 }
 @media (max-width: 600px) { .music-content { grid-template-columns: 1fr; gap: 24px; } .music-content img { width: min(100%, 280px); } }
-@media (min-width: 761px) and (max-width: 1000px) {
+@media (max-width: 1000px) {
   .editorial-layout .site-header { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px 20px; }
   .editorial-layout .site-header nav { grid-column: 2; grid-row: 1; }
   .music-player { grid-column: 2; grid-row: 2; }
