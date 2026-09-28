@@ -2,6 +2,7 @@
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     document.querySelectorAll('.theme-toggle').forEach(button => {
+      button.hidden = false;
       button.title = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
       button.setAttribute('aria-label', button.title);
     });
@@ -26,20 +27,20 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     bindPortrait();
-    document.querySelectorAll('.theme-toggle').forEach(button => {
-      button.hidden = false;
-      button.addEventListener('click', () => {
-        const sunglasses = document.querySelector('.portrait-sunglasses');
-        if (sunglasses) {
-          const top = sunglasses.parentElement.getBoundingClientRect().top + sunglasses.offsetTop;
-          const viewportTop = window.visualViewport?.offsetTop || 0;
-          sunglasses.style.setProperty('--sunglasses-start-y', `${viewportTop - top}px`);
-        }
-        document.documentElement.dataset.themeMotion = 'on';
-        applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-      });
-    });
     applyTheme(document.documentElement.dataset.theme);
+  });
+
+  // The portrait and its button are replaced during internal navigation.
+  document.addEventListener('click', event => {
+    if (!event.target.closest?.('.theme-toggle')) return;
+    const sunglasses = document.querySelector('.portrait-sunglasses');
+    if (sunglasses) {
+      const top = sunglasses.parentElement.getBoundingClientRect().top + sunglasses.offsetTop;
+      const viewportTop = window.visualViewport?.offsetTop || 0;
+      sunglasses.style.setProperty('--sunglasses-start-y', `${viewportTop - top}px`);
+    }
+    document.documentElement.dataset.themeMotion = 'on';
+    applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
   });
 
   window.addEventListener('pageshow', event => {

@@ -7,11 +7,12 @@ const source = readFileSync(`${__dirname}/theme.js`, 'utf8');
 function page({ saved = null, dark = false, blocked = false, portrait = true, viewportTop = 0 } = {}) {
   const events = {};
   const dataset = {};
-  const button = {
+  const makeButton = () => ({
     hidden: true,
     setAttribute(name, value) { this[name] = value; },
-    addEventListener(name, handler) { this[name] = handler; }
-  };
+    click() { events.click({ target: { closest: () => this } }); }
+  });
+  let button = makeButton();
   let ready = false;
   const imageStyle = {};
   const sunglasses = {
@@ -36,7 +37,7 @@ function page({ saved = null, dark = false, blocked = false, portrait = true, vi
       addEventListener(name, handler) { events[name] = handler; }
     }
   });
-  return { dataset, button, events, system, storage, sunglasses, imageStyle, ready() { ready = true; events.DOMContentLoaded(); } };
+  return { dataset, get button() { return button; }, events, system, storage, sunglasses, imageStyle, ready() { ready = true; events.DOMContentLoaded(); }, replaceButton() { button = makeButton(); } };
 }
 
 for (const dark of [false, true]) {
@@ -76,11 +77,15 @@ p.events.pageshow({ persisted: true });
 assert.equal(p.dataset.theme, 'light', 'Browser Back restores light mode');
 assert.equal(p.dataset.themeMotion, undefined, 'Browser Back does not replay an animation');
 p.button.click();
+p.replaceButton();
 p.events['site:navigated']();
+assert.equal(p.button.hidden, false, 'Show the replacement portrait button');
 assert.equal(p.dataset.theme, 'light', 'Internal navigation also starts in light mode');
 assert.equal(p.dataset.themeMotion, undefined, 'Internal navigation clears the previous animation');
 p.button.click();
-assert.equal(p.dataset.theme, 'dark', 'The retained toggle works after internal navigation');
+assert.equal(p.dataset.theme, 'dark', 'The replacement toggle works after internal navigation');
+p.events.click({ target: { closest: () => null } });
+assert.equal(p.dataset.theme, 'dark', 'Unrelated clicks do not change the theme');
 p.sunglasses.animationend();
 assert.equal(p.dataset.themeMotion, undefined);
 

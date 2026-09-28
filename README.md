@@ -12,6 +12,8 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 `theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. Each page starts in light mode, including reloads and browser Back. Dark mode requires a toggle click on that page. System preferences and previously saved choices do not change the default. Run `node theme.test.cjs` to check this behaviour.
 
+The lightbulb above the portrait controls the theme. Yellow means light mode, and gray means dark mode. The two transparent 1254-pixel images in `assets/lightbulb-on.png` and `assets/lightbulb-off.png` were generated with the built-in image tool from Alexander's supplied bulb. The prompts are in `assets/lightbulb-prompts.txt`.
+
 ## Music player
 
 The homepage and music page use `music-player.js` to play the supplied recording in `assets/audio/`. It starts loading after the page finishes loading, without autoplay. Playback starts at 7.3 seconds to skip the recording's silent opening. The first audio signal is at 7.349 seconds. Click to play or pause. The thin bar appears during playback and supports seeking with a click, drag, or arrow keys. `site-navigation.js` keeps the player attached while changing pages through links marked `data-site-page`, including browser Back and Forward. Leaving the site or reloading pauses playback. Run `node music-player.test.cjs` and `node site-navigation.test.cjs` to check playback and navigation.
