@@ -10,7 +10,7 @@ Run `python3 -m http.server 8000 --bind 127.0.0.1` from this folder, then open `
 
 ## Colour themes
 
-`theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. Each page starts in light mode, including reloads and browser Back. Dark mode requires a toggle click on that page. System preferences and previously saved choices do not change the default. Run `node theme.test.cjs` to check this behaviour.
+`theme.css` and `theme.js` share the light and dark palettes and toggle across the homepage, music page, and old CV page. New visitors start in light mode. Clicking the bulb saves the selected theme in the browser. Reloads, page changes, and browser Back retain that choice. The saved theme is applied before the first paint. System preferences do not override it. Run `node theme.test.cjs` to check this behaviour.
 
 The lightbulb above the portrait controls the theme. Yellow means light mode, and gray means dark mode. The two transparent 1254-pixel images in `assets/lightbulb-on.png` and `assets/lightbulb-off.png` were generated with the built-in image tool from Alexander's supplied bulb. The prompts are in `assets/lightbulb-prompts.txt`.
 
